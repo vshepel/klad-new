@@ -1,0 +1,83 @@
+%ul-reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+%btn-reset {
+	width: auto;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	background: transparent;
+	border: 0;
+	outline: none;
+	box-shadow: none;
+	cursor: pointer;
+	appearance: none;
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+
+	&::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+}
+
+@include placeholder {
+	color: $color-black;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	color: $color-black;
+	background-color: rgba($color-primary, 0.8);
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+html {
+	scroll-behavior: smooth;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+body {
+	color: $color-black;
+	font-family: $font-primary;
+	background-color: $color-bg;
+}
+
+a {
+	color: $color-black;
+	text-decoration: none;
+	outline: none;
+	transition: all 0.15s linear;
+
+	&:hover {
+		color: $color-primary;
+	}
+
+	&:focus-visible {
+		box-shadow: 0 0 0 3px rgba($color-primary, 0.5);
+	}
+}
+
+.icon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	fill: $color-black;
+}
