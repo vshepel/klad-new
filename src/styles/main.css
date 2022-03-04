@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply flex items-center justify-between border border-black py-12px px-20px text-h2_md font-bold uppercase before:mr-14px before:shrink-0 before:border-t-18 before:border-r-18 before:border-t-black before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-14px after:shrink-0 after:border-t-18 after:border-r-18 after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white dark:before:border-t-white dark:after:border-r-white md:py-14px lg:text-h2_lg xl:text-h2_xl;
+    }
+
+    .h1 {
+        @apply text-h1 font-bold md:text-h1_md lg:text-h1_lg xl:text-h1_xl;
+    }
+
+    .h2 {
+        @apply text-h2 font-bold md:text-h2_md lg:text-h2_lg xl:text-h2_xl;
+    }
+
+    .h3 {
+        @apply text-h3 font-medium md:text-h3_md lg:text-h3_lg xl:text-h3_xl;
+    }
+
+    .p1 {
+        @apply text-p1 md:text-p1_md lg:text-p1_lg xl:text-p1_xl;
+    }
+
+    .p2 {
+        @apply text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl;
+    }
+
+    label {
+        @apply p2;
+    }
+
+    .field {
+        @apply p2 block w-full appearance-none border-b border-black bg-transparent py-8px focus:outline-none dark:border-white;
+    }
+
+    .field.error {
+        @apply border-red;
+    }
+
+    .field-attach {
+        @apply p2 afterline absolute right-0 bottom-[9px] z-10 lg:bottom-8px;
+    }
+
+    .field-resize {
+        @apply resize-none overflow-hidden;
+    }
+
+    .field-attach ~ .field,
+    .field-attach ~ label {
+        @apply pr-40px md:pr-60px lg:pr-80px;
+    }
+
+    .float-field {
+        @apply relative flex flex-col items-stretch;
+    }
+
+    .float-field .field {
+        @apply placeholder-transparent;
+    }
+
+    .float-field label {
+        @apply order-first w-full opacity-50 transition-all lg:pointer-events-none;
+    }
+
+    .float-field .field:placeholder-shown ~ label {
+        @apply translate-y-[25px] opacity-100 md:translate-y-[30px] lg:translate-y-[33px];
+    }
+
+    .float-field .field:focus ~ label {
+        @apply translate-y-0 opacity-50;
+    }
+
+    .field:disabled,
+    .field:disabled ~ label {
+        @apply !opacity-30;
+    }
+
+    input[type="checkbox"] {
+        @apply h-24px w-24px flex-shrink-0 cursor-pointer appearance-none border border-black dark:border-white;
+    }
+
+    input[type="checkbox"]:checked {
+        @apply bg-check bg-contain bg-center dark:backdrop-invert;
+    }
+
+    input[type="checkbox"] ~ label {
+        @apply py-[3px] md:py-0;
+    }
+
+    .afterline {
+        @apply relative after:absolute after:-bottom-0 after:left-0 after:w-full after:border-b after:border-black dark:after:border-white;
+    }
+}
+
+.error-message {
+    @apply hidden;
+}

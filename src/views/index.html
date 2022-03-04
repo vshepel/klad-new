@@ -1,8 +1,1091 @@
 @@include("../views/parts/header.html", { "title": "Home page" })
 
-<section>
-    <div class="container">
-        <h1>Gulp starter kit</h1>
+<!--hero-->
+<div class="mt-20px px-10px md:mt-0 md:px-20px">
+    <div
+        class="relative h-[calc(var(--vh,_1vh)_*_100_-_var(--header,_300px)_-_30px)] min-h-[320px] border border-black dark:border-white md:h-[calc(var(--vh,_1vh)_*_100_-_var(--header,_300px)_-_20px)] md:min-h-[600px]">
+        <button
+            class="btn absolute bottom-0 left-0 right-0 border-b-0 border-l-0 border-r-0 md:right-auto md:border-r"
+            type="button">
+            Get in touch
+        </button>
+    </div>
+</div>
+
+<!--about-->
+<section
+    class="relative mt-60px grid-cols-6 gap-x-20px overflow-hidden px-10px md:mt-80px md:grid md:px-20px lg:overflow-visible">
+    <lottie-player
+        id="aboutCross"
+        src="files/wave.json"
+        class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
+    <div class="col-span-5 md:pr-60px lg:pr-0">
+        <h2 class="h1">We help inspire</h2>
+        <div class="p1 mt-24px lg:mt-40px">
+            <p>
+                Klad is an interdimensional design syndicate that provides
+                comprehensive long-lasting solutions for people. Every design we
+                deliver is original, and every project is treated uniquely. We
+                treat our clients as long-term partners. We do not work to
+                indulge but to help them achieve new heights in everything they
+                do.
+            </p>
+        </div>
+    </div>
+    <div
+        class="col-span-full mt-[200px] flex flex-col items-stretch gap-24px md:mt-60px md:flex-row-reverse md:items-end md:gap-0 lg:mt-80px xl:mt-60px">
+        <button class="btn flex-shrink-0" type="button">
+            Download portfolio
+        </button>
+        <div
+            class="flex-grow md:border-b md:border-black md:pr-24 dark:md:border-white">
+            <lottie-player
+                id="aboutBarcode"
+                src="files/barcode.json"
+                preserveAspectRatio="none"
+                class="h-12px w-full dark:invert md:w-[187px] lg:w-[524px]"
+                loop
+                autoplay></lottie-player>
+        </div>
+    </div>
+</section>
+
+<!--projects-->
+<section
+    class="mt-60px grid-cols-6 gap-x-20px px-10px md:mt-80px md:grid md:px-20px">
+    <div class="col-span-5 md:pr-60px lg:pr-0">
+        <h2 class="h1">Projects</h2>
+        <div class="p1 mt-24px lg:mt-40px">
+            <p>
+                Years of experience to create unique design in agile and fast
+                manner
+            </p>
+        </div>
+    </div>
+    <div class="col-span-full mt-40px md:mt-60px">
+        <div class="grid grid-cols-6 gap-x-20px gap-y-24px lg:gap-y-40px">
+            <!--item-3-col-->
+            <a
+                href="/project.html"
+                class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
+                <div class="flex-shrink-0 md:flex">
+                    <div
+                        class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                        <h3 class="h3 uppercase">the 78 lab</h3>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                        <p class="p2">
+                            Klad is an interdimensional design syndicate
+                            providing comprehensive
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-grow border-t border-black dark:border-white">
+                    <picture>
+                        <img
+                            class="h-full w-full object-cover"
+                            src="img/projects/1.jpg"
+                            alt="the 78 lab" />
+                    </picture>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Work scope //
+                    </div>
+                    <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Tools Used //
+                    </div>
+                    <p class="p2">
+                        Figma, Adobe Photoshop, After Effects, HTML, CSS,
+                        JavaScript, Three.js
+                    </p>
+                </div>
+            </a>
+
+            <!--item-3-col-->
+            <a
+                href="/project.html"
+                class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
+                <div class="flex-shrink-0 md:flex">
+                    <div
+                        class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                        <h3 class="h3 uppercase">vinst</h3>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                        <p class="p2">Klad is an interdimensional design</p>
+                    </div>
+                </div>
+                <div class="flex-grow border-t border-black dark:border-white">
+                    <picture>
+                        <img
+                            class="h-full w-full object-cover"
+                            src="img/projects/2.jpg"
+                            alt="vinst" />
+                    </picture>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Work scope //
+                    </div>
+                    <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Tools Used //
+                    </div>
+                    <p class="p2">
+                        Figma, Blender, After Effects, HTML, CSS, JavaScript
+                    </p>
+                </div>
+            </a>
+
+            <!--item-4-col-->
+            <a
+                href="/project.html"
+                class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-4">
+                <div class="flex-shrink-0 md:flex">
+                    <div
+                        class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                        <h3 class="h3 uppercase">3d-modelling for FetoLife</h3>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                        <p class="p2">
+                            Klad is an interdimensional design syndicate
+                            providing comprehensive
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-grow border-t border-black dark:border-white">
+                    <picture>
+                        <img
+                            class="h-full w-full object-cover"
+                            src="img/projects/3.jpg"
+                            alt="3d-modelling for FetoLife" />
+                    </picture>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Work scope //
+                    </div>
+                    <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Tools Used //
+                    </div>
+                    <p class="p2">
+                        Figma, Adobe Photoshop, After Effects, HTML, CSS,
+                        JavaScript, Three.js
+                    </p>
+                </div>
+            </a>
+
+            <!--item-2-col-->
+            <a
+                href="/project.html"
+                class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-2">
+                <div class="flex-shrink-0 md:flex">
+                    <div
+                        class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                        <h3 class="h3 uppercase">Kultura</h3>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                        <p class="p2">Klad is an interdimensional design</p>
+                    </div>
+                </div>
+                <div class="flex-grow border-t border-black dark:border-white">
+                    <picture>
+                        <img
+                            class="h-full w-full object-cover"
+                            src="img/projects/4.jpg"
+                            alt="Kultura" />
+                    </picture>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Work scope //
+                    </div>
+                    <p class="p2">3D, Motion</p>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div
+                        class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">
+                        Tools Used //
+                    </div>
+                    <p class="p2">Blender, After Effects</p>
+                </div>
+            </a>
+        </div>
+        <button class="btn mt-40px w-full" type="button">View all</button>
+    </div>
+</section>
+
+<!--form-->
+<section class="mt-60px px-10px md:mt-80px md:px-20px">
+    <div class="border-black dark:border-white lg:border-t">
+        <!--toggles-->
+        <div class="hidden">
+            <button
+                class="btn w-full border-l-0 border-r-0 border-b-0 py-20px px-0"
+                type="button">
+                Custom design
+            </button>
+            <button
+                class="btn w-full border-l-0 border-r-0 border-b-0 py-20px px-0"
+                type="button">
+                Express design
+            </button>
+        </div>
+
+        <!--tabs-custom-->
+        <div class="gap-20px pt-40px lg:grid lg:grid-cols-6 lg:pt-80px">
+            <div class="col-span-5">
+                <div
+                    class="flex flex-col items-start gap-24px md:flex-row md:items-baseline md:gap-40px">
+                    <h2 class="h1">Make it fast!</h2>
+                    <a href="#" class="p2 afterline">
+                        instructions_and_conditions.txt
+                    </a>
+                </div>
+                <p class="p1 mt-24px lg:mt-40px">
+                    Express design is a faster and cheaper alternative to
+                    full-scale projects with one simple rule: no edits or
+                    comments. This way, we can cut out all the project
+                    management and focus just on the design processes. Fast
+                    execution without any quality compromises.
+                </p>
+            </div>
+
+            <!--accordions-->
+            <div x-data="{ selected: null }" class="col-span-full mt-40px">
+                <!--1-->
+                <div
+                    x-data="{ price: 299, days: 4, brandDisabled: false }"
+                    class="gap-20px transition-opacity lg:grid lg:grid-cols-6"
+                    :class="(selected !== null && selected !== 1) && 'opacity-40'">
+                    <div
+                        class="border-y border-black dark:border-white lg:col-span-4">
+                        <button
+                            x-data="{ scroll: () => { setTimeout(() => { $el.scrollIntoView({ behavior: 'smooth' }) }, 300) }}"
+                            @click="if(selected !== 1) { selected = 1; scroll(); } else { selected = null }"
+                            class="flex w-full items-center justify-between gap-8px py-16px"
+                            type="button">
+                            <span class="p1">Logo</span>
+                            <span class="p2">
+                                299 EUR &nbsp;&nbsp;//&nbsp;&nbsp; 4 working
+                                days
+                            </span>
+                        </button>
+                        <form
+                            class="form"
+                            x-ref="form1"
+                            x-show="selected === 1"
+                            style="display: none"
+                            x-collapse>
+                            <div
+                                class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                                <div x-id="['form1-input']" class="float-field">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        class="field"
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        required />
+                                    <label :for="$id('form1-input')">
+                                        Name
+                                    </label>
+                                </div>
+                                <div x-id="['form1-input']" class="float-field">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        class="field"
+                                        type="email"
+                                        name="Email"
+                                        placeholder="Email"
+                                        required />
+                                    <label :for="$id('form1-input')">
+                                        Email
+                                    </label>
+                                </div>
+                                <div x-id="['form1-input']" class="float-field">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        x-ref="logoBrand"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand name"
+                                        name="Brand name"
+                                        :required="!brandDisabled"
+                                        :disabled="brandDisabled" />
+                                    <label :for="$id('form1-input')">
+                                        Brand name
+                                    </label>
+                                </div>
+                                <div x-id="['form1-input']" class="float-field">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand description"
+                                        name="Brand description"
+                                        required />
+                                    <label :for="$id('form1-input')">
+                                        Brand description
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form1-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form1-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Any extra preferences that we should consider?"
+                                            name="Any extra preferences that we should consider?"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form1-input')">
+                                            Any extra preferences that we should
+                                            consider?
+                                        </label>
+                                    </div>
+                                    <div
+                                        class="mt-16px flex flex-wrap gap-16px md:mt-24px">
+                                        <div class="flex items-center">
+                                            <span
+                                                class="p2 max-w-sm overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                                file.jpg
+                                            </span>
+                                            <button
+                                                class="px-8px py-6px"
+                                                type="button"
+                                                aria-label="Remove file">
+                                                <svg
+                                                    class="h-14px w-14px fill-current"
+                                                    aria-hidden="true">
+                                                    <use
+                                                        xlink:href="img/sprite.svg#close"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span
+                                                class="p2 max-w-sm overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                                file_new_5.pdf
+                                            </span>
+                                            <button
+                                                class="px-8px py-6px"
+                                                type="button"
+                                                aria-label="Remove file">
+                                                <svg
+                                                    class="h-14px w-14px fill-current"
+                                                    aria-hidden="true">
+                                                    <use
+                                                        xlink:href="img/sprite.svg#close"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-40px flex flex-col gap-24px">
+                                <div
+                                    x-id="['form1-input']"
+                                    class="flex gap-20px">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        x-model="brandDisabled"
+                                        @change="price += ($event.target.checked) ? +300 : -300; days += ($event.target.checked) ? +4 : -4; $refs.logoBrand.classList.remove('error'); $refs.logoBrand.value = ''"
+                                        name="Add brand naming"
+                                        type="checkbox" />
+                                    <label :for="$id('form1-input')">
+                                        Add brand naming (+300 EUR // +4 days)
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form1-input']"
+                                    class="flex gap-20px">
+                                    <input
+                                        :id="$id('form1-input')"
+                                        @change="price += ($event.target.checked) ? +600 : -600; days += ($event.target.checked) ? +4 : -4"
+                                        name="Upgrade to Core Branding"
+                                        type="checkbox" />
+                                    <label :for="$id('form1-input')">
+                                        Upgrade to Core Branding (+600 EUR // +4
+                                        days)
+                                        <span class="mt-8px block">
+                                            Core Branding includes the complete
+                                            design of the brand, starting with
+                                            corporate materials and ending with
+                                            the general style of use in the
+                                            media.
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                                <p class="p2">
+                                    You will receive: logo in .ai, .svg, .png +
+                                    PDF presentation with colours, suggested
+                                    fonts (and free alternative) and the example
+                                    of how the social media profile would look
+                                    likу
+                                </p>
+                                <p class="p1">
+                                    Total:
+                                    <span x-text="price">299</span>
+                                    EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                                    <span x-text="days">4</span>
+                                    working days
+                                </p>
+                                <input
+                                    type="hidden"
+                                    name="Total"
+                                    :value="price" />
+                                <input
+                                    type="hidden"
+                                    name="Working days"
+                                    :value="days" />
+                            </div>
+                            <button class="btn my-40px w-full">
+                                Send a request
+                            </button>
+                        </form>
+                    </div>
+                    <div class="hidden lg:col-span-1 lg:block">
+                        <button
+                            @click="$refs.form1.reset()"
+                            x-show="selected === 1"
+                            style="display: none"
+                            class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                            type="button">
+                            Reset
+                            <svg
+                                class="h-24px w-24px fill-current"
+                                aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#close"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!--2-->
+                <div
+                    class="gap-20px transition-opacity lg:grid lg:grid-cols-6"
+                    :class="(selected !== null && selected !== 2) && 'opacity-40'">
+                    <div
+                        class="border-b border-black dark:border-white lg:col-span-4">
+                        <button
+                            x-data="{ scroll: () => { setTimeout(() => { $el.scrollIntoView({ behavior: 'smooth' }) }, 300) }}"
+                            @click="if(selected !== 2) { selected = 2; scroll(); } else { selected = null }"
+                            class="flex w-full items-center justify-between gap-8px py-16px"
+                            type="button">
+                            <span class="p1">Motion</span>
+                            <span class="p2">
+                                899 EUR &nbsp;&nbsp;//&nbsp;&nbsp; 7 working
+                                days
+                            </span>
+                        </button>
+                        <form
+                            class="form"
+                            x-ref="form2"
+                            x-show="selected === 2"
+                            style="display: none"
+                            x-collapse>
+                            <div
+                                class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                                <div x-id="['form2-input']" class="float-field">
+                                    <input
+                                        :id="$id('form2-input')"
+                                        class="field"
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        required />
+                                    <label :for="$id('form2-input')">
+                                        Name
+                                    </label>
+                                </div>
+                                <div x-id="['form2-input']" class="float-field">
+                                    <input
+                                        :id="$id('form2-input')"
+                                        class="field"
+                                        type="email"
+                                        name="Email"
+                                        placeholder="Email"
+                                        required />
+                                    <label :for="$id('form2-input')">
+                                        Email
+                                    </label>
+                                </div>
+                                <div x-id="['form2-input']" class="float-field">
+                                    <input
+                                        :id="$id('form2-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand name"
+                                        name="Brand name"
+                                        required />
+                                    <label :for="$id('form2-input')">
+                                        Brand name
+                                    </label>
+                                </div>
+                                <div x-id="['form2-input']" class="float-field">
+                                    <input
+                                        :id="$id('form2-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand description"
+                                        name="Brand description"
+                                        required />
+                                    <label :for="$id('form2-input')">
+                                        Brand description
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form2-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form2-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="Describe your target audience"
+                                        name="Describe your target audience"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form2-input')">
+                                        Describe your target audience
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form2-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form2-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Any extra preferences that we should consider?"
+                                            name="Any extra preferences that we should consider?"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form2-input')">
+                                            Any extra preferences that we should
+                                            consider?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                                <p class="p2">
+                                    You will receive: video in Adobe After
+                                    Effects, .mp4.
+                                </p>
+                                <p class="p1">
+                                    Total:
+                                    <span>899</span>
+                                    EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                                    <span>7</span>
+                                    working days
+                                </p>
+                                <input type="hidden" name="Total" value="899" />
+                                <input
+                                    type="hidden"
+                                    name="Working days"
+                                    value="7" />
+                            </div>
+                            <button class="btn my-40px w-full">
+                                Send a request
+                            </button>
+                        </form>
+                    </div>
+                    <div class="hidden lg:col-span-1 lg:block">
+                        <button
+                            @click="$refs.form2.reset()"
+                            x-show="selected === 2"
+                            style="display: none"
+                            class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                            type="button">
+                            Reset
+                            <svg
+                                class="h-24px w-24px fill-current"
+                                aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#close"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!--3-->
+                <div
+                    class="gap-20px transition-opacity lg:grid lg:grid-cols-6"
+                    :class="(selected !== null && selected !== 3) && 'opacity-40'">
+                    <div
+                        class="border-b border-black dark:border-white lg:col-span-4">
+                        <button
+                            x-data="{ scroll: () => { setTimeout(() => { $el.scrollIntoView({ behavior: 'smooth' }) }, 300) }}"
+                            @click="if(selected !== 3) { selected = 3; scroll(); } else { selected = null }"
+                            class="flex w-full items-center justify-between gap-8px py-16px"
+                            type="button">
+                            <span class="p1">3D model</span>
+                            <span class="p2">
+                                699 EUR &nbsp;&nbsp;//&nbsp;&nbsp; 7 working
+                                days
+                            </span>
+                        </button>
+                        <form
+                            class="form"
+                            x-ref="form3"
+                            x-show="selected === 3"
+                            style="display: none"
+                            x-collapse>
+                            <div
+                                class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                                <div x-id="['form3-input']" class="float-field">
+                                    <input
+                                        :id="$id('form3-input')"
+                                        class="field"
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        required />
+                                    <label :for="$id('form3-input')">
+                                        Name
+                                    </label>
+                                </div>
+                                <div x-id="['form3-input']" class="float-field">
+                                    <input
+                                        :id="$id('form3-input')"
+                                        class="field"
+                                        type="email"
+                                        name="Email"
+                                        placeholder="Email"
+                                        required />
+                                    <label :for="$id('form3-input')">
+                                        Email
+                                    </label>
+                                </div>
+                                <div x-id="['form3-input']" class="float-field">
+                                    <input
+                                        :id="$id('form3-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand name"
+                                        name="Brand name"
+                                        required />
+                                    <label :for="$id('form3-input')">
+                                        Brand name
+                                    </label>
+                                </div>
+                                <div x-id="['form3-input']" class="float-field">
+                                    <input
+                                        :id="$id('form3-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand description"
+                                        name="Brand description"
+                                        required />
+                                    <label :for="$id('form3-input')">
+                                        Brand description
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form3-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form3-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="Describe your target audience"
+                                        name="Describe your target audience"></textarea>
+                                    <label :for="$id('form3-input')">
+                                        Describe your target audience
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form3-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form3-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="How and where do you want to use the final 3D model?"
+                                        name="How and where do you want to use the final 3D model?"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form3-input')">
+                                        How and where do you want to use the
+                                        final 3D model? (e.g. on the website or
+                                        in SMM)
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form3-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form3-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Do you have any design assets"
+                                            name="Do you have any design assets"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form3-input')">
+                                            Do you have any design assets,
+                                            photos or guidelines that will help
+                                            us to learn more about your brand
+                                            and product?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div
+                                    x-id="['form3-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form3-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Any extra preferences that we should consider?"
+                                            name="Any extra preferences that we should consider?"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form3-input')">
+                                            Any extra preferences that we should
+                                            consider?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                                <p class="p2">
+                                    You will receive: 3D model in .gltf, .glb,
+                                    .obj
+                                </p>
+                                <p class="p1">
+                                    Total:
+                                    <span>699</span>
+                                    EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                                    <span>7</span>
+                                    working days
+                                </p>
+                                <input type="hidden" name="Total" value="699" />
+                                <input
+                                    type="hidden"
+                                    name="Working days"
+                                    value="7" />
+                            </div>
+                            <button class="btn my-40px w-full">
+                                Send a request
+                            </button>
+                        </form>
+                    </div>
+                    <div class="hidden lg:col-span-1 lg:block">
+                        <button
+                            @click="$refs.form3.reset()"
+                            x-show="selected === 3"
+                            style="display: none"
+                            class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                            type="button">
+                            Reset
+                            <svg
+                                class="h-24px w-24px fill-current"
+                                aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#close"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!--4-->
+                <div
+                    x-data="{ price: 999, days: 10, receive: 'You will receive: Website in Figma link + code archive' }"
+                    class="gap-20px transition-opacity lg:grid lg:grid-cols-6"
+                    :class="(selected !== null && selected !== 4) && 'opacity-40'">
+                    <div
+                        class="border-b border-black dark:border-white lg:col-span-4">
+                        <button
+                            x-data="{ scroll: () => { setTimeout(() => { $el.scrollIntoView({ behavior: 'smooth' }) }, 300) }}"
+                            @click="if(selected !== 4) { selected = 4; scroll(); } else { selected = null }"
+                            class="flex w-full items-center justify-between gap-8px py-16px"
+                            type="button">
+                            <span class="p1 text-left">Landing page</span>
+                            <span class="p2 whitespace-nowrap">
+                                999 EUR &nbsp;&nbsp;//&nbsp;&nbsp; 10 working
+                                days
+                            </span>
+                        </button>
+                        <form
+                            class="form"
+                            x-ref="form1"
+                            x-show="selected === 4"
+                            style="display: none"
+                            x-collapse>
+                            <div
+                                class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                                <div x-id="['form4-input']" class="float-field">
+                                    <input
+                                        :id="$id('form4-input')"
+                                        class="field"
+                                        type="text"
+                                        name="Name"
+                                        placeholder="Name"
+                                        required />
+                                    <label :for="$id('form4-input')">
+                                        Name
+                                    </label>
+                                </div>
+                                <div x-id="['form4-input']" class="float-field">
+                                    <input
+                                        :id="$id('form4-input')"
+                                        class="field"
+                                        type="email"
+                                        name="Email"
+                                        placeholder="Email"
+                                        required />
+                                    <label :for="$id('form4-input')">
+                                        Email
+                                    </label>
+                                </div>
+                                <div x-id="['form4-input']" class="float-field">
+                                    <input
+                                        :id="$id('form4-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand name"
+                                        name="Brand name"
+                                        required />
+                                    <label :for="$id('form4-input')">
+                                        Brand name
+                                    </label>
+                                </div>
+                                <div x-id="['form4-input']" class="float-field">
+                                    <input
+                                        :id="$id('form4-input')"
+                                        class="field"
+                                        type="text"
+                                        placeholder="Brand description"
+                                        name="Brand description"
+                                        required />
+                                    <label :for="$id('form4-input')">
+                                        Brand description
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form4-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="Describe your target audience"
+                                        name="Describe your target audience"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form4-input')">
+                                        Describe your target audience
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form4-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="Who will be using this site?"
+                                        name="Who will be using this site?"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form4-input')">
+                                        Who will be using this site? What for?
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form4-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="What does it need to do?"
+                                        name="What does it need to do?"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form4-input')">
+                                        What does it need to do? Describe the
+                                        primary and secondary actions of the
+                                        website
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <textarea
+                                        :id="$id('form4-input')"
+                                        x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                        class="field field-resize"
+                                        placeholder="Do you have any website currently?"
+                                        name="Do you have any website currently?"
+                                        rows="1"></textarea>
+                                    <label :for="$id('form4-input')">
+                                        Do you have any website currently?
+                                    </label>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form4-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Do you have a brandbook or brand guides?"
+                                            name="Do you have a brandbook or brand guides?"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form4-input')">
+                                            Do you have a brandbook or brand
+                                            guides?
+                                        </label>
+                                    </div>
+                                </div>
+                                <div
+                                    x-id="['form4-input']"
+                                    class="float-field col-span-full">
+                                    <div
+                                        class="relative flex flex-col items-stretch">
+                                        <button
+                                            class="field-attach"
+                                            type="button">
+                                            attach
+                                        </button>
+                                        <textarea
+                                            :id="$id('form4-input')"
+                                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                            class="field field-resize"
+                                            placeholder="Any extra preferences that we should consider?"
+                                            name="Any extra preferences that we should consider?"
+                                            rows="1"></textarea>
+                                        <label :for="$id('form4-input')">
+                                            Any extra preferences that we should
+                                            consider?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-40px flex flex-col gap-24px">
+                                <div
+                                    x-id="['form4-input']"
+                                    class="flex gap-20px">
+                                    <input
+                                        :id="$id('form4-input')"
+                                        @change="price += ($event.target.checked) ? +500 : -500; days += ($event.target.checked) ? +6 : -6; receive = ($event.target.checked) ? 'You will receive: Design of 3-5 website pages in Figma and code archive (html, css, js files)' : 'You will receive: Website in Figma link + code archive'"
+                                        name="Upgrade to Core Website"
+                                        type="checkbox" />
+                                    <label :for="$id('form4-input')">
+                                        Upgrade to Core Website (+500 EUR // +6
+                                        days)
+                                        <span class="mt-8px block">
+                                            Design of a full-fledged website 3-5
+                                            pages
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                                <p class="p2" x-text="receive">
+                                    You will receive: Website in Figma link +
+                                    code archive
+                                </p>
+                                <p class="p1">
+                                    Total:
+                                    <span x-text="price">999</span>
+                                    EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                                    <span x-text="days">10</span>
+                                    working days
+                                </p>
+                                <input
+                                    type="hidden"
+                                    name="Total"
+                                    :value="price" />
+                                <input
+                                    type="hidden"
+                                    name="Working days"
+                                    :value="days" />
+                            </div>
+                            <button class="btn my-40px w-full">
+                                Send a request
+                            </button>
+                        </form>
+                    </div>
+                    <div class="hidden lg:col-span-1 lg:block">
+                        <button
+                            @click="$refs.form4.reset()"
+                            x-show="selected === 4"
+                            style="display: none"
+                            class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                            type="button">
+                            Reset
+                            <svg
+                                class="h-24px w-24px fill-current"
+                                aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#close"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
