@@ -4,7 +4,19 @@
 
 @layer components {
     .btn {
-        @apply flex items-center justify-between border border-black py-12px px-20px text-h2_md font-bold uppercase before:mr-14px before:shrink-0 before:border-t-18 before:border-r-18 before:border-t-black before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-14px after:shrink-0 after:border-t-18 after:border-r-18 after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white dark:before:border-t-white dark:after:border-r-white md:py-14px lg:text-h2_lg xl:text-h2_xl;
+        @apply flex appearance-none items-center justify-between border border-black py-12px px-12px text-h2 font-bold uppercase before:mr-8px before:shrink-0 before:border-t-12px before:border-r-12px before:border-t-black before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-8px after:shrink-0 after:border-t-12px after:border-r-12px after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white dark:before:border-t-white dark:after:border-r-white sm:px-20px sm:text-h2_md sm:before:mr-12px sm:before:border-t-18px sm:before:border-r-18px sm:after:ml-14px sm:after:border-t-18px sm:after:border-r-18px md:py-14px lg:text-h2_lg xl:text-h2_xl;
+    }
+
+    .btn-skew {
+        @apply p1 relative inline-flex px-20px py-2px before:absolute before:top-0 before:left-0 before:h-full before:w-full before:-skew-x-12 before:border-[2px] before:border-black after:z-[1] after:transition after:content-[attr(data-text)] hover:after:text-white dark:before:border-white dark:after:bg-black md:px-24px lg:px-20px xl:px-[30px];
+    }
+
+    .btn-skew span {
+        @apply absolute top-0 left-0 h-full w-full origin-left -skew-x-12 scale-x-0 bg-black text-[0px] transition dark:bg-white;
+    }
+
+    .btn-skew:hover span {
+        @apply scale-x-100;
     }
 
     .h1 {
@@ -28,11 +40,11 @@
     }
 
     label {
-        @apply p2;
+        @apply text-p2_md lg:text-p2_lg xl:text-p2_xl;
     }
 
     .field {
-        @apply p2 block w-full appearance-none border-b border-black bg-transparent py-8px focus:outline-none dark:border-white;
+        @apply block w-full appearance-none rounded-none border-b border-black bg-transparent py-8px text-p2_md focus:outline-none dark:border-white lg:text-p2_lg xl:text-p2_xl;
     }
 
     .field.error {
@@ -40,7 +52,7 @@
     }
 
     .field-attach {
-        @apply p2 afterline absolute right-0 bottom-[9px] z-10 lg:bottom-8px;
+        @apply p2 afterline absolute right-0 bottom-[9px] z-[1] lg:bottom-8px;
     }
 
     .field-resize {
@@ -61,15 +73,15 @@
     }
 
     .float-field label {
-        @apply order-first w-full opacity-50 transition-all lg:pointer-events-none;
+        @apply order-first w-full origin-top-left scale-[0.875] opacity-50 transition-all lg:pointer-events-none;
     }
 
     .float-field .field:placeholder-shown ~ label {
-        @apply translate-y-[25px] opacity-100 md:translate-y-[30px] lg:translate-y-[33px];
+        @apply translate-y-[32px] scale-100 opacity-100 lg:translate-y-[34px] xl:translate-y-[42px];
     }
 
     .float-field .field:focus ~ label {
-        @apply translate-y-0 opacity-50;
+        @apply translate-y-0 scale-[0.875] opacity-50;
     }
 
     .field:disabled,
@@ -78,7 +90,7 @@
     }
 
     input[type="checkbox"] {
-        @apply h-24px w-24px flex-shrink-0 cursor-pointer appearance-none border border-black dark:border-white;
+        @apply h-24px w-24px flex-shrink-0 cursor-pointer appearance-none rounded-none border border-black dark:border-white;
     }
 
     input[type="checkbox"]:checked {
@@ -90,7 +102,7 @@
     }
 
     .afterline {
-        @apply relative after:absolute after:-bottom-0 after:left-0 after:w-full after:border-b after:border-black dark:after:border-white;
+        @apply relative transition after:absolute after:-bottom-0 after:left-0 after:w-full after:border-b after:border-black after:transition hover:text-grey hover:after:border-grey dark:after:border-white;
     }
 }
 

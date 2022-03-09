@@ -16,24 +16,16 @@ function autoResizeTextarea(querySelector, options) {
     forEachElement(querySelector);
 
     function elementHeight(element) {
-        return parseFloat(
-            getComputedStyle(element, null).height.replace("px", "")
-        );
+        return parseFloat(getComputedStyle(element, null).height.replace("px", ""));
     }
 
     function initInternal(element) {
         let initialDisplay = element.style.display;
         element.style.display = "block"; // prevent display="none"
         element.autoResizeTextarea.initialHeight = elementHeight(element);
-        element.autoResizeTextarea.initialScrollHeight = parseFloat(
-            element.scrollHeight
-        );
-        if (
-            element.autoResizeTextarea.initialScrollHeight >
-            element.autoResizeTextarea.initialHeight
-        ) {
-            element.autoResizeTextarea.initialHeight =
-                element.autoResizeTextarea.initialScrollHeight + 2;
+        element.autoResizeTextarea.initialScrollHeight = parseFloat(element.scrollHeight);
+        if (element.autoResizeTextarea.initialScrollHeight > element.autoResizeTextarea.initialHeight) {
+            element.autoResizeTextarea.initialHeight = element.autoResizeTextarea.initialScrollHeight + 2;
         }
         element.style.height = element.autoResizeTextarea.initialHeight + "px";
         element.style.display = initialDisplay;
@@ -58,10 +50,7 @@ function autoResizeTextarea(querySelector, options) {
             element.autoResizeTextarea.initialHeight +
             element.scrollHeight -
             element.autoResizeTextarea.initialScrollHeight;
-        newHeight = Math.max(
-            newHeight,
-            element.autoResizeTextarea.initialHeight
-        );
+        newHeight = Math.max(newHeight, element.autoResizeTextarea.initialHeight);
         element.style.height = Math.min(newHeight, config.maxHeight) + "px";
     }
 
@@ -92,7 +81,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     visibility: [0, 1.0],
                     type: "seek",
-                    frames: [0, 20],
+                    frames: [0, 19],
+                },
+            ],
+        });
+    }
+    if (document.querySelector("#formCross")) {
+        create({
+            player: "#formCross",
+            mode: "scroll",
+            actions: [
+                {
+                    visibility: [0, 1.0],
+                    type: "loop",
+                    frames: [0, 16],
                 },
             ],
         });
@@ -104,8 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 (function () {
     if (
         localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
         document.documentElement.classList.add("dark");
     } else {
@@ -123,39 +124,22 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 })();
 
-// Get real vh
+// Add css variables
 
 (function () {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    const setRealHeight = () => {
+        const doc = document.documentElement;
+        doc.style.setProperty("--vh", `${window.innerHeight}px`);
+    };
+    // window.addEventListener('resize', setRealHeight)
+    setRealHeight();
 
-    window.addEventListener(
-        "resize",
-        () => {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty("--vh", `${vh}px`);
-        },
-        { passive: true }
-    );
-})();
-
-// Get header height
-
-(function () {
-    let header = document.getElementById("header").clientHeight;
-    document.documentElement.style.setProperty("--header", `${header}px`);
-
-    window.addEventListener(
-        "resize",
-        () => {
-            let header = document.getElementById("header").clientHeight;
-            document.documentElement.style.setProperty(
-                "--header",
-                `${header}px`
-            );
-        },
-        { passive: true }
-    );
+    const setHeaderHeight = () => {
+        const header = document.getElementById("header").offsetHeight;
+        document.documentElement.style.setProperty("--header", `${header}px`);
+    };
+    window.addEventListener("resize", setHeaderHeight);
+    setHeaderHeight();
 })();
 
 // Phone mask

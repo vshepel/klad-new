@@ -3,7 +3,7 @@ module.exports = {
     content: ["./src/**/*.html"],
     theme: {
         screens: {
-            "sm": "640px",
+            "sm": "375px",
             "md": "768px",
             "lg": "1280px",
             "xl": "1536px",
@@ -41,14 +41,15 @@ module.exports = {
             transparent: "transparent",
             current: "currentColor",
             black: "#050505",
-            grey: "#bfbfbf",
+            grey: "#949494",
             white: "#ffffff",
             red: "#EA1E1E",
         },
         borderWidth: {
             DEFAULT: "1px",
             "0": "0",
-            "18": "18px",
+            "12px": "12px",
+            "18px": "18px",
         },
         extend: {
             spacing: {
@@ -68,7 +69,7 @@ module.exports = {
                 "80px": "80px",
             },
             backgroundImage: {
-                "check": "url('img/svg/check.svg')"
+                "check": "url('img/svg/check.svg')",
             },
         },
     },
