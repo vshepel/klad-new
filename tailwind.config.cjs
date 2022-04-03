@@ -6,7 +6,7 @@ module.exports = {
             "sm": "375px",
             "md": "768px",
             "lg": "1280px",
-            "xl": "1536px",
+            "xl": "1800px",
         },
         fontFamily: {
             "body": "Helvetica Now Display, sans-serif",
@@ -44,6 +44,7 @@ module.exports = {
             grey: "#949494",
             white: "#ffffff",
             red: "#EA1E1E",
+            select: "#A897FF",
         },
         borderWidth: {
             DEFAULT: "1px",

@@ -3,16 +3,18 @@
     @@include("../views/parts/head.html", { "title": "Home page" })
 
     <body
-        x-data="{ menuIsOpen: false }"
+        x-data="{ menuIsOpen: false, showreelIsOpen: false }"
         @open-menu.window="menuIsOpen = $event.detail"
-        class="bg-white font-body text-black transition-colors dark:bg-black dark:text-white">
+        @open-showreel.window="showreelIsOpen = $event.detail"
+        :class="showreelIsOpen && 'overflow-hidden'"
+        class="body">
         <!--header-->
-        @@include("../views/parts/header.html")
+        @@include("../views/parts/header.html", { style: "sticky" })
 
         <!--hero-->
         <div :class="menuIsOpen && 'blur-sm'" class="mt-20px px-10px transition md:mt-0 md:px-20px">
             <div
-                class="relative h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_30px)] min-h-[320px] border border-black dark:border-white md:h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_20px)] md:min-h-[600px]">
+                class="relative h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_30px)] min-h-[320px] border border-black dark:border-white md:h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_20px)] md:min-h-[600px] md:border-t-0">
                 <button
                     class="btn absolute bottom-0 left-0 right-0 border-b-0 border-l-0 border-r-0 md:right-auto md:border-r"
                     type="button">
@@ -25,9 +27,13 @@
         <section
             class="relative mt-60px grid-cols-6 gap-x-20px overflow-hidden px-10px md:mt-80px md:grid md:px-20px lg:overflow-visible">
             <lottie-player
-                id="aboutCross"
+                data-lottie="aboutWave"
+                src="files/wave-dark.json"
+                class="absolute bottom-[45px] -right-[33px] -z-10 hidden h-[391px] w-[362px] dark:block md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
+            <lottie-player
+                data-lottie="aboutWave"
                 src="files/wave.json"
-                class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
+                class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:hidden md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
             <div class="col-span-5 md:pr-60px lg:pr-0">
                 <h2 class="h1">We help inspire</h2>
                 <div class="p1 mt-24px lg:mt-40px">
@@ -187,7 +193,7 @@
                         </div>
                     </a>
                 </div>
-                <button class="btn mt-40px w-full" type="button">View all</button>
+                <a href="/projects.html" class="btn mt-40px w-full">View all</a>
             </div>
         </section>
 

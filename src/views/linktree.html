@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include("../views/parts/head.html", { "title": "Linktree page" })
+
+    <body class="body">
+        <div class="flex flex-col gap-14px">
+            <div class="mb-10px flex justify-center border border-black py-60px">
+                <img width="150" height="150" src="img/logo-klad.svg" alt="Klad design logotype" />
+            </div>
+
+            <a href="/express.html" class="btn h2">Order express design</a>
+            <a href="/projects.html" class="btn h2">View projects website</a>
+            <a
+                href="/project.html"
+                class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
+                <div class="flex-shrink-0 md:flex">
+                    <div class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                        <h3 class="h3 uppercase">the 78 lab</h3>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                        <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
+                    </div>
+                </div>
+                <div class="flex-grow overflow-hidden border-t border-black dark:border-white">
+                    <picture>
+                        <img class="h-full w-full object-cover" src="img/projects/1.jpg" alt="the 78 lab" />
+                    </picture>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Work scope //</div>
+                    <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                </div>
+                <div
+                    class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                    <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Tools Used //</div>
+                    <p class="p2">Figma, Adobe Photoshop, After Effects, HTML, CSS, JavaScript, Three.js</p>
+                </div>
+            </a>
+            <a href="/projects.html" class="btn h2">View projects</a>
+
+            <div class="mt-10px">
+                <div class="grid grid-cols-4 divide-x divide-solid border border-black">
+                    <a href="#" class="flex justify-center py-8px" aria-label="Our Instagram">
+                        <svg class="h-40px w-40px fill-current" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#instagram"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="flex justify-center py-8px" aria-label="Our Behance">
+                        <svg class="h-40px w-40px fill-current" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#behance"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="flex justify-center py-8px" aria-label="Our Dibbble">
+                        <svg class="h-40px w-40px fill-current" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#dribbble"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="flex justify-center py-8px" aria-label="Our Linkedin">
+                        <svg class="h-40px w-40px fill-current" aria-hidden="true">
+                            <use xlink:href="img/sprite.svg#linkedin"></use>
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 divide-x divide-solid border-x border-black">
+                    <a href="mailto:info@klad.design" class="afterline flex justify-center py-16px">info@klad.design</a>
+                    <a href="tel:995-591-018-573" class="afterline flex justify-center py-16px">+995 591 018 573</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

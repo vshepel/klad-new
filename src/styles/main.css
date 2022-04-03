@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 @layer components {
+    .body {
+        @apply bg-white font-body text-black transition-colors dark:bg-black dark:text-white selection:bg-select;
+    }
+
     .btn {
-        @apply flex appearance-none items-center justify-between border border-black py-12px px-12px text-h2 font-bold uppercase before:mr-8px before:shrink-0 before:border-t-12px before:border-r-12px before:border-t-black before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-8px after:shrink-0 after:border-t-12px after:border-r-12px after:border-t-transparent after:border-r-black after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white dark:before:border-t-white dark:after:border-r-white sm:px-20px sm:text-h2_md sm:before:mr-12px sm:before:border-t-18px sm:before:border-r-18px sm:after:ml-14px sm:after:border-t-18px sm:after:border-r-18px md:py-14px lg:text-h2_lg xl:text-h2_xl;
+        @apply flex appearance-none items-center justify-between border border-black py-12px px-12px text-h2 font-bold uppercase before:mr-8px before:shrink-0 before:border-t-12px before:border-r-12px before:border-t-current before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-8px after:shrink-0 after:border-t-12px after:border-r-12px after:border-t-transparent after:border-r-current after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white sm:px-20px sm:text-h2_md sm:before:mr-12px sm:before:border-t-18px sm:before:border-r-18px sm:after:ml-14px sm:after:border-t-18px sm:after:border-r-18px md:py-14px lg:text-h2_lg xl:text-h2_xl;
     }
 
     .btn-skew {
-        @apply p1 relative inline-flex px-20px py-2px before:absolute before:top-0 before:left-0 before:h-full before:w-full before:-skew-x-12 before:border-[2px] before:border-black after:z-[1] after:transition after:content-[attr(data-text)] hover:after:text-white dark:before:border-white dark:after:bg-black md:px-24px lg:px-20px xl:px-[30px];
+        @apply p1 relative inline-flex px-20px py-2px before:absolute before:top-0 before:left-0 before:h-full before:w-full before:-skew-x-12 before:border-[2px] before:border-black after:z-[1] after:transition after:content-[attr(data-text)] hover:after:text-white dark:hover:after:text-black dark:before:border-white md:px-24px lg:px-20px xl:px-[30px];
     }
 
     .btn-skew span {
@@ -19,15 +23,15 @@
         @apply scale-x-100;
     }
 
-    .h1 {
+    h1, .h1 {
         @apply text-h1 font-bold md:text-h1_md lg:text-h1_lg xl:text-h1_xl;
     }
 
-    .h2 {
+    h2, .h2 {
         @apply text-h2 font-bold md:text-h2_md lg:text-h2_lg xl:text-h2_xl;
     }
 
-    .h3 {
+    h3, .h3 {
         @apply text-h3 font-medium md:text-h3_md lg:text-h3_lg xl:text-h3_xl;
     }
 
@@ -35,7 +39,7 @@
         @apply text-p1 md:text-p1_md lg:text-p1_lg xl:text-p1_xl;
     }
 
-    .p2 {
+   .p2 {
         @apply text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl;
     }
 
@@ -106,6 +110,35 @@
     }
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
 .error-message {
     @apply hidden;
+}
+
+.slide-text {
+    @apply relative;
+}
+
+.slide-text > *:not(:first-child) {
+    @apply absolute top-0 left-0 opacity-0;
+}
+
+.raw {
+    @apply p2;
+}
+
+.raw p {
+    @apply my-24px;
+}
+
+.raw ul {
+    @apply list-inside list-[square];
+}
+
+.raw a {
+    @apply relative transition after:absolute after:-bottom-2px after:left-0 after:w-full after:border-b after:border-black after:transition hover:text-grey hover:after:border-grey dark:after:border-white;
 }

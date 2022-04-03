@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include("../views/parts/head.html", { "title": "Express design" })
+
+    <body class="body flex min-h-screen flex-col">
+        <!--header-->
+        @@include("../views/parts/header.html")
+
+        <section
+            class="min-h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_83px)] flex-grow px-10px py-60px md:px-20px lg:w-[calc((100%_-_100px)_/_6_*_5_+_80px)] lg:!overflow-visible lg:py-80px">
+            <div class="gap-20px lg:grid lg:grid-cols-5">@@include("../views/parts/form-express.html")</div>
+        </section>
+
+        <!--footer-->
+        @@include("../views/parts/footer.html")
+    </body>
+</html>

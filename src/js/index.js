@@ -1,8 +1,8 @@
-import Bouncer from "formbouncerjs";
+import gsap from "gsap";
 import request from "oc-request";
-import IMask from "imask";
+import Bouncer from "formbouncerjs";
 import * as LottiePlayer from "@lottiefiles/lottie-player";
-import { create } from "@lottiefiles/lottie-interactivity";
+import create from "@lottiefiles/lottie-interactivity";
 
 // Auto resize textarea
 
@@ -67,36 +67,50 @@ window.autoResizeTextarea = autoResizeTextarea;
 // Form validate
 
 (function () {
-    const formValidate = new Bouncer(".form");
+    let validate = new Bouncer(".form");
+
+    document.querySelectorAll(".form").forEach((el) => {
+        el.onreset = () => {
+            validate.destroy();
+            validate = new Bouncer(".form");
+        };
+    });
 })();
 
 // Lottie
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (document.querySelector("#aboutCross")) {
-        create({
-            player: "#aboutCross",
-            mode: "scroll",
-            actions: [
-                {
-                    visibility: [0, 1.0],
-                    type: "seek",
-                    frames: [0, 19],
-                },
-            ],
+    const aboutWaveLotties = document.querySelectorAll("[data-lottie=aboutWave]");
+    if (aboutWaveLotties) {
+        aboutWaveLotties.forEach((el) => {
+            create({
+                player: el,
+                mode: "scroll",
+                actions: [
+                    {
+                        visibility: [0, 1.0],
+                        type: "seek",
+                        frames: [0, 19],
+                    },
+                ],
+            });
         });
     }
-    if (document.querySelector("#formCross")) {
-        create({
-            player: "#formCross",
-            mode: "scroll",
-            actions: [
-                {
-                    visibility: [0, 1.0],
-                    type: "loop",
-                    frames: [0, 16],
-                },
-            ],
+
+    const formTwistLotties = document.querySelectorAll("[data-lottie=formTwist]");
+    if (formTwistLotties) {
+        formTwistLotties.forEach((el) => {
+            create({
+                player: el,
+                mode: "scroll",
+                actions: [
+                    {
+                        visibility: [0, 1.0],
+                        type: "loop",
+                        frames: [0, 16],
+                    },
+                ],
+            });
         });
     }
 });
@@ -131,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const doc = document.documentElement;
         doc.style.setProperty("--vh", `${window.innerHeight}px`);
     };
-    // window.addEventListener('resize', setRealHeight)
+    // window.addEventListener('resize', setRealHeight);
     setRealHeight();
 
     const setHeaderHeight = () => {
@@ -142,32 +156,49 @@ document.addEventListener("DOMContentLoaded", function () {
     setHeaderHeight();
 })();
 
-// Phone mask
+// Text slide animation
 
 (function () {
-    const phoneInputs = document.querySelectorAll("input[type=tel]");
+    const slides = document.querySelectorAll(".slide-text");
 
-    phoneInputs.forEach((el) => {
-        IMask(el, {
-            mask: "+{38} (000) 000-00-00",
+    if (!slides) return;
+
+    slides.forEach((el) => {
+        let targets = gsap.utils.toArray(el.querySelectorAll("span"));
+        gsap.set(targets, { autoAlpha: 1 });
+        let dur = 0.15;
+        let hold = 4;
+
+        targets.forEach((obj, i) => {
+            let tl = gsap.timeline({
+                delay: dur * i + hold * i,
+                repeat: -1,
+                repeatDelay: (targets.length - 1) * (dur + hold) - dur,
+                defaults: {
+                    ease: "none",
+                    duration: dur,
+                },
+            });
+            tl.from(obj, { yPercent: -50, opacity: 0 });
+            tl.to(obj, { yPercent: 50, opacity: 0 }, "+=" + hold);
         });
     });
 })();
 
 // October CMS - Contact form
 
-(function () {
-    const contactsForms = document.querySelectorAll(".form");
-
-    contactsForms.forEach((el) => {
-        el.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            request.sendForm(el, "emptyForm::onFormSubmit", {
-                success: (result) => {
-                    el.reset();
-                },
-            });
-        });
-    });
-})();
+// (function () {
+//     const contactsForms = document.querySelectorAll(".form");
+//
+//     contactsForms.forEach((el) => {
+//         el.addEventListener("submit", function (e) {
+//             e.preventDefault();
+//
+//             request.sendForm(el, "emptyForm::onFormSubmit", {
+//                 success: (result) => {
+//                     el.reset();
+//                 },
+//             });
+//         });
+//     });
+// })();

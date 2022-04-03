@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include("../views/parts/head.html", { "title": "Not found page" })
+
+    <body class="body flex min-h-screen flex-col">
+        <!--header-->
+        @@include("../views/parts/header.html")
+
+        <section class="grid flex-grow grid-cols-6 grid-rows-[auto_1fr_auto] px-10px pt-60px md:px-20px lg:pt-80px">
+            <h1 class="h1 col-span-full">Error 404</h1>
+            <div class="p1 col-span-full my-20px lg:col-span-5 lg:my-40px">
+                Klad is an interdimensional design syndicate that provides comprehensive long-lasting solutions for
+                people.
+            </div>
+            <div class="col-span-full flex flex-wrap items-end justify-between gap-20px">
+                <a href="/" class="btn w-full md:w-auto md:border-b-0">Back to main</a>
+                <lottie-player
+                    id="aboutBarcode"
+                    src="files/barcode.json"
+                    preserveAspectRatio="none"
+                    class="h-12px w-full dark:invert md:order-first md:w-[400px] lg:w-[524px]"
+                    loop
+                    autoplay></lottie-player>
+            </div>
+        </section>
+
+        <!--footer-->
+        @@include("../views/parts/footer.html")
+    </body>
+</html>

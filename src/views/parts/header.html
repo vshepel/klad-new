@@ -1,29 +1,39 @@
-<header id="header" class="px-10px md:px-20px" x-data="{ openMenu: false }" x-init="$watch('openMenu', () => $dispatch('open-menu', openMenu))">
-    <div class="flex flex-wrap lg:grid lg:grid-cols-6">
+<header
+    id="header"
+    class="px-10px md:px-20px transition bg-white dark:bg-black@@if(this.style === 'sticky'){ md:sticky md:top-0} z-50"
+    x-data="{ isScrolled: false, openMenu: false, openShowreel: false, showreelUrl: 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0' }"
+    x-init="isScrolled = window.scrollY >= 114; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
+    @scroll.window="isScrolled = window.scrollY >= 114"
+    @keydown.escape="openShowreel = false; $nextTick(() => { $refs.showreelIframe.setAttribute('src', '') })">
+    <div class="flex flex-wrap md:grid md:grid-cols-[auto_1fr_auto] lg:grid-cols-[auto_1fr_1fr_1fr_200px_200px] xl:grid-cols-[auto_1fr_1fr_1fr_1fr_1fr]">
         <!--logo-->
-        <div class="col-auto md:hidden">
-            <a href="/" class="block border-r border-black p-10px pl-0 dark:border-white md:hidden">
-                <img class="dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate" />
+        <div :class="isScrolled && 'md:!w-0 md:!border-r-0'" class="md:w-[77px] lg:w-[97px] xl:w-[116px] transition-all origin-left row-span-2 order-first flex items-center border-r md:border-b border-black dark:border-white">
+            <a href="/" class="w-full p-10px pl-0 md:pr-16px lg:pr-20px">
+                <img class="w-full dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate" />
             </a>
         </div>
 
         <!--links-->
         <div
             class="hidden flex-col items-start justify-center gap-6px border-l border-black px-16px text-h3_lg font-medium uppercase dark:border-white lg:col-span-1 lg:flex xl:text-h3_xl">
-            <a class="transition hover:text-grey" href="/about.html">About.txt</a>
-            <a class="transition hover:text-grey" href="/projects.html">Projects</a>
+            <a class="hover:text-grey" href="/about.html">About.txt</a>
+            <a class="hover:text-grey" href="/projects.html">Projects</a>
         </div>
 
         <!--toggles-->
         <div
             class="flex flex-1 flex-wrap content-center gap-x-4px border-black px-8px dark:border-white md:flex-initial md:border-l md:pr-0 lg:col-span-1 lg:gap-x-12px lg:gap-y-2px lg:px-16px">
             <a
-                class="hidden text-h3_lg font-medium uppercase transition hover:text-grey lg:block xl:text-h3_xl"
+                class="hidden text-h3_lg font-medium uppercase hover:text-grey lg:block xl:text-h3_xl"
                 href="/express.html">
                 Express design
             </a>
             <div class="hidden w-full lg:block"></div>
-            <button class="group p-6px lg:p-0" aria-label="Open showreel" type="button">
+            <button
+                @click="openShowreel = true; $nextTick(() => { $refs.showreelIframe.setAttribute('src', showreelUrl) })"
+                class="group p-6px lg:p-0"
+                aria-label="Open showreel"
+                type="button">
                 <svg class="h-24px w-24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="12" class="fill-black dark:fill-white" />
                     <path d="M18 12L8.25 18.0622L8.25 5.93782L18 12Z" class="fill-white dark:fill-black" />
@@ -47,13 +57,13 @@
             <button
                 @click="openMenu = !openMenu;"
                 x-text="openMenu ? 'Close' : 'Menu'"
-                class="ml-auto min-w-[56px] p-6px text-h3 uppercase md:ml-40px md:p-0 md:text-h3_md lg:hidden"
+                class="ml-auto min-w-[56px] p-6px text-h3 uppercase md:ml-auto md:p-0 md:text-h3_md lg:hidden"
                 aria-label="Toggle menu"
                 type="button"></button>
         </div>
 
         <!--mobile menu-->
-        <div class="relative w-full flex-none border-t border-t-black dark:border-t-white lg:!hidden">
+        <div class="relative w-full flex-none border-t border-t-black dark:border-t-white md:!hidden">
             <nav
                 x-show="openMenu"
                 x-collapse.duration.500ms
@@ -62,37 +72,60 @@
                 class="absolute inset-x-0 z-10 border border-t-0 border-black bg-white text-h2_md font-bold uppercase dark:border-white dark:bg-black md:text-h2_xl">
                 <ul class="flex flex-col space-y-24px py-40px px-10px md:px-20px">
                     <li>
-                        <a class="transition hover:text-grey" href="/about.html">About.txt</a>
+                        <a class="hover:text-grey" href="/about.html">About.txt</a>
                     </li>
                     <li>
-                        <a class="transition hover:text-grey" href="/projects.html">Projects</a>
+                        <a class="hover:text-grey" href="/projects.html">Projects</a>
                     </li>
                     <li>
-                        <a class="transition hover:text-grey" href="/express.html">Express design</a>
+                        <a class="hover:text-grey" href="/express.html">Express design</a>
                     </li>
                     <li>
-                        <a class="transition hover:text-grey" href="/request.html">Work with us</a>
+                        <a class="hover:text-grey" href="/request.html">Work with us</a>
                     </li>
                 </ul>
             </nav>
         </div>
 
         <!--title-->
-        <div class="w-full flex-none pt-24px md:order-first md:w-auto md:flex-1 md:py-12px lg:col-span-4">
-            <h1 class="text-h1 font-bold lg:text-h1_lg xl:text-h1_xl">Making your competitors jealous</h1>
+        <div :class="isScrolled && 'md:pl-0'" class="@@if(this.style !== 'sticky'){ hidden md:block }w-full flex-none pt-24px md:order-first md:px-16px md:py-12px lg:col-span-3 md:overflow-hidden md:whitespace-nowrap">
+            <h1 class="slide-text text-h1 font-bold lg:text-h1_lg xl:text-h1_xl">
+                <span>Making your competitors jealous</span>
+                <span>Your making jealous competitors</span>
+            </h1>
         </div>
 
         <!--subtitle-->
-        <div
-            class="w-full flex-none border-black py-14px dark:border-white md:flex md:items-center md:py-2px lg:col-span-full lg:border-t">
-            <svg
-                class="mr-10px hidden h-14px w-14px flex-initial fill-current md:block lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
+        <div :class="isScrolled && 'md:pl-0'" class="@@if(this.style !== 'sticky'){ hidden md:block }w-full flex-none border-black py-14px dark:border-white md:flex md:items-center md:px-16px md:py-2px md:col-span-2 lg:col-span-5 md:border-y overflow-hidden">
+            <svg :class="isScrolled && 'md:block'"
+                class="mr-10px hidden h-14px w-14px flex-initial fill-current lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
                 aria-hidden="true">
                 <use xlink:href="img/sprite.svg#cross"></use>
             </svg>
-            <h2 class="text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl">
-                We create professional design for memorable customer experience
+            <h2 class="font-normal slide-text text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl">
+                <span>We create professional design for memorable customer experience</span>
+                <span>We create professional code for memorable customer experience</span>
+                <span>We create professional 3d for memorable customer experience</span>
             </h2>
+        </div>
+    </div>
+
+    <!--showreel-->
+    <div
+        class="fixed top-0 left-0 z-10 flex h-full w-full overflow-auto p-10px backdrop-blur-sm md:p-20px"
+        x-show="openShowreel"
+        x-transition
+        x-cloak>
+        <div
+            class="m-auto w-full border border-black bg-white dark:border-white dark:bg-black"
+            @click.away="openShowreel = false; $nextTick(() => { $refs.showreelIframe.setAttribute('src', '') })">
+            <iframe
+                x-ref="showreelIframe"
+                class="aspect-video w-full"
+                src=""
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
     </div>
 </header>

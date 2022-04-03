@@ -1,0 +1,635 @@
+<div class="col-span-5 lg:col-span-full">
+    <div class="flex flex-col items-start gap-24px md:flex-row md:items-baseline md:gap-40px">
+        <h2 class="h1">Make it fast!</h2>
+        <a href="#" class="p2 afterline">instructions_and_conditions.txt</a>
+    </div>
+    <p class="p1 mt-24px lg:mt-40px">
+        Express design is a faster and cheaper alternative to full-scale projects with one simple rule: no edits or
+        comments. This way, we can cut out all the project management and focus just on the design processes. Fast
+        execution without any quality compromises.
+    </p>
+</div>
+
+<!--accordions-->
+<!--TODO: If statement for scrollTo-->
+<div
+    x-data="{ selected: null, scrollToSection(el) { setTimeout(() => { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - (window.screen.width >= 1280 ? document.querySelector('#header').clientHeight : 126), behavior: 'smooth' }) }, 300) }}"
+    @change-express.window="$event.detail ? '' : selected = null"
+    class="col-span-full mt-40px">
+    <!--logo-->
+    <div
+        x-data="{ showReset: false, price: 395, days: 4, receiveNaming: false, receiveBranding: false, resetForm() { $refs.form1.reset(); this.showReset = false; this.price = 395; this.days = 4; this.receiveNaming = false; this.receiveBranding = false } }"
+        class="gap-20px transition-opacity lg:grid lg:grid-cols-5"
+        :class="(selected !== null && selected !== 1) && 'opacity-40'">
+        <div class="border-t border-black dark:border-white lg:col-span-4">
+            <button
+                @click="if(selected !== 1) { selected = 1; scrollToSection($el) } else { selected = null }"
+                class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
+                type="button">
+                <span class="p1 text-left">Logo</span>
+                <span class="p2 whitespace-nowrap text-right">
+                    395 EUR &nbsp;&nbsp;//
+                    <br class="md:hidden" />
+                    &nbsp;&nbsp; 4 working days
+                </span>
+            </button>
+            <form class="form" @change="showReset = true" x-ref="form1" x-show="selected === 1" x-cloak x-collapse>
+                <div class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                    <div x-id="['form1-input']" class="float-field">
+                        <input
+                            :id="$id('form1-input')"
+                            class="field"
+                            type="text"
+                            name="Name"
+                            placeholder="Name"
+                            required />
+                        <label :for="$id('form1-input')">Name</label>
+                    </div>
+                    <div x-id="['form1-input']" class="float-field">
+                        <input
+                            :id="$id('form1-input')"
+                            class="field"
+                            type="email"
+                            name="Email"
+                            placeholder="Email"
+                            required />
+                        <label :for="$id('form1-input')">Email</label>
+                    </div>
+                    <div x-id="['form1-input']" class="float-field">
+                        <input
+                            :id="$id('form1-input')"
+                            x-ref="logoBrand"
+                            class="field"
+                            type="text"
+                            placeholder="Brand name"
+                            name="Brand name"
+                            :required="!receiveNaming"
+                            :disabled="receiveNaming" />
+                        <label :for="$id('form1-input')">Brand name</label>
+                    </div>
+                    <div x-id="['form1-input']" class="float-field">
+                        <input
+                            :id="$id('form1-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand description"
+                            name="Brand description"
+                            required />
+                        <label :for="$id('form1-input')">Brand description</label>
+                    </div>
+                    <div x-id="['form1-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form1-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Target audience"
+                            name="Describe your target audience"
+                            rows="1"></textarea>
+                        <label :for="$id('form1-input')">Describe your target audience</label>
+                    </div>
+                    <div x-id="['form1-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form1-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Any extra preferences?"
+                                name="Any extra preferences that we should consider?"
+                                rows="1"></textarea>
+                            <label :for="$id('form1-input')">Any extra preferences that we should consider?</label>
+                        </div>
+
+                        <!--files-->
+                        <div class="mt-16px flex flex-wrap items-center gap-16px md:mt-24px">
+                            <div class="flex items-center">
+                                <span class="p2 max-w-sm overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                    file.jpg
+                                </span>
+                                <button class="group px-8px py-6px" type="button" aria-label="Remove file">
+                                    <svg
+                                        class="h-14px w-14px fill-current transition group-hover:fill-red"
+                                        aria-hidden="true">
+                                        <use xlink:href="img/sprite.svg#close"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="p2 max-w-sm overflow-hidden overflow-ellipsis whitespace-nowrap">
+                                    file_new_5.pdf
+                                </span>
+                                <button class="group px-8px py-6px" type="button" aria-label="Remove file">
+                                    <svg
+                                        class="h-14px w-14px fill-current transition group-hover:fill-red"
+                                        aria-hidden="true">
+                                        <use xlink:href="img/sprite.svg#close"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div role="status">
+                                <img
+                                    class="dark:invert"
+                                    width="16"
+                                    height="16"
+                                    src="img/loader.svg"
+                                    alt="Loader icon" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-24px">
+                    <div x-id="['form1-input']" class="flex gap-20px">
+                        <input
+                            :id="$id('form1-input')"
+                            x-model="receiveNaming"
+                            @change="price += receiveNaming ? +300 : -300; days += receiveNaming ? +4 : -4; $refs.logoBrand.classList.remove('error'); $refs.logoBrand.value = ''"
+                            name="Add brand naming"
+                            type="checkbox" />
+                        <label :for="$id('form1-input')">Add brand naming (+300 EUR // +4 days)</label>
+                    </div>
+                    <div x-id="['form1-input']" class="flex gap-20px">
+                        <input
+                            :id="$id('form1-input')"
+                            x-model="receiveBranding"
+                            @change="price += receiveBranding ? +600 : -600; days += receiveBranding ? +4 : -4"
+                            name="Upgrade to Core Branding"
+                            type="checkbox" />
+                        <label :for="$id('form1-input')">
+                            Upgrade to Core Branding (+600 EUR // +4 days)
+                            <span class="mt-8px block">
+                                Selection of brand color, fonts and providing examples of how to use branding
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                    <p class="p2">
+                        You will receive: Logo in .ai, .svg, .png formats
+                        <span x-show="receiveNaming" x-cloak>+ Brand naming with website domain suggestion</span>
+                        <span x-show="receiveBranding" x-cloak>
+                            + PDF presentation with colors, suggested fonts (and free alternative) and the example of
+                            how the social media profile would look like
+                        </span>
+                    </p>
+                    <p class="p1">
+                        Total:
+                        <span x-text="price">395</span>
+                        EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                        <br class="md:hidden" />
+                        <span x-text="days">4</span>
+                        working days
+                    </p>
+                    <input type="hidden" name="Total" :value="price" />
+                    <input type="hidden" name="Working days" :value="days" />
+                </div>
+                <button class="btn my-40px w-full">Send a request</button>
+            </form>
+        </div>
+        <div class="hidden lg:col-span-1 lg:block">
+            <button
+                @click="resetForm()"
+                x-show="showReset && selected === 1"
+                x-cloak
+                class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                type="button">
+                Reset
+                <svg class="h-24px w-24px fill-current" aria-hidden="true">
+                    <use xlink:href="img/sprite.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!--brand animation-->
+    <div
+        x-data="{ showReset: false, resetForm() { $refs.form2.reset(); this.showReset = false } }"
+        class="gap-20px transition-opacity lg:grid lg:grid-cols-5"
+        :class="(selected !== null && selected !== 2) && 'opacity-40'">
+        <div class="border-t border-black dark:border-white lg:col-span-4">
+            <button
+                @click="if(selected !== 2) { selected = 2; scrollToSection($el) } else { selected = null }"
+                class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
+                type="button">
+                <span class="p1 text-left">Brand Animation</span>
+                <span class="p2 whitespace-nowrap text-right">
+                    995 EUR &nbsp;&nbsp;//
+                    <br class="md:hidden" />
+                    &nbsp;&nbsp; 7 working days
+                </span>
+            </button>
+            <form class="form" @change="showReset = true" x-ref="form2" x-show="selected === 2" x-cloak x-collapse>
+                <div class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                    <div x-id="['form2-input']" class="float-field">
+                        <input
+                            :id="$id('form2-input')"
+                            class="field"
+                            type="text"
+                            name="Name"
+                            placeholder="Name"
+                            required />
+                        <label :for="$id('form2-input')">Name</label>
+                    </div>
+                    <div x-id="['form2-input']" class="float-field">
+                        <input
+                            :id="$id('form2-input')"
+                            class="field"
+                            type="email"
+                            name="Email"
+                            placeholder="Email"
+                            required />
+                        <label :for="$id('form2-input')">Email</label>
+                    </div>
+                    <div x-id="['form2-input']" class="float-field">
+                        <input
+                            :id="$id('form2-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand name"
+                            name="Brand name"
+                            required />
+                        <label :for="$id('form2-input')">Brand name</label>
+                    </div>
+                    <div x-id="['form2-input']" class="float-field">
+                        <input
+                            :id="$id('form2-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand description"
+                            name="Brand description"
+                            required />
+                        <label :for="$id('form2-input')">Brand description</label>
+                    </div>
+                    <div x-id="['form2-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form2-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Target audience"
+                            name="Describe your target audience"
+                            rows="1"></textarea>
+                        <label :for="$id('form2-input')">Describe your target audience</label>
+                    </div>
+                    <div x-id="['form2-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form2-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Any extra preferences?"
+                                name="Any extra preferences that we should consider?"
+                                rows="1"></textarea>
+                            <label :for="$id('form2-input')">Any extra preferences that we should consider?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                    <p class="p2">Animation in .mp4 format and .png sequence</p>
+                    <p class="p1">
+                        Total:
+                        <span>995</span>
+                        EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                        <br class="md:hidden" />
+                        <span>7</span>
+                        working days
+                    </p>
+                    <input type="hidden" name="Total" value="995" />
+                    <input type="hidden" name="Working days" value="7" />
+                </div>
+                <button class="btn my-40px w-full">Send a request</button>
+            </form>
+        </div>
+        <div class="hidden lg:col-span-1 lg:block">
+            <button
+                @click="resetForm()"
+                x-show="showReset && selected === 2"
+                x-cloak
+                class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                type="button">
+                Reset
+                <svg class="h-24px w-24px fill-current" aria-hidden="true">
+                    <use xlink:href="img/sprite.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!--3d illustration-->
+    <div
+        x-data="{ showReset: false, resetForm() { $refs.form3.reset(); this.showReset = false } }"
+        class="gap-20px transition-opacity lg:grid lg:grid-cols-5"
+        :class="(selected !== null && selected !== 3) && 'opacity-40'">
+        <div class="border-t border-black dark:border-white lg:col-span-4">
+            <button
+                @click="if(selected !== 3) { selected = 3; scrollToSection($el) } else { selected = null }"
+                class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
+                type="button">
+                <span class="p1 text-left">3D illustration</span>
+                <span class="p2 whitespace-nowrap text-right">
+                    995 EUR &nbsp;&nbsp;//
+                    <br class="md:hidden" />
+                    &nbsp;&nbsp; 7 working days
+                </span>
+            </button>
+            <form class="form" @change="showReset = true" x-ref="form3" x-show="selected === 3" x-cloak x-collapse>
+                <div class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                    <div x-id="['form3-input']" class="float-field">
+                        <input
+                            :id="$id('form3-input')"
+                            class="field"
+                            type="text"
+                            name="Name"
+                            placeholder="Name"
+                            required />
+                        <label :for="$id('form3-input')">Name</label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field">
+                        <input
+                            :id="$id('form3-input')"
+                            class="field"
+                            type="email"
+                            name="Email"
+                            placeholder="Email"
+                            required />
+                        <label :for="$id('form3-input')">Email</label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field">
+                        <input
+                            :id="$id('form3-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand name"
+                            name="Brand name"
+                            required />
+                        <label :for="$id('form3-input')">Brand name</label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field">
+                        <input
+                            :id="$id('form3-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand description"
+                            name="Brand description"
+                            required />
+                        <label :for="$id('form3-input')">Brand description</label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form3-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Target audience"
+                            name="Describe your target audience"></textarea>
+                        <label :for="$id('form3-input')">Describe your target audience</label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form3-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="How and where use 3D model?"
+                            name="How and where do you want to use the final 3D model?"
+                            rows="1"></textarea>
+                        <label :for="$id('form3-input')">
+                            How and where do you want to use the final 3D model? (e.g. on the website or in SMM)
+                        </label>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form3-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Do you have any design assets"
+                                name="Do you have any design assets"
+                                rows="1"></textarea>
+                            <label :for="$id('form3-input')">
+                                Do you have any design assets, photos or guidelines that will help us to learn more
+                                about your brand and product?
+                            </label>
+                        </div>
+                    </div>
+                    <div x-id="['form3-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form3-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Any extra preferences?"
+                                name="Any extra preferences that we should consider?"
+                                rows="1"></textarea>
+                            <label :for="$id('form3-input')">Any extra preferences that we should consider?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                    <p class="p2">3D model in .obj and .glb/.gltf format or image .png, .jpg</p>
+                    <p class="p1">
+                        Total:
+                        <span>995</span>
+                        EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                        <br class="md:hidden" />
+                        <span>7</span>
+                        working days
+                    </p>
+                    <input type="hidden" name="Total" value="995" />
+                    <input type="hidden" name="Working days" value="7" />
+                </div>
+                <button class="btn my-40px w-full">Send a request</button>
+            </form>
+        </div>
+        <div class="hidden lg:col-span-1 lg:block">
+            <button
+                @click="resetForm()"
+                x-show="showReset && selected === 3"
+                x-cloak
+                class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                type="button">
+                Reset
+                <svg class="h-24px w-24px fill-current" aria-hidden="true">
+                    <use xlink:href="img/sprite.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!--landing page-->
+    <div
+        x-data="{ showReset: false, price: 1195, days: 8, receiveCore: false, resetForm() { $refs.form4.reset(); this.showReset = false; this.price = 1195; this.days = 8; this.receiveCore = false } }"
+        class="gap-20px transition-opacity lg:grid lg:grid-cols-5"
+        :class="(selected !== null && selected !== 4) && 'opacity-40'">
+        <div :class="selected === 4 && 'border-b-0'" class="border-y border-black dark:border-white lg:col-span-4">
+            <button
+                @click="if(selected !== 4) { selected = 4; scrollToSection($el) } else { selected = null }"
+                class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
+                type="button">
+                <span class="p1 text-left">Landing page</span>
+                <span class="p2 whitespace-nowrap text-right">
+                    1195 EUR &nbsp;&nbsp;//
+                    <br class="md:hidden" />
+                    &nbsp;&nbsp; 8 working days
+                </span>
+            </button>
+            <form class="form" @change="showReset = true" x-ref="form4" x-show="selected === 4" x-cloak x-collapse>
+                <div class="mt-24px grid grid-cols-1 gap-x-20px gap-y-24px lg:grid-cols-2">
+                    <div x-id="['form4-input']" class="float-field">
+                        <input
+                            :id="$id('form4-input')"
+                            class="field"
+                            type="text"
+                            name="Name"
+                            placeholder="Name"
+                            required />
+                        <label :for="$id('form4-input')">Name</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field">
+                        <input
+                            :id="$id('form4-input')"
+                            class="field"
+                            type="email"
+                            name="Email"
+                            placeholder="Email"
+                            required />
+                        <label :for="$id('form4-input')">Email</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field">
+                        <input
+                            :id="$id('form4-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand name"
+                            name="Brand name"
+                            required />
+                        <label :for="$id('form4-input')">Brand name</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field">
+                        <input
+                            :id="$id('form4-input')"
+                            class="field"
+                            type="text"
+                            placeholder="Brand description"
+                            name="Brand description"
+                            required />
+                        <label :for="$id('form4-input')">Brand description</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form4-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Target audience"
+                            name="Describe your target audience"
+                            rows="1"></textarea>
+                        <label :for="$id('form4-input')">Describe your target audience</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form4-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Who will be using this site?"
+                            name="Who will be using this site?"
+                            rows="1"></textarea>
+                        <label :for="$id('form4-input')">Who will be using this site? What for?</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form4-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="What does it need to do?"
+                            name="What does it need to do?"
+                            rows="1"></textarea>
+                        <label :for="$id('form4-input')">
+                            What does it need to do? Describe the primary and secondary actions of the website
+                        </label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <textarea
+                            :id="$id('form4-input')"
+                            x-init="$watch('selected', () => autoResizeTextarea($el))"
+                            class="field field-resize"
+                            placeholder="Do you have any website currently?"
+                            name="Do you have any website currently?"
+                            rows="1"></textarea>
+                        <label :for="$id('form4-input')">Do you have any website currently?</label>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form4-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Brandbook or brand guides?"
+                                name="Do you have a brandbook or brand guides?"
+                                rows="1"></textarea>
+                            <label :for="$id('form4-input')">Do you have a brandbook or brand guides?</label>
+                        </div>
+                    </div>
+                    <div x-id="['form4-input']" class="float-field col-span-full">
+                        <div class="relative flex flex-col items-stretch">
+                            <button class="field-attach" type="button">attach</button>
+                            <textarea
+                                :id="$id('form4-input')"
+                                x-init="$watch('selected', () => autoResizeTextarea($el))"
+                                class="field field-resize"
+                                placeholder="Any extra preferences?"
+                                name="Any extra preferences that we should consider?"
+                                rows="1"></textarea>
+                            <label :for="$id('form4-input')">Any extra preferences that we should consider?</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-24px">
+                    <div x-id="['form4-input']" class="flex gap-20px">
+                        <input
+                            :id="$id('form4-input')"
+                            x-model="receiveCore"
+                            @change="price += ($event.target.checked) ? +795 : -795; days += ($event.target.checked) ? +6 : -6; receive = ($event.target.checked) ? 'You will receive: Design of 3-5 website pages in Figma and code archive (html, css, js files)' : 'You will receive: Website in Figma link + code archive'"
+                            name="Upgrade to Core Website"
+                            type="checkbox" />
+                        <label :for="$id('form4-input')">
+                            Upgrade to Core Website (+795 EUR // +6 days)
+                            <span class="mt-8px block">Design of a full-fledged website, 3-5 pages</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="mt-40px flex flex-col gap-16px border border-black p-14px dark:border-white">
+                    <p class="p2">
+                        You will receive:
+                        <span x-show="!receiveCore">Design of a single page</span>
+                        <span x-show="receiveCore" x-cloak>Design of 3-5 website pages</span>
+                        in Figma and code archive (html, css, js files)
+                    </p>
+                    <p class="p1">
+                        Total:
+                        <span x-text="price">1195</span>
+                        EUR &nbsp;&nbsp;//&nbsp;&nbsp;
+                        <br class="md:hidden" />
+                        <span x-text="days">8</span>
+                        working days
+                    </p>
+                    <input type="hidden" name="Total" :value="price" />
+                    <input type="hidden" name="Working days" :value="days" />
+                </div>
+                <button class="btn mt-40px w-full">Send a request</button>
+            </form>
+        </div>
+        <div class="hidden lg:col-span-1 lg:block">
+            <button
+                @click="resetForm()"
+                x-show="showReset && selected === 4"
+                x-cloak
+                class="p2 sticky top-0 flex w-full items-center justify-center gap-16px py-[28px]"
+                type="button">
+                Reset
+                <svg class="h-24px w-24px fill-current" aria-hidden="true">
+                    <use xlink:href="img/sprite.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
