@@ -7,10 +7,10 @@
         <!--toggles-->
         <div
             :class="!showExpress ? 'lg:!left-0 lg:!translate-x-0' : 'lg:left-full lg:-translate-x-full'"
-            class="sticky top-0 bottom-0 z-10 flex bg-white dark:bg-black lg:absolute lg:left-full lg:w-[calc((100%_-_100px)_/_6)] lg:shrink-0 lg:-translate-x-full transition lg:delay-500">
+            class="sticky top-0 bottom-0 z-10 flex bg-white transition dark:bg-black lg:absolute lg:left-full lg:w-[calc((100%_-_100px)_/_6)] lg:shrink-0 lg:-translate-x-full lg:delay-500">
             <div
-                :class="showExpress ? 'lg:ml-auto lg:mr-px' : 'lg:!mr-auto lg:!ml-[22px] xl:!ml-[35px]'"
-                class="w-full lg:ml-auto lg:mr-px lg:flex lg:h-auto lg:w-auto lg:flex-col-reverse lg:[writing-mode:vertical-lr]">
+                :class="showExpress ? 'lg:ml-auto lg:mr-[22px] xl:mr-40px' : 'lg:!mr-auto lg:!ml-[22px] xl:!ml-[35px]'"
+                class="w-full lg:ml-auto lg:mr-[22px] lg:flex lg:h-auto lg:w-auto lg:flex-col-reverse lg:[writing-mode:vertical-lr] xl:mr-40px">
                 <a
                     href="#"
                     @click.prevent="showExpress = false; scroll()"
@@ -43,7 +43,10 @@
                 <div
                     class="p1 mt-24px mb-[65px] flex flex-col items-center md:mb-20px md:flex-row md:flex-wrap lg:mt-40px">
                     <span>We are always ready to</span>
-                    <a href="#" class="btn-skew my-6px md:my-0 md:mx-10px xl:mx-20px" data-text="discuss the details">
+                    <a
+                        href="mailto:info@klad.design?subject=New%20project%20with%20Klad%20studio"
+                        class="btn-skew my-6px md:my-0 md:mx-10px xl:mx-20px"
+                        data-text="discuss the details">
                         <span>discuss the details</span>
                     </a>
                     <span>of your new project.</span>

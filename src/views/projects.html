@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    @@include("../views/parts/head.html", { "title": "Home page" })
+    @@include("../views/parts/head.html", { "title": "Projects page" })
 
     <body
         x-data="{ menuIsOpen: false, showreelIsOpen: false }"
@@ -9,66 +9,45 @@
         :class="showreelIsOpen && 'overflow-hidden'"
         class="body">
         <!--header-->
-        @@include("../views/parts/header.html", { style: "sticky" })
-
-        <!--hero-->
-        <div :class="menuIsOpen && 'blur-sm'" class="mt-20px px-10px transition md:mt-0 md:px-20px">
-            <div
-                class="relative h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_30px)] min-h-[320px] border border-black dark:border-white md:h-[calc(var(--vh,_100vh)_-_var(--header,_300px)_-_20px)] md:min-h-[600px] md:border-t-0">
-                <a
-                    href="mailto:info@klad.design?subject=New%20project%20with%20Klad%20studio"
-                    class="btn absolute bottom-0 left-0 right-0 border-b-0 border-l-0 border-r-0 md:right-auto md:border-r">
-                    Get in touch
-                </a>
-            </div>
-        </div>
-
-        <!--about-->
-        <section
-            class="relative mt-60px grid-cols-6 gap-x-20px overflow-hidden px-10px md:mt-80px md:grid md:px-20px lg:overflow-visible">
-            <lottie-player
-                data-lottie="aboutWave"
-                src="files/wave-dark.json"
-                class="absolute bottom-[45px] -right-[33px] -z-10 hidden h-[391px] w-[362px] dark:block md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
-            <lottie-player
-                data-lottie="aboutWave"
-                src="files/wave.json"
-                class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:hidden md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
-            <div class="col-span-5 md:pr-60px lg:pr-0">
-                <h2 class="h1">We help inspire</h2>
-                <div class="p1 mt-24px lg:mt-40px">
-                    <p>
-                        Klad is an interdimensional design syndicate that provides comprehensive long-lasting solutions
-                        for people. Every design we deliver is original, and every project is treated uniquely. We treat
-                        our clients as long-term partners. We do not work to indulge but to help them achieve new
-                        heights in everything they do.
-                    </p>
-                </div>
-            </div>
-            <div
-                class="col-span-full mt-[200px] flex flex-col items-stretch gap-24px md:mt-60px md:flex-row-reverse md:items-end md:gap-0 lg:mt-80px xl:mt-60px">
-                <button class="btn h2 flex-shrink-0" type="button">Download portfolio</button>
-                <div class="flex-grow md:border-b md:border-black md:pr-24 dark:md:border-white">
-                    <lottie-player
-                        id="aboutBarcode"
-                        src="files/barcode.json"
-                        preserveAspectRatio="none"
-                        class="h-12px w-full dark:invert md:w-[187px] lg:w-[524px]"
-                        loop
-                        autoplay></lottie-player>
-                </div>
-            </div>
-        </section>
+        @@include("../views/parts/header.html")
 
         <!--projects-->
-        <section class="mt-60px grid-cols-6 gap-x-20px px-10px md:mt-80px md:grid md:px-20px">
+        <section class="grid-cols-6 gap-x-20px px-10px pt-40px md:grid md:px-20px md:pt-80px">
             <div class="col-span-5 md:pr-60px lg:pr-0">
                 <h2 class="h1">Projects</h2>
                 <div class="p1 mt-24px lg:mt-40px">
                     <p>Years of experience to create unique design in agile and fast manner</p>
                 </div>
             </div>
-            <div class="col-span-full mt-40px md:mt-60px">
+            <div
+                class="h3 col-span-full mt-40px columns-2 gap-x-20px gap-y-12px md:grid md:grid-cols-3 lg:mt-60px lg:grid-cols-6">
+                <div class="inline-flex w-full flex-col items-start gap-12px md:order-1">
+                    <button class="text-left uppercase hover:text-grey" type="button">Brand strategy</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Brand identity</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Messaging</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">SMM</button>
+                </div>
+                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-3 md:mt-0">
+                    <button class="text-left uppercase hover:text-grey" type="button">Web-development</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Front-end</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Data visualisation</button>
+                </div>
+                <div class="inline-flex w-full flex-col items-start gap-12px md:order-2">
+                    <button class="text-left uppercase hover:text-grey" type="button">Web-design</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Motion design</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">3D modelling</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">UI/UX</button>
+                </div>
+                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-4 md:mt-0">
+                    <button class="text-left uppercase hover:text-grey" type="button">Sound engineering</button>
+                    <button class="text-left uppercase hover:text-grey" type="button">Sound design</button>
+                </div>
+                <div
+                    class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-5 md:col-start-3 md:row-start-1 md:mt-0 lg:col-start-6">
+                    <button class="uppercase text-grey hover:text-grey" type="button">All</button>
+                </div>
+            </div>
+            <div class="col-span-full mt-60px md:mt-80px">
                 <div class="grid grid-cols-6 gap-x-20px gap-y-24px lg:gap-y-40px">
                     <!--item-3-col-->
                     <a
@@ -79,7 +58,7 @@
                                 <h3 class="h3 uppercase">the 78 lab</h3>
                             </div>
                             <div
-                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
                                 <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
                             </div>
                         </div>
@@ -109,7 +88,7 @@
                                 <h3 class="h3 uppercase">vinst</h3>
                             </div>
                             <div
-                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
                                 <p class="p2">Klad is an interdimensional design</p>
                             </div>
                         </div>
@@ -139,7 +118,7 @@
                                 <h3 class="h3 uppercase">3d-modelling for FetoLife</h3>
                             </div>
                             <div
-                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
                                 <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
                             </div>
                         </div>
@@ -172,7 +151,7 @@
                                 <h3 class="h3 uppercase">Kultura</h3>
                             </div>
                             <div
-                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-8px">
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
                                 <p class="p2">Klad is an interdimensional design</p>
                             </div>
                         </div>
@@ -193,7 +172,7 @@
                         </div>
                     </a>
                 </div>
-                <a href="/projects.html" class="btn mt-40px w-full">View all</a>
+                <button type="button" class="btn mt-40px w-full">More</button>
             </div>
         </section>
 

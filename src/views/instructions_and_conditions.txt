@@ -1,0 +1,123 @@
+# Terms and Conditions for the Express Design Services
+
+1. The following Terms and Conditions document (hereinafter: Conditions) applies to the Express Design Services provided by Klad LLC 
+(identification number: 445581077; legal address: Georgia, Batumi, 6400, Cminda Andria pirvelcodebuli IV Lane, N4a, Apartment N43) (hereinafter: Klad) 
+and ordered by Customer presented at the website https://klad.design/ (hereinafter: Klad’s website).
+
+2. The term Express Design Services or Services includes one or more of the following: 
+- Express Logo: design of the Customer’s company/project logotype based on the filled-out form. 
+  The Customer will receive the logo in .ai, .svg, .png formats. The price is EUR 395, timeline: 4 business days. 
+  The Customer can also upgrade this option by ordering the following extra Services: 
+  - Brand Naming: Klad will create a name for the Customer’s brand, for which the logo is required. 
+    The price for the Brand Naming service will be EUR 300, and the timeline is 4 business days. 
+  - Core Branding: in addition to logo design, Klad can also create core branding, which will include creation of brand guidelines 
+    with corporate materials design, brand colours, suggested fonts (and free alternative) and 
+    the example of how the social media profile would look like(in addition to all the materials provided for Logo Design). 
+    The cost will increase by EUR 600 and the timeline by 4 business days.
+    
+- Express motion design: Klad will design an up to one minute video for the Client 
+  based on the filled out form on Klad’s website and extra materials sent by the Customer for the video (if necessary). 
+  As a result, the Customer will receive and animation file in .mp4 format and .png sequence. 
+  The price for this Service is EUR 995, timeline: 7 business days.
+  
+- Express 3D model: Klad will design a 3D object for the Customer based on the filled out form and extra materials (if necessary). 
+  As a result, the Customer will receive a 3D model in .gltf, .glb and .obj formats. 
+  The price for this Service is EUR 995, the timeline: 7 business days.
+  
+- Express Landing Page: Klad will design and create a markup for the Customer’s landing page (up to 7 sections) 
+  based on the filled out form and, if necessary, extra materials. 
+  As a result, the Customer will receive a figma link with the design and code archive (html, css, js files). 
+  The price for this Service is EUR 1195, timeline: 8 business days. 
+  The Customer can also upgrade the Express Landing Page Service to the Core Website Service meaning that 
+  Klad will design an up to 3-5 pages website for the Customer and after the work is completed, 
+  will send the Customer a figma link and code archive (html, css, js files). 
+  If the Client upgrades Express Landing Page service to Core Website, 
+  the price will increase by EUR 500 and the timeline will increase by 6 business days, 
+  meaning that the final pricing will be EUR 1695 and the final timeline will be 14 business days.
+
+All of the Services are included in the relevant sections at Klad’s website.
+
+3. To apply for the provision of Services by Klad, the Customer chooses the express design option it needs in the appropriate section of Klad’s website,
+fills in and submits a questionnaire provided for the relevant option. 
+After receiving the filled-out questionnaire, Klad will contact the Customer via email to discuss the start of work date,
+confirm the order and to send a prepayment details. 
+After the order is confirmed and prepayment is received to Klad’s bank account, Klad starts Services’ performance.
+The services will be performed in accordance with the Conditions and by making a full prepayment to Klad, 
+the Customer confirmed that they read, understood and agreed to the Conditions.
+
+4. Each of the Services type has its own deadline which starts to count only after Klad receives the full prepayment. 
+The prepayment is 100% from the Service price.
+Within the deadline Klad will provide Client with the results of the performed Services (Deliverables) to the Customer’s email stated in the request form.
+
+5. The Services are provided in an as-is format and are deemed performed in full and accepted right after Klad sends the Deliverables to the Customer. 
+No further commenting or edits are allowed. If the Services provided are not the ones that the Customer paid for, 
+the Customer has the right to send a complaint to info@klad.design email and ask for either a refund or correct deliverables. 
+Each complaint will be reviewed by Klad within 5 business days. Any other complaints regarding the Deliverables won’t be considered by Klad.
+
+6. Klad will not be responsible for usability of the Deliverables if they will be modified by the Customer
+or any other third party after the Customer receives those Deliverables from Klad.
+
+7. The Customer has the right to ask to stop Services performance after the work has started. 
+In such a case, Klad will stop creating Deliverables for the Customer. The prepayment won’t be refunded to the Customer. 
+
+8. Klad has the right to stop Services performance after the start of work. In this case, Klad will refund the prepayment to the Customer.
+
+9 Force Majeure.
+Klad shall not be liable for any failure of or delay in the performance of the Services in case if such failure or delay is 
+(i) beyond the reasonable control of Klad, 
+(ii) materially affects the performance of any of its obligations, and could not reasonably have been foreseen or provided against; 
+but will not be excused for failure or delay resulting from only general economic conditions or other general market effects. 
+Upon the occurrence of any Force Majeure Event, Klad shall give notice to the Customer about the occurrence of such an event.
+
+10. Upon completion of the Services, Klad hereby assigns to the Customer all right, title and interest, 
+including without limitation copyright and other intellectual property rights, in and to the Deliverables, 
+except for the conditions specified in paragraph 11 of the Conditions. 
+If necessary, any type of legal registration of rights to the Deliverables, 
+including but not limited to state registration, Trademark registration, 
+the Customer shall carry out on its own and at its own expense.
+
+11. Klad retains the right to reproduce, publish and display the Deliverables in Klad's portfolios and websites, 
+and in galleries, design periodicals and other media or exhibits for the purposes of recognition of creative excellence or professional advancement,
+and to be credited with authorship of the Deliverables in connection with such uses, in the way that Klad considers better in its sole discretion, 
+describing but not limiting to reproduce and/or publish entirely and/or in a part of the design, 
+publishing and/ or reproducing one or several of the stages of the work, the Final Work, any of the Deliverables, one or several elements of the design. 
+
+12. Customer Content (all materials, information, photography, writings and other creative content provided by Customer
+for use in the preparation of and/or incorporation in the Deliverables.) 
+including all pre-existing Trademarks, shall remain the sole property of Customer or its respective suppliers, 
+and Client or its suppliers shall be the sole owner of all rights in connection therewith. 
+Customer hereby grants to Klad a nonexclusive, nontransferable licence to use, reproduce, modify, display and publish the Client Content solely
+in connection with Klad's performance of the Services and limited promotional uses of the Deliverables 
+as authorized in the paragraph 11 of this Conditions document.
+
+13. Confidential information.
+“Confidential Information” shall mean any proprietary information of either party including without limitation, 
+information relating to any party’s technology, know-how, products, specifications, patents, patent applications, trademarks, trade names and concepts; 
+as well as information of business and commercial nature, of either Party, including without limitation customer and supplier lists, 
+bills, financial and marketing information and price lists; in any tangible form being clearly designated, labelled or marked as confidential. 
+Each Party (the “Receiving Party”) shall preserve as strictly confidential and proprietary all Confidential Information a
+nd material of the other (the “Disclosing Party”) and its subsidiaries and affiliates. 
+The Receiving Party shall hold the Confidential Information in confidence, with the same degree of care that it applies to its own confidential information
+of like importance, and never less than reasonable care except that the Receiving Party may disseminate such Confidential Information to its employees, 
+directors and professional advisors as well as to its affiliates and their respective employees, directors and professional advisors 
+in each case to the extent reasonably required to provide or receive the Digital production services 
+and the Receiving Party shall not be relieved of any obligations set out in this Agreement by such dissemination. 
+The Receiving Party may be required by a court or governmental authority to reveal the Confidential Information of the Disclosing Party. 
+In the aforementioned case, the party obligated to disclose the Confidential Information by a court or a governmental authority, 
+shall notify immediately to the counterparty such obligations, and shall cooperate to only disclose 
+the minimum necessary information to the court or the governmental authority.
+
+14. The conditions can be changed by Klad unilaterally with notice to the Customer by posting the amended Conditions to Klad’s website. 
+In the event of a change to the conditions regarding the relations between Customer and Klad, 
+the Conditions that were in force at the time of payment for the Services account. 
+
+15. This Conditions and any disputes or claims arising out of or in connection with it or its subject matter or formation 
+(including non-contractual disputes or claims) are governed by and construed in accordance with the laws of Georgia
+and any disputes arising thereof fall under the sole jurisdiction of Georgia courts in Batumi and Tbilisi 
+without regard to its conflict of law provisions or the conflict of law provisions of any other jurisdiction. 
+In the event of a dispute arising out of this Agreement, the Parties agree to first attempt to resolve any dispute by negotiation between the Parties. 
+In case of bringing the dispute to court, the prevailing Party shall be entitled to recover from the other Party all reasonable costs incurred 
+with respect to the dispute, including but not limited to litigation costs, expenses and attorneys’ fees.
+
+16. If any provision of this Conditions is found by any court or administrative body of competent jurisdiction to be invalid or unenforceable, 
+such invalidity or unenforceability shall not affect the other provisions of the Conditions which shall remain in full force and effect.

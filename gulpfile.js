@@ -23,11 +23,11 @@ const {src, dest, series, watch} = gulp
 const paths = {
     views: {
         src: [
-            "./src/views/**/*.html",
+            "./src/views/**/*.{html,txt}",
             "!./src/views/parts/**/*"
         ],
         dist: "./dist/",
-        watch: "./src/views/**/*.html"
+        watch: "./src/views/**/*.{html,txt}"
     },
     styles: {
         src: "./src/styles/main.css",
@@ -107,7 +107,10 @@ function views() {
 
 function styles() {
     return src(paths.styles.src)
-        .pipe(postcss([ tailwindcss('./tailwind.config.cjs'), autoprefixer() ]))
+        .pipe(postcss([
+            tailwindcss('./tailwind.config.cjs'),
+            autoprefixer()
+        ]))
         .pipe(gulpif(production, rename({
             suffix: ".min"
         })))

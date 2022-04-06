@@ -1,13 +1,16 @@
 <header
     id="header"
-    class="px-10px md:px-20px transition bg-white dark:bg-black@@if(this.style === 'sticky'){ md:sticky md:top-0} z-50"
+    class="dark:bg-black@@if(this.style === 'sticky'){ md:top-0} z-50 bg-white px-10px transition md:sticky md:px-20px"
     x-data="{ isScrolled: false, openMenu: false, openShowreel: false, showreelUrl: 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0' }"
     x-init="isScrolled = window.scrollY >= 114; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
     @scroll.window="isScrolled = window.scrollY >= 114"
     @keydown.escape="openShowreel = false; $nextTick(() => { $refs.showreelIframe.setAttribute('src', '') })">
-    <div class="flex flex-wrap md:grid md:grid-cols-[auto_1fr_auto] lg:grid-cols-[auto_1fr_1fr_1fr_200px_200px] xl:grid-cols-[auto_1fr_1fr_1fr_1fr_1fr]">
+    <div
+        class="flex flex-wrap md:grid md:grid-cols-[auto_1fr_auto] lg:grid-cols-[auto_1fr_1fr_1fr_220px_220px] xl:grid-cols-[auto_1fr_1fr_1fr_310px_310px]">
         <!--logo-->
-        <div :class="isScrolled && 'md:!w-0 md:!border-r-0'" class="md:w-[77px] lg:w-[97px] xl:w-[116px] transition-all origin-left row-span-2 order-first flex items-center border-r md:border-b border-black dark:border-white">
+        <div
+            :class="isScrolled && 'md:!w-0 md:!border-r-0'"
+            class="order-first row-span-2 flex origin-left items-center border-r border-black transition-all dark:border-white md:w-[77px] md:border-b lg:w-[97px] xl:w-[116px]">
             <a href="/" class="w-full p-10px pl-0 md:pr-16px lg:pr-20px">
                 <img class="w-full dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate" />
             </a>
@@ -16,7 +19,7 @@
         <!--links-->
         <div
             class="hidden flex-col items-start justify-center gap-6px border-l border-black px-16px text-h3_lg font-medium uppercase dark:border-white lg:col-span-1 lg:flex xl:text-h3_xl">
-            <a class="hover:text-grey" href="/about.html">About.txt</a>
+            <a class="hover:text-grey" href="/about.txt" target="_blank">About.txt</a>
             <a class="hover:text-grey" href="/projects.html">Projects</a>
         </div>
 
@@ -72,7 +75,7 @@
                 class="absolute inset-x-0 z-10 border border-t-0 border-black bg-white text-h2_md font-bold uppercase dark:border-white dark:bg-black md:text-h2_xl">
                 <ul class="flex flex-col space-y-24px py-40px px-10px md:px-20px">
                     <li>
-                        <a class="hover:text-grey" href="/about.html">About.txt</a>
+                        <a class="hover:text-grey" href="/about.txt">About.txt</a>
                     </li>
                     <li>
                         <a class="hover:text-grey" href="/projects.html">Projects</a>
@@ -81,14 +84,20 @@
                         <a class="hover:text-grey" href="/express.html">Express design</a>
                     </li>
                     <li>
-                        <a class="hover:text-grey" href="/request.html">Work with us</a>
+                        <a
+                            class="hover:text-grey"
+                            href="mailto:info@klad.design?subject=New%20project%20with%20Klad%20studio">
+                            Work with us
+                        </a>
                     </li>
                 </ul>
             </nav>
         </div>
 
         <!--title-->
-        <div :class="isScrolled && 'md:pl-0'" class="@@if(this.style !== 'sticky'){ hidden md:block }w-full flex-none pt-24px md:order-first md:px-16px md:py-12px lg:col-span-3 md:overflow-hidden md:whitespace-nowrap">
+        <div
+            :class="isScrolled && 'md:pl-0'"
+            class="@@if(this.style !== 'sticky'){ }w-full hidden flex-none pt-24px md:order-first md:block md:overflow-hidden md:whitespace-nowrap md:px-16px md:py-12px lg:col-span-3">
             <h1 class="slide-text text-h1 font-bold lg:text-h1_lg xl:text-h1_xl">
                 <span>Making your competitors jealous</span>
                 <span>Your making jealous competitors</span>
@@ -96,13 +105,16 @@
         </div>
 
         <!--subtitle-->
-        <div :class="isScrolled && 'md:pl-0'" class="@@if(this.style !== 'sticky'){ hidden md:block }w-full flex-none border-black py-14px dark:border-white md:flex md:items-center md:px-16px md:py-2px md:col-span-2 lg:col-span-5 md:border-y overflow-hidden">
-            <svg :class="isScrolled && 'md:block'"
+        <div
+            :class="isScrolled && 'md:pl-0'"
+            class="@@if(this.style !== 'sticky'){ }w-full hidden flex-none overflow-hidden border-black py-14px dark:border-white md:col-span-2 md:block md:flex md:items-center md:border-y md:px-16px md:py-2px lg:col-span-5">
+            <svg
+                :class="isScrolled && 'md:block'"
                 class="mr-10px hidden h-14px w-14px flex-initial fill-current lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
                 aria-hidden="true">
                 <use xlink:href="img/sprite.svg#cross"></use>
             </svg>
-            <h2 class="font-normal slide-text text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl">
+            <h2 class="slide-text text-p2 font-normal md:text-p2_md lg:text-p2_lg xl:text-p2_xl">
                 <span>We create professional design for memorable customer experience</span>
                 <span>We create professional code for memorable customer experience</span>
                 <span>We create professional 3d for memorable customer experience</span>

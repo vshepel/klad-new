@@ -167,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let targets = gsap.utils.toArray(el.querySelectorAll("span"));
         gsap.set(targets, { autoAlpha: 1 });
         let dur = 0.15;
-        let hold = 4;
+        let hold = el.dataset.slideDelay ? +el.dataset.slideDelay : 4;
 
         targets.forEach((obj, i) => {
             let tl = gsap.timeline({
