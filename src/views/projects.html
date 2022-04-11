@@ -12,7 +12,9 @@
         @@include("../views/parts/header.html")
 
         <!--projects-->
-        <section class="grid-cols-6 gap-x-20px px-10px pt-40px md:grid md:px-20px md:pt-80px">
+        <section
+            :class="menuIsOpen && 'blur-sm'"
+            class="grid-cols-6 gap-x-20px px-10px pt-40px transition md:grid md:px-20px md:pt-80px">
             <div class="col-span-5 md:pr-60px lg:pr-0">
                 <h2 class="h1">Projects</h2>
                 <div class="p1 mt-24px lg:mt-40px">
@@ -20,31 +22,31 @@
                 </div>
             </div>
             <div
-                class="h3 col-span-full mt-40px columns-2 gap-x-20px gap-y-12px md:grid md:grid-cols-3 lg:mt-60px lg:grid-cols-6">
+                class="h3 col-span-full mt-40px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-60px lg:grid-cols-6">
                 <div class="inline-flex w-full flex-col items-start gap-12px md:order-1">
-                    <button class="text-left uppercase hover:text-grey" type="button">Brand strategy</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Brand identity</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Messaging</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">SMM</button>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand strategy</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand identity</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Messaging</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">SMM</a>
                 </div>
                 <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-3 md:mt-0">
-                    <button class="text-left uppercase hover:text-grey" type="button">Web-development</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Front-end</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Data visualisation</button>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-development</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Front-end</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Data visualisation</a>
                 </div>
                 <div class="inline-flex w-full flex-col items-start gap-12px md:order-2">
-                    <button class="text-left uppercase hover:text-grey" type="button">Web-design</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Motion design</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">3D modelling</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">UI/UX</button>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-design</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Motion design</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">3D modelling</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">UI/UX</a>
                 </div>
                 <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-4 md:mt-0">
-                    <button class="text-left uppercase hover:text-grey" type="button">Sound engineering</button>
-                    <button class="text-left uppercase hover:text-grey" type="button">Sound design</button>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound engineering</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound design</a>
                 </div>
                 <div
                     class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-5 md:col-start-3 md:row-start-1 md:mt-0 lg:col-start-6">
-                    <button class="uppercase text-grey hover:text-grey" type="button">All</button>
+                    <a href="/projects.html" class="uppercase text-grey hover:text-grey">All</a>
                 </div>
             </div>
             <div class="col-span-full mt-60px md:mt-80px">
@@ -62,9 +64,40 @@
                                 <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
                             </div>
                         </div>
-                        <div class="flex-grow overflow-hidden border-t border-black dark:border-white">
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
                             <picture>
-                                <img class="h-full w-full object-cover" src="img/projects/1.jpg" alt="the 78 lab" />
+                                <img
+                                    style="visibility: visible"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
                             </picture>
                         </div>
                         <div
@@ -81,7 +114,7 @@
 
                     <!--item-3-col-->
                     <a
-                        href="/project.html"
+                        href="/project-video.html"
                         class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
                         <div class="flex-shrink-0 md:flex">
                             <div class="flex flex-shrink-0 items-center p-16px md:py-24px">
@@ -92,9 +125,40 @@
                                 <p class="p2">Klad is an interdimensional design</p>
                             </div>
                         </div>
-                        <div class="flex-grow overflow-hidden border-t border-black dark:border-white">
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
                             <picture>
-                                <img class="h-full w-full object-cover" src="img/projects/2.jpg" alt="vinst" />
+                                <img
+                                    style="visibility: visible"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
                             </picture>
                         </div>
                         <div
@@ -122,11 +186,39 @@
                                 <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
                             </div>
                         </div>
-                        <div class="flex-grow overflow-hidden border-t border-black dark:border-white">
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
                             <picture>
                                 <img
+                                    style="visibility: visible"
                                     class="h-full w-full object-cover"
                                     src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="3d-modelling for FetoLife" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="3d-modelling for FetoLife" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="3d-modelling for FetoLife" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
                                     alt="3d-modelling for FetoLife" />
                             </picture>
                         </div>
@@ -144,7 +236,7 @@
 
                     <!--item-2-col-->
                     <a
-                        href="/project.html"
+                        href="/project-video.html"
                         class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-2">
                         <div class="flex-shrink-0 md:flex">
                             <div class="flex flex-shrink-0 items-center p-16px md:py-24px">
@@ -155,9 +247,40 @@
                                 <p class="p2">Klad is an interdimensional design</p>
                             </div>
                         </div>
-                        <div class="flex-grow overflow-hidden border-t border-black dark:border-white">
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
                             <picture>
-                                <img class="h-full w-full object-cover" src="img/projects/4.jpg" alt="Kultura" />
+                                <img
+                                    style="visibility: visible"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="Kultura" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="Kultura" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
+                                    alt="Kultura" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="Kultura" />
                             </picture>
                         </div>
                         <div

@@ -1,6 +1,6 @@
 <header
     id="header"
-    class="dark:bg-black@@if(this.style === 'sticky'){ md:top-0} z-50 bg-white px-10px transition md:sticky md:px-20px"
+    class="dark:bg-black@@if(this.style === 'sticky'){ md:top-0} relative z-50 bg-white px-10px transition md:sticky md:px-20px"
     x-data="{ isScrolled: false, openMenu: false, openShowreel: false, showreelUrl: 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0' }"
     x-init="isScrolled = window.scrollY >= 114; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
     @scroll.window="isScrolled = window.scrollY >= 114"
@@ -66,7 +66,8 @@
         </div>
 
         <!--mobile menu-->
-        <div class="relative w-full flex-none border-t border-t-black dark:border-t-white md:!hidden">
+        <div
+            class="relative order-last col-span-full w-full border-t border-t-black dark:border-t-white md:border-t-0 lg:!hidden">
             <nav
                 x-show="openMenu"
                 x-collapse.duration.500ms

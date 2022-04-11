@@ -168,10 +168,35 @@ body {
     @apply my-24px;
 }
 
+.raw h2,
+.raw h3 {
+    @apply uppercase;
+}
+
+.raw h2 {
+    @apply mt-60px mb-40px;
+}
+
 .raw ul {
-    @apply list-inside list-[square];
+    @apply my-24px list-inside list-[square];
+}
+
+.raw ol {
+    @apply my-24px list-inside list-decimal;
 }
 
 .raw a {
-    @apply relative transition after:absolute after:-bottom-2px after:left-0 after:w-full after:border-b after:border-black after:transition hover:text-grey hover:after:border-grey dark:after:border-white;
+    @apply relative transition after:absolute after:-bottom-0 after:left-0 after:w-full after:border-b after:border-black after:transition hover:text-grey hover:after:border-grey dark:after:border-white;
+}
+
+.raw-p1 p {
+    @apply p1 my-24px md:my-40px;
+}
+
+.raw-p1 p:first-child {
+    @apply mt-0;
+}
+
+.raw-p1 p:last-child {
+    @apply mb-0;
 }

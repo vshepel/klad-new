@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import {ScrollToPlugin} from "gsap/ScrollToPlugin.js";
 import request from "oc-request";
 import Bouncer from "formbouncerjs";
 import * as LottiePlayer from "@lottiefiles/lottie-player";
@@ -165,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     slides.forEach((el) => {
         let targets = gsap.utils.toArray(el.querySelectorAll("span"));
-        gsap.set(targets, { autoAlpha: 1 });
+        gsap.set(targets, {autoAlpha: 1});
         let dur = 0.15;
         let hold = el.dataset.slideDelay ? +el.dataset.slideDelay : 4;
 
@@ -179,9 +180,89 @@ document.addEventListener("DOMContentLoaded", function () {
                     duration: dur,
                 },
             });
-            tl.from(obj, { yPercent: -50, opacity: 0 });
-            tl.to(obj, { yPercent: 50, opacity: 0 }, "+=" + hold);
+            tl.from(obj, {yPercent: -50, opacity: 0});
+            tl.to(obj, {yPercent: 50, opacity: 0}, "+=" + hold);
         });
+    });
+})();
+
+// Scroll to
+
+gsap.registerPlugin(ScrollToPlugin);
+
+(function () {
+    function getSamePageAnchor(link) {
+        if (
+            link.protocol !== window.location.protocol ||
+            link.host !== window.location.host ||
+            link.pathname !== window.location.pathname ||
+            link.search !== window.location.search
+        ) {
+            return false;
+        }
+
+        return link.hash;
+    }
+
+    function scrollToHash(hash, e) {
+        const elem = hash ? document.querySelector(hash) : false;
+        if (elem) {
+            if (e) e.preventDefault();
+            gsap.to(window, {duration: 1, scrollTo: elem, ease: "power2"});
+        }
+    }
+
+    document.querySelectorAll("a[href]").forEach(a => {
+        a.addEventListener("click", e => {
+            scrollToHash(getSamePageAnchor(a), e);
+        });
+    });
+
+    scrollToHash(window.location.hash);
+})();
+
+// Switch images
+
+(function () {
+    const galleries = document.querySelectorAll("[data-switch-images]");
+
+    if (!galleries)
+        return
+
+    galleries.forEach((el) => {
+        let elements = el.querySelectorAll("img");
+        let index = 0;
+        let interval = null;
+
+        function isTouchScreenDevice() {
+            return "ontouchstart" in window || navigator.maxTouchPoints;
+        }
+
+        if (!elements && isTouchScreenDevice())
+            return
+
+        let glowFunc = () => {
+            if (elements.length <= 0) {
+                index = 0;
+                return;
+            }
+            index %= elements.length;
+            elements[(elements.length + index - 1) % elements.length].style.visibility = "hidden";
+            elements[index].style.visibility = "visible";
+            ++index;
+        };
+
+        el.addEventListener("mouseenter", () => {
+            glowFunc();
+            interval = setInterval(glowFunc, 250);
+        }, false);
+
+        el.addEventListener("mouseleave", () => {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        }, false);
     });
 })();
 

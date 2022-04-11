@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include("../views/parts/head.html", { "title": "Project page" })
+
+    <body
+        x-data="{ menuIsOpen: false, showreelIsOpen: false }"
+        @open-menu.window="menuIsOpen = $event.detail"
+        @open-showreel.window="showreelIsOpen = $event.detail"
+        :class="showreelIsOpen && 'overflow-hidden'"
+        class="body">
+        <!--header-->
+        @@include("../views/parts/header.html")
+
+        <!--project-->
+        <section :class="menuIsOpen && 'blur-sm'" class="px-10px transition md:px-20px">
+            <div class="flex flex-col border-x border-b border-black dark:border-white">
+                <div class="relative text-white">
+                    <picture>
+                        <img
+                            class="block w-full border-b border-black dark:border-white"
+                            src="img/projects/3.jpg"
+                            alt="the 78 lab" />
+                    </picture>
+                    <div class="absolute bottom-16px left-16px z-10 flex gap-8px md:bottom-20px md:left-20px">
+                        <a href="#" class="transition hover:scale-x-75" aria-label="Our Behance">
+                            <svg class="h-40px w-40px fill-current md:h-60px md:w-60px" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#behance"></use>
+                            </svg>
+                        </a>
+                        <a href="#" class="transition hover:scale-x-75" aria-label="Our Dibbble">
+                            <svg class="h-40px w-40px fill-current md:h-60px md:w-60px" aria-hidden="true">
+                                <use xlink:href="img/sprite.svg#dribbble"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid-cols-2 md:grid lg:flex">
+                    <div class="flex flex-shrink-0 items-center p-16px md:p-20px md:py-24px lg:py-40px">
+                        <h1>Leo-shipping</h1>
+                    </div>
+                    <div
+                        class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:p-20px md:py-0">
+                        <p class="p1">Klad is an interdimensional design syndicate providing comprehensive</p>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-col gap-y-8px border-t border-black p-16px py-16px dark:border-white md:flex-row md:px-20px">
+                    <div class="h3 mr-20px flex-shrink-0 uppercase">Work scope //</div>
+                    <p class="p2">Web-design, UI/UX, Animation, Identity</p>
+                </div>
+                <div
+                    class="flex flex-col gap-y-8px border-t border-black p-16px py-16px dark:border-white md:flex-row md:px-20px">
+                    <div class="h3 mr-20px flex-shrink-0 uppercase">Tools Used //</div>
+                    <p class="p2">Figma, Adobe Photoshop, After Effects, HTML, CSS, JavaScript, Three.js</p>
+                </div>
+                <div
+                    class="relative grid grid-cols-6 gap-x-20px border-t border-black py-40px px-16px dark:border-white md:py-60px md:px-0 md:pb-60px lg:py-80px">
+                    <div class="raw raw-p1 relative col-span-full md:col-span-5 md:pl-20px">
+                        <p>
+                            Leo-Shipping is a freight forwarding and logistics company operating in European, Asian and
+                            North American markets. The primary aim was to create a simple, lightweight page that would
+                            stand out among standard web assets in the field of logistics.
+                        </p>
+                        <p>
+                            We decided to build the website on the association with the port note boards. As a result,
+                            the landing page appears like a digital newspaper with some retro vibes, yet keeping a
+                            modern look with simple and lightweight animations.
+                        </p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 gap-24px md:gap-40px">
+                    <picture class="w-full border-y border-black dark:border-white">
+                        <img class="block w-full" src="img/projects/3-1.jpg" alt="Image" />
+                    </picture>
+                    <picture class="w-full border-y border-black dark:border-white">
+                        <img class="block w-full" src="img/projects/3-1.jpg" alt="Image" />
+                    </picture>
+                </div>
+                <div class="grid grid-cols-6 grid-rows-[1fr_auto] gap-x-20px pt-40px md:pt-60px lg:pt-80px">
+                    <div
+                        class="raw raw-p1 col-span-full mb-40px flex h-full flex-col px-16px md:col-span-5 md:mb-60px md:pr-0 md:pl-20px lg:col-span-3 lg:mb-0">
+                        <p>
+                            Comprehensively, we created web and brand animations, motion graphics, 3D models and
+                            implemented all the solutions with a custom-built CMS system and required integrations.
+                        </p>
+                    </div>
+                    <ul
+                        class="p2 order-last col-span-full flex flex-col justify-end gap-14px px-16px pt-40px pb-20px md:order-none md:col-span-2 md:pr-0 md:pl-20px md:pt-20px lg:col-span-3">
+                        <li>
+                            <a class="afterline" href="https://fetolife.com/" target="_blank">https://fetolife.com/</a>
+                        </li>
+                        <li><a class="afterline" href="/about.txt" target="_blank">file-or-link.txt</a></li>
+                        <li>
+                            <a class="afterline" href="/instructions_and_conditions.txt" target="_blank">
+                                file-or-link.txt
+                            </a>
+                        </li>
+                    </ul>
+                    <picture
+                        class="col-span-full border-y border-black dark:border-white md:col-span-4 md:col-start-3 md:border-0 lg:col-span-3 lg:col-start-4 lg:row-span-2 lg:row-start-1">
+                        <img class="block w-full" src="img/projects/3-2.jpg" alt="Image" />
+                    </picture>
+                </div>
+            </div>
+        </section>
+
+        <!--projects-->
+        <section class="grid-cols-6 gap-x-20px px-10px pt-60px md:grid md:px-20px md:pt-80px">
+            <div class="col-span-5 md:pr-60px lg:pr-0">
+                <h2 class="h1">Other projects</h2>
+            </div>
+            <div class="col-span-full mt-24px md:mt-40px lg:mt-60px">
+                <div class="grid grid-cols-6 gap-x-20px gap-y-24px lg:gap-y-40px">
+                    <!--item-3-col-->
+                    <a
+                        href="/project.html"
+                        class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
+                        <div class="flex-shrink-0 md:flex">
+                            <div class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                                <h3 class="h3 uppercase">the 78 lab</h3>
+                            </div>
+                            <div
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
+                                <p class="p2">Klad is an interdimensional design syndicate providing comprehensive</p>
+                            </div>
+                        </div>
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
+                            <picture>
+                                <img
+                                    style="visibility: visible"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="the 78 lab" />
+                            </picture>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                            <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Work scope //</div>
+                            <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                            <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Tools Used //</div>
+                            <p class="p2">Figma, Adobe Photoshop, After Effects, HTML, CSS, JavaScript, Three.js</p>
+                        </div>
+                    </a>
+
+                    <!--item-3-col-->
+                    <a
+                        href="/project-video.html"
+                        class="col-span-full flex flex-col border border-black dark:border-white lg:col-span-3">
+                        <div class="flex-shrink-0 md:flex">
+                            <div class="flex flex-shrink-0 items-center p-16px md:py-24px">
+                                <h3 class="h3 uppercase">vinst</h3>
+                            </div>
+                            <div
+                                class="flex flex-grow items-center border-t border-black p-16px dark:border-white md:border-t-0 md:border-l md:py-0">
+                                <p class="p2">Klad is an interdimensional design</p>
+                            </div>
+                        </div>
+                        <div
+                            class="relative flex-grow overflow-hidden border-t border-black dark:border-white"
+                            data-switch-images>
+                            <picture>
+                                <img
+                                    style="visibility: visible"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/2.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/3.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/4.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                            <picture class="absolute top-0 left-0 h-full w-full">
+                                <img
+                                    style="visibility: hidden"
+                                    class="h-full w-full object-cover"
+                                    src="img/projects/1.jpg"
+                                    loading="lazy"
+                                    alt="vinst" />
+                            </picture>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                            <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Work scope //</div>
+                            <p class="p2">Web-design, UI/UX, Branding, 3D, Motion</p>
+                        </div>
+                        <div
+                            class="flex flex-shrink-0 flex-col gap-y-8px border-t border-black p-16px dark:border-white md:flex-row">
+                            <div class="h3 flex-shrink-0 uppercase md:w-[164px] xl:w-[205px]">Tools Used //</div>
+                            <p class="p2">Figma, Blender, After Effects, HTML, CSS, JavaScript</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div
+                class="h3 col-span-full mt-60px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-80px lg:grid-cols-6">
+                <div class="inline-flex w-full flex-col items-start gap-12px md:order-1">
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand strategy</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand identity</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Messaging</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">SMM</a>
+                </div>
+                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-3 md:mt-0">
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-development</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Front-end</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Data visualisation</a>
+                </div>
+                <div class="inline-flex w-full flex-col items-start gap-12px md:order-2">
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-design</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Motion design</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">3D modelling</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">UI/UX</a>
+                </div>
+                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-4 md:mt-0">
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound engineering</a>
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound design</a>
+                </div>
+                <div
+                    class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-5 md:col-start-3 md:row-start-1 md:mt-0 lg:col-start-6">
+                    <a href="/projects.html" class="text-left uppercase hover:text-grey">All</a>
+                </div>
+            </div>
+        </section>
+
+        <!--form-->
+        @@include("../views/parts/form.html")
+
+        <!--footer-->
+        @@include("../views/parts/footer.html")
+    </body>
+</html>
