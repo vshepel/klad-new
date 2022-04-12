@@ -5,6 +5,91 @@ import Bouncer from "formbouncerjs";
 import * as LottiePlayer from "@lottiefiles/lottie-player";
 import create from "@lottiefiles/lottie-interactivity";
 
+function isTouchScreenDevice() {
+    return "ontouchstart" in window || navigator.maxTouchPoints;
+}
+
+// Cursor
+
+(function () {
+    const cursorGroup = document.querySelector(".cursor"),
+        cursor = document.querySelector(".cursor-pointer"),
+        follows = document.querySelectorAll(".cursor-follow"),
+        links = document.querySelectorAll("a"),
+        buttons = document.querySelectorAll("button");
+
+    if (isTouchScreenDevice()) {
+        return;
+    } else {
+        cursorGroup.style.display = "block";
+    }
+
+    gsap.set(cursor, {
+        xPercent: -50,
+        yPercent: -50
+    });
+
+    gsap.set(follows, {
+        xPercent: -50,
+        yPercent: -50,
+        scale: 1,
+        opacity: 0
+    });
+
+    let xTo = gsap.quickTo(cursor, "x", {duration: 0.2, ease: "power3"}),
+        yTo = gsap.quickTo(cursor, "y", {duration: 0.2, ease: "power3"});
+
+    function onMouseHover() {
+        gsap.to(cursor, {
+            rotate: 90
+        });
+    }
+
+    function onMouseHoverOut() {
+        gsap.to(cursor, {
+            rotate: 0
+        });
+    }
+
+    window.addEventListener("mousemove", e => {
+
+        let mapper = gsap.utils.mapRange(0, 20, 0, 1);
+        let speed = Math.abs(e.movementX) + Math.abs(e.movementY)
+        let mappedSpeed = mapper(speed);
+        let scale = gsap.utils.clamp(1, 0)
+        let opacity = gsap.utils.clamp(0, 1)
+
+        xTo(e.clientX);
+        yTo(e.clientY);
+
+        gsap.to(follows, {
+            duration: 0.2,
+            overwrite: "auto",
+            x: e.clientX,
+            y: e.clientY,
+            stagger: 0.1,
+            ease: "none"
+        });
+
+        gsap.to(follows, {
+            ease: "none",
+            duration: 0.3,
+            overwrite: "auto",
+            stagger: 0.1,
+            opacity: opacity(mappedSpeed),
+            scale: scale(mappedSpeed)
+        });
+    });
+    links.forEach(el => {
+        el.addEventListener("mouseenter", onMouseHover);
+        el.addEventListener("mouseleave", onMouseHoverOut);
+    });
+    buttons.forEach(el => {
+        el.addEventListener("mouseenter", onMouseHover);
+        el.addEventListener("mouseleave", onMouseHoverOut);
+    });
+})();
+
 // Auto resize textarea
 
 function autoResizeTextarea(querySelector, options) {
@@ -119,24 +204,30 @@ document.addEventListener("DOMContentLoaded", function () {
 // Toggle dark mode
 
 (function () {
-    if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-        document.documentElement.classList.add("dark");
-    } else {
-        document.documentElement.classList.remove("dark");
-    }
+    const themeToggleBtn = document.querySelector("[data-toggle-theme]");
 
-    document.querySelector("[data-toggle-dark]").onclick = () => {
-        if (localStorage.theme === "dark") {
-            localStorage.theme = "light";
-            document.documentElement.classList.remove("dark");
+    themeToggleBtn.addEventListener("click", function () {
+
+        // if set via local storage previously
+        if (localStorage.getItem("color-theme")) {
+            if (localStorage.getItem("color-theme") === "light") {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+            }
         } else {
-            localStorage.theme = "dark";
-            document.documentElement.classList.add("dark");
+            if (document.documentElement.classList.contains("dark")) {
+                document.documentElement.classList.remove("dark");
+                localStorage.setItem("color-theme", "light");
+            } else {
+                document.documentElement.classList.add("dark");
+                localStorage.setItem("color-theme", "dark");
+            }
         }
-    };
+
+    });
 })();
 
 // Add css variables
@@ -234,10 +325,6 @@ gsap.registerPlugin(ScrollToPlugin);
         let index = 0;
         let interval = null;
 
-        function isTouchScreenDevice() {
-            return "ontouchstart" in window || navigator.maxTouchPoints;
-        }
-
         if (!elements && isTouchScreenDevice())
             return
 
@@ -263,6 +350,61 @@ gsap.registerPlugin(ScrollToPlugin);
                 interval = null;
             }
         }, false);
+    });
+})();
+
+// Links with bg image
+
+(function () {
+    const links = document.querySelectorAll("[data-image-links] a");
+
+    if (!links && isTouchScreenDevice())
+        return
+
+    links.forEach((el) => {
+
+        const image = el.querySelector("img");
+
+        if (!image)
+            return
+
+        const setX = gsap.quickSetter(image, "x", "px"),
+            setY = gsap.quickSetter(image, "y", "px"),
+            align = e => {
+                const top = el.getBoundingClientRect().top;
+                const left = el.getBoundingClientRect().left;
+                setX(e.clientX - left);
+                setY(e.clientY - top);
+            },
+            startFollow = () => document.addEventListener("mousemove", align),
+            stopFollow = () => document.removeEventListener("mousemove", align),
+            fade = gsap.to(image, {
+                duration: 0.2,
+                autoAlpha: 1,
+                ease: "none",
+                paused: true,
+                onReverseComplete: stopFollow
+            }),
+            fadeCursor = gsap.to(".cursor", {
+                duration: 0.1,
+                opacity: 0,
+                ease: "none",
+                paused: true,
+                onReverseComplete: () => gsap.set(".cursor", { clearProps: "opacity" })
+            });
+
+        el.addEventListener("mouseenter", (e) => {
+            fade.play();
+            fadeCursor.play();
+            startFollow();
+            align(e);
+        });
+
+        el.addEventListener("mouseleave", () => {
+            fade.reverse();
+            fadeCursor.reverse();
+        });
+
     });
 })();
 

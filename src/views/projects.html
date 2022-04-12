@@ -14,7 +14,7 @@
         <!--projects-->
         <section
             :class="menuIsOpen && 'blur-sm'"
-            class="grid-cols-6 gap-x-20px px-10px pt-40px transition md:grid md:px-20px md:pt-80px">
+            class="grid-cols-6 gap-x-20px overflow-hidden px-10px pt-40px transition md:grid md:px-20px md:pt-80px">
             <div class="col-span-5 md:pr-60px lg:pr-0">
                 <h2 class="h1">Projects</h2>
                 <div class="p1 mt-24px lg:mt-40px">
@@ -22,32 +22,9 @@
                 </div>
             </div>
             <div
-                class="h3 col-span-full mt-40px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-60px lg:grid-cols-6">
-                <div class="inline-flex w-full flex-col items-start gap-12px md:order-1">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand strategy</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand identity</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Messaging</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">SMM</a>
-                </div>
-                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-3 md:mt-0">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-development</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Front-end</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Data visualisation</a>
-                </div>
-                <div class="inline-flex w-full flex-col items-start gap-12px md:order-2">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-design</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Motion design</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">3D modelling</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">UI/UX</a>
-                </div>
-                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-4 md:mt-0">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound engineering</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound design</a>
-                </div>
-                <div
-                    class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-5 md:col-start-3 md:row-start-1 md:mt-0 lg:col-start-6">
-                    <a href="/projects.html" class="uppercase text-grey hover:text-grey">All</a>
-                </div>
+                class="h3 col-span-full mt-40px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-60px lg:grid-cols-6"
+                data-image-links>
+                @@include("../views/parts/categories.html")
             </div>
             <div class="col-span-full mt-60px md:mt-80px">
                 <div class="grid grid-cols-6 gap-x-20px gap-y-24px lg:gap-y-40px">

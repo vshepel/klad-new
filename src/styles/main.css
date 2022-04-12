@@ -200,3 +200,11 @@ body {
 .raw-p1 p:last-child {
     @apply mb-0;
 }
+
+.cursor {
+    @apply hidden fixed top-0 left-0 w-40px h-40px z-50 pointer-events-none;
+}
+
+.cursor-item {
+    @apply fixed top-0 left-0 w-40px h-40px fill-current;
+}

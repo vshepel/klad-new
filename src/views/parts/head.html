@@ -19,6 +19,14 @@
     <!--alpine-->
     <script src="//unpkg.com/@alpinejs/collapse" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+        if (
+            localStorage.getItem("color-theme") === "dark" ||
+            (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
 
     <style>
         [x-cloak] {
@@ -26,3 +34,15 @@
         }
     </style>
 </head>
+
+<div class="cursor">
+    <svg class="cursor-item cursor-pointer" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+    <svg class="cursor-item cursor-follow" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+    <svg class="cursor-item cursor-follow" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+</div>

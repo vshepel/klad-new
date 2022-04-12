@@ -55,13 +55,14 @@
                 </div>
                 <div
                     class="relative grid grid-cols-6 gap-x-20px border-t border-black py-40px px-16px pb-[220px] dark:border-white md:py-60px md:px-0 md:pb-60px lg:py-80px lg:pb-[185px] xl:pb-[350px]">
-                    <div
+                    <!--TODO: Make 3d animation-->
+                    <picture
                         class="absolute right-0 bottom-40px col-span-full md:relative md:bottom-auto md:right-auto md:col-span-3 md:col-start-4 lg:col-span-2 lg:col-start-4">
                         <img
                             class="w-full max-w-[320px] md:absolute lg:max-w-[430px] xl:max-w-[620px]"
                             src="img/projects/3d.png"
                             alt="3d model" />
-                    </div>
+                    </picture>
                     <div class="p1 relative col-span-full md:col-span-5 md:pl-20px">
                         <p>
                             FetoLife is a digital platform aimed to guide users throughout the pregnancy cycle. The
@@ -235,32 +236,9 @@
                 </div>
             </div>
             <div
-                class="h3 col-span-full mt-60px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-80px lg:grid-cols-6">
-                <div class="inline-flex w-full flex-col items-start gap-12px md:order-1">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand strategy</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Brand identity</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Messaging</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">SMM</a>
-                </div>
-                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-3 md:mt-0">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-development</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Front-end</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Data visualisation</a>
-                </div>
-                <div class="inline-flex w-full flex-col items-start gap-12px md:order-2">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Web-design</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Motion design</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">3D modelling</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">UI/UX</a>
-                </div>
-                <div class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-4 md:mt-0">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound engineering</a>
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">Sound design</a>
-                </div>
-                <div
-                    class="mt-12px inline-flex w-full flex-col items-start gap-12px md:order-5 md:col-start-3 md:row-start-1 md:mt-0 lg:col-start-6">
-                    <a href="/projects.html" class="text-left uppercase hover:text-grey">All</a>
-                </div>
+                class="h3 col-span-full mt-60px columns-2 gap-x-20px gap-y-12px font-normal md:grid md:grid-cols-3 lg:mt-80px lg:grid-cols-6"
+                data-image-links>
+                @@include("../views/parts/categories.html")
             </div>
         </section>
 
