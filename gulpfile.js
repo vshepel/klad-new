@@ -99,8 +99,8 @@ function views() {
             prefix: "@@",
             basepath: "@file"
         }))
-        .pipe(gulpif(production, replace(".css", ".min.css")))
-        .pipe(gulpif(production, replace(".js", ".min.js")))
+        .pipe(gulpif(production, replace(/\.css\b/g, ".min.css")))
+        .pipe(gulpif(production, replace(/\.js\b/g, ".min.js")))
         .pipe(dest(paths.views.dist))
         .pipe(browsersync.stream());
 }

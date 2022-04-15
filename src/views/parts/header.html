@@ -1,17 +1,19 @@
+<!-- prettier-ignore-attribute -->
 <header
     id="header"
-    class="dark:bg-black@@if(this.style === 'sticky'){ md:top-0} relative z-40 bg-white px-10px transition md:sticky md:px-20px"
-    x-data="{ isScrolled: false, openMenu: false, openShowreel: false, showreelUrl: 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0' }"
-    x-init="isScrolled = window.scrollY >= 114; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
-    @scroll.window="isScrolled = window.scrollY >= 114"
-    @keydown.escape="openShowreel = false; $nextTick(() => { $refs.showreelIframe.setAttribute('src', '') })">
+    class="@@if(this.style === 'sticky'){is-sticky md:sticky md:top-0} relative z-40 bg-white px-10px transition dark:bg-black md:px-20px"
+    x-data="{ isScrolled: false, openMenu: false, openShowreel: false }"
+    x-init="isScrolled = $el.classList.contains('is-sticky') ? window.scrollY >= 114 : true; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
+    @scroll.window="if($el.classList.contains('is-sticky')){ isScrolled = (window.scrollY >= 114) }"
+    @keydown.escape="openShowreel = false">
     <div
         class="flex flex-wrap md:grid md:grid-cols-[auto_1fr_auto] lg:grid-cols-[auto_1fr_1fr_1fr_220px_220px] xl:grid-cols-[auto_1fr_1fr_1fr_310px_310px]">
         <!--logo-->
         <div
-            :class="isScrolled && 'md:!w-0 md:!border-r-0'"
-            class="order-first row-span-2 flex origin-left items-center border-r border-black transition-all dark:border-white md:w-[77px] md:border-b lg:w-[97px] xl:w-[116px]">
+            :class="isScrolled && 'md:!w-[77px] lg:!w-[97px] xl:!w-[116px] !border-r'"
+            class="order-first row-span-2 flex origin-left items-center border-r border-black transition-all dark:border-white md:w-0 md:border-r-0 md:border-b">
             <a href="/" class="w-full p-10px pl-0 md:pr-16px lg:pr-20px">
+                <!--TODO: Lottie logo-->
                 <img class="w-full dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate" />
             </a>
         </div>
@@ -32,11 +34,7 @@
                 Express design
             </a>
             <div class="hidden w-full lg:block"></div>
-            <button
-                @click="openShowreel = true; $nextTick(() => { $refs.showreelIframe.setAttribute('src', showreelUrl) })"
-                class="group p-6px lg:p-0"
-                aria-label="Open showreel"
-                type="button">
+            <button @click="openShowreel = true" class="group p-6px lg:p-0" aria-label="Open showreel" type="button">
                 <svg class="h-24px w-24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="12" cy="12" r="12" class="fill-black dark:fill-white" />
                     <path d="M18 12L8.25 18.0622L8.25 5.93782L18 12Z" class="fill-white dark:fill-black" />
@@ -97,9 +95,9 @@
 
         <!--title-->
         <div
-            :class="isScrolled && 'md:pl-0'"
-            class="@@if(this.style !== 'sticky'){ }w-full hidden flex-none pt-24px md:order-first md:block md:overflow-hidden md:whitespace-nowrap md:px-16px md:py-12px lg:col-span-3">
-            <h1 class="slide-text text-h1 font-bold lg:text-h1_lg xl:text-h1_xl">
+            :class="isScrolled && 'md:pl-16px'"
+            class="hidden w-full flex-none pt-24px md:order-first md:block md:overflow-hidden md:whitespace-nowrap md:py-12px md:pr-16px lg:col-span-3">
+            <h1 class="slide-text text-h1 font-bold lg:text-h1_lg xl:text-h1_xl" data-slide-text>
                 <span>Making your competitors jealous</span>
                 <span>Your making jealous competitors</span>
             </h1>
@@ -107,15 +105,15 @@
 
         <!--subtitle-->
         <div
-            :class="isScrolled && 'md:pl-0'"
-            class="@@if(this.style !== 'sticky'){ }w-full hidden flex-none overflow-hidden border-black py-14px dark:border-white md:col-span-2 md:block md:flex md:items-center md:border-y md:px-16px md:py-2px lg:col-span-5">
+            :class="isScrolled && 'md:pl-16px'"
+            class="hidden w-full flex-none overflow-hidden border-black py-14px dark:border-white md:col-span-2 md:block md:flex md:items-center md:border-y md:py-2px md:pr-16px lg:col-span-5">
             <svg
-                :class="isScrolled && 'md:block'"
-                class="mr-10px hidden h-14px w-14px flex-initial fill-current lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
+                :class="isScrolled && 'hidden'"
+                class="h-14px w-14px flex-initial fill-current lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
                 aria-hidden="true">
                 <use xlink:href="img/sprite.svg#cross"></use>
             </svg>
-            <h2 class="slide-text text-p2 font-normal md:text-p2_md lg:text-p2_lg xl:text-p2_xl">
+            <h2 class="slide-text text-p2 font-normal md:text-p2_md lg:text-p2_lg xl:text-p2_xl" data-slide-text>
                 <span>We create professional design for memorable customer experience</span>
                 <span>We create professional code for memorable customer experience</span>
                 <span>We create professional 3d for memorable customer experience</span>
@@ -132,11 +130,11 @@
         x-cloak>
         <div
             class="m-auto w-full border border-black bg-white dark:border-white dark:bg-black"
-            @click.away="openShowreel = false; $nextTick(() => { $refs.showreelIframe.setAttribute('src', '') })">
+            @click.away="openShowreel = false">
             <iframe
                 x-ref="showreelIframe"
                 class="aspect-video w-full"
-                src=""
+                :src="openShowreel && 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0'"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>

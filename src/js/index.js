@@ -1,9 +1,14 @@
 import gsap from "gsap";
 import {ScrollToPlugin} from "gsap/ScrollToPlugin.js";
+import {ScrollTrigger} from "gsap/ScrollTrigger.js";
 import request from "oc-request";
 import Bouncer from "formbouncerjs";
-import * as LottiePlayer from "@lottiefiles/lottie-player";
+import lottie from "lottie-web";
 import create from "@lottiefiles/lottie-interactivity";
+
+
+gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 function isTouchScreenDevice() {
     return "ontouchstart" in window || navigator.maxTouchPoints;
@@ -165,41 +170,110 @@ window.autoResizeTextarea = autoResizeTextarea;
 
 // Lottie
 
-document.addEventListener("DOMContentLoaded", function () {
-    const aboutWaveLotties = document.querySelectorAll("[data-lottie=aboutWave]");
-    if (aboutWaveLotties) {
-        aboutWaveLotties.forEach((el) => {
-            create({
-                player: el,
-                mode: "scroll",
-                actions: [
-                    {
-                        visibility: [0, 1.0],
-                        type: "seek",
-                        frames: [0, 19],
+const ScrollLottie = (obj) => {
+    let anim = lottie.loadAnimation({
+        container: obj.target,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: obj.path,
+        rendererSettings: {
+            progressiveLoad: true
+        }
+    });
+
+    let timeObj = {currentFrame: 0}
+    let endString = (obj.speed === "slow") ? "+=2000" : (obj.speed === "medium") ? "+=1000" : (obj.speed === undefined) ? "+=1250" : "+=500";
+    ScrollTrigger.create({
+        trigger: obj.target.closest("section"),
+        scrub: true,
+        start: "-=1000",
+        end: endString,
+        onUpdate: self => {
+            if (obj.duration) {
+                gsap.to(timeObj, {
+                    duration: obj.duration,
+                    currentFrame: (Math.floor(self.progress * (anim.totalFrames - 1))),
+                    onUpdate: () => {
+                        anim.goToAndStop(timeObj.currentFrame, true)
                     },
-                ],
+                    ease: "expo"
+                })
+            } else {
+                anim.goToAndStop(self.progress * (anim.totalFrames - 1), true)
+            }
+        }
+    });
+}
+
+(function () {
+    const getLottiePath = (path, toggleTheme = true) => {
+        let theme = "";
+
+        if (
+            toggleTheme &&
+            localStorage.getItem("color-theme") === "dark" ||
+            (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            theme = "-dark"
+        }
+
+        return `${path + theme}.json`
+    }
+    const setLottiePath = (themeName) => {
+        // lottie.destroy();
+        // loadLotties();
+    }
+    const loadLotties = () => {
+        const aboutWave = document.getElementById("aboutWave");
+        const formTwist = document.getElementById("formTwist");
+        const aboutBarcode = document.getElementById("aboutBarcode");
+
+        if (aboutWave) {
+            ScrollLottie({
+                target: aboutWave,
+                path: getLottiePath(aboutWave.dataset.animationPath),
+                duration: 4,
+                speed: "medium"
             });
-        });
+        }
+
+        if (formTwist) {
+            lottie.loadAnimation({
+                container: formTwist,
+                renderer: "svg",
+                loop: true,
+                autoplay: true,
+                path: getLottiePath(formTwist.dataset.animationPath),
+                name: "formTwist",
+                rendererSettings: {
+                    progressiveLoad: true
+                }
+            });
+        }
+
+        if (aboutBarcode) {
+            lottie.loadAnimation({
+                container: aboutBarcode,
+                renderer: "svg",
+                loop: true,
+                autoplay: false,
+                path: getLottiePath(aboutBarcode.dataset.animationPath, false),
+                name: "aboutBarcode",
+                rendererSettings: {
+                    preserveAspectRatio: "none",
+                    progressiveLoad: true
+                }
+            });
+        }
     }
 
-    const formTwistLotties = document.querySelectorAll("[data-lottie=formTwist]");
-    if (formTwistLotties) {
-        formTwistLotties.forEach((el) => {
-            create({
-                player: el,
-                mode: "scroll",
-                actions: [
-                    {
-                        visibility: [0, 1.0],
-                        type: "loop",
-                        frames: [0, 16],
-                    },
-                ],
-            });
-        });
-    }
-});
+    loadLotties();
+
+    document.addEventListener("themeChanged", evt => {
+        setLottiePath(evt.value)
+    }, false);
+})();
 
 // Toggle dark mode
 
@@ -207,6 +281,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeToggleBtn = document.querySelector("[data-toggle-theme]");
 
     themeToggleBtn.addEventListener("click", function () {
+
+        const originalSetItem = localStorage.setItem;
+        let themeChangedEvent;
+
+        localStorage.setItem = function (key, value) {
+            if (!themeChangedEvent) {
+                themeChangedEvent = new Event("themeChanged");
+
+                themeChangedEvent.value = value;
+                themeChangedEvent.key = key;
+
+                document.dispatchEvent(themeChangedEvent);
+            }
+
+            originalSetItem.apply(this, arguments);
+        };
 
         // if set via local storage previously
         if (localStorage.getItem("color-theme")) {
@@ -251,15 +341,18 @@ document.addEventListener("DOMContentLoaded", function () {
 // Text slide animation
 
 (function () {
-    const slides = document.querySelectorAll(".slide-text");
+    const slides = document.querySelectorAll("[data-slide-text]");
 
     if (!slides) return;
 
     slides.forEach((el) => {
-        let targets = gsap.utils.toArray(el.querySelectorAll("span"));
+        const targets = gsap.utils.toArray(el.querySelectorAll("span"));
+        const dur = el.dataset.slideDuration ? +el.dataset.slideDuration : 0.15;
+        const hold = el.dataset.slideDelay ? +el.dataset.slideDelay : 4;
+        const isHorizontal = el.dataset.slideText === "x";
+        const isLottieSync = el.dataset.slideLottie;
+
         gsap.set(targets, {autoAlpha: 1});
-        let dur = 0.15;
-        let hold = el.dataset.slideDelay ? +el.dataset.slideDelay : 4;
 
         targets.forEach((obj, i) => {
             let tl = gsap.timeline({
@@ -269,17 +362,33 @@ document.addEventListener("DOMContentLoaded", function () {
                 defaults: {
                     ease: "none",
                     duration: dur,
-                },
+                }
             });
-            tl.from(obj, {yPercent: -50, opacity: 0});
-            tl.to(obj, {yPercent: 50, opacity: 0}, "+=" + hold);
+            if (isHorizontal) {
+                tl.from(obj, {xPercent: -50, opacity: 0});
+                tl.to(obj, {
+                    xPercent: 50,
+                    opacity: 0,
+                    onStart: () => {
+                        if (isLottieSync) {
+                            lottie.play("aboutBarcode");
+                        }
+                    },
+                    onComplete: () => {
+                        setTimeout(el => {
+                            lottie.stop("aboutBarcode");
+                        }, 800)
+                    }
+                }, "+=" + hold);
+            } else {
+                tl.from(obj, {yPercent: -50, opacity: 0});
+                tl.to(obj, {yPercent: 50, opacity: 0}, "+=" + hold);
+            }
         });
     });
 })();
 
 // Scroll to
-
-gsap.registerPlugin(ScrollToPlugin);
 
 (function () {
     function getSamePageAnchor(link) {
@@ -311,6 +420,18 @@ gsap.registerPlugin(ScrollToPlugin);
 
     scrollToHash(window.location.hash);
 })();
+
+const utils = {
+    scrollToSection(el, delay) {
+        const header = document.getElementById("header"),
+            headerIsSticky = header.classList.contains("is-sticky"),
+            headerOffset = headerIsSticky ? header.offsetHeight : 0;
+
+        gsap.to(window, {duration: 0.5, delay: delay, scrollTo: {y: el, offsetY: headerOffset}, ease: "power2"});
+    }
+}
+
+window.utils = utils;
 
 // Switch images
 
@@ -390,7 +511,7 @@ gsap.registerPlugin(ScrollToPlugin);
                 opacity: 0,
                 ease: "none",
                 paused: true,
-                onReverseComplete: () => gsap.set(".cursor", { clearProps: "opacity" })
+                onReverseComplete: () => gsap.set(".cursor", {clearProps: "opacity"})
             });
 
         el.addEventListener("mouseenter", (e) => {
@@ -405,6 +526,26 @@ gsap.registerPlugin(ScrollToPlugin);
             fadeCursor.reverse();
         });
 
+    });
+})();
+
+// Project 3d animation
+
+(function () {
+    const project3d = document.querySelectorAll("[data-project-3d]");
+
+    if (!project3d)
+        return
+
+    project3d.forEach(el => {
+        gsap.to(el, {
+            yPercent: -20,
+            rotate: 15,
+            ease: "none",
+            scrollTrigger: {
+                scrub: 1.5
+            }
+        });
     });
 })();
 

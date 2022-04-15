@@ -13,9 +13,8 @@
 </div>
 
 <!--accordions-->
-<!--TODO: If statement for scrollTo-->
 <div
-    x-data="{ selected: null, scrollToSection(el) { setTimeout(() => { window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - (window.screen.width >= 1280 ? document.querySelector('#header').clientHeight : 126), behavior: 'smooth' }) }, 300) }}"
+    x-data="{ selected: null, ...window.utils }"
     @change-express.window="$event.detail ? '' : selected = null"
     class="col-span-full mt-40px">
     <!--logo-->
@@ -25,7 +24,7 @@
         :class="(selected !== null && selected !== 1) && 'opacity-40'">
         <div class="border-t border-black dark:border-white lg:col-span-4">
             <button
-                @click="if(selected !== 1) { selected = 1; scrollToSection($el) } else { selected = null }"
+                @click="if(selected !== 1) { selected = 1; scrollToSection($el, 0.3) } else { selected = null }"
                 class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
                 type="button">
                 <span class="p1 text-left">Logo</span>
@@ -209,7 +208,7 @@
         :class="(selected !== null && selected !== 2) && 'opacity-40'">
         <div class="border-t border-black dark:border-white lg:col-span-4">
             <button
-                @click="if(selected !== 2) { selected = 2; scrollToSection($el) } else { selected = null }"
+                @click="if(selected !== 2) { selected = 2; scrollToSection($el, 0.3) } else { selected = null }"
                 class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
                 type="button">
                 <span class="p1 text-left">Brand Animation</span>
@@ -323,7 +322,7 @@
         :class="(selected !== null && selected !== 3) && 'opacity-40'">
         <div class="border-t border-black dark:border-white lg:col-span-4">
             <button
-                @click="if(selected !== 3) { selected = 3; scrollToSection($el) } else { selected = null }"
+                @click="if(selected !== 3) { selected = 3; scrollToSection($el, 0.3) } else { selected = null }"
                 class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
                 type="button">
                 <span class="p1 text-left">3D illustration</span>
@@ -464,7 +463,7 @@
         :class="(selected !== null && selected !== 4) && 'opacity-40'">
         <div :class="selected === 4 && 'border-b-0'" class="border-y border-black dark:border-white lg:col-span-4">
             <button
-                @click="if(selected !== 4) { selected = 4; scrollToSection($el) } else { selected = null }"
+                @click="if(selected !== 4) { selected = 4; scrollToSection($el, 0.3) } else { selected = null }"
                 class="flex w-full scroll-mt-[126px] items-center justify-between gap-8px py-16px lg:scroll-mt-0"
                 type="button">
                 <span class="p1 text-left">Landing page</span>

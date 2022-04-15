@@ -25,17 +25,29 @@
 
         <!--about-->
         <section
+            id="about"
             class="relative mt-60px grid-cols-6 gap-x-20px overflow-hidden px-10px md:mt-80px md:grid md:px-20px lg:overflow-visible">
-            <lottie-player
-                data-lottie="aboutWave"
-                src="files/wave-dark.json"
-                class="absolute bottom-[45px] -right-[33px] -z-10 hidden h-[391px] w-[362px] dark:block md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
-            <lottie-player
-                data-lottie="aboutWave"
-                src="files/wave.json"
-                class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:hidden md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"></lottie-player>
+            <div
+                id="aboutWave"
+                class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:block md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"
+                data-animation-path="files/wave"></div>
             <div class="col-span-5 md:pr-60px lg:pr-0">
-                <h2 class="h1">We help inspire</h2>
+                <h2 class="h1 block">
+                    We help
+                    <div
+                        class="slide-text inline-block"
+                        data-slide-text="x"
+                        data-slide-duration="0.4"
+                        data-slide-delay="2"
+                        data-slide-lottie="aboutBarcode">
+                        <span>inspire</span>
+                        <span>envision</span>
+                        <span>create</span>
+                        <span>launch</span>
+                        <span>support</span>
+                        <span>reimagine</span>
+                    </div>
+                </h2>
                 <div class="p1 mt-24px lg:mt-40px">
                     <p>
                         Klad is an interdimensional design syndicate that provides comprehensive long-lasting solutions
@@ -49,13 +61,10 @@
                 class="col-span-full mt-[200px] flex flex-col items-stretch gap-24px md:mt-60px md:flex-row-reverse md:items-end md:gap-0 lg:mt-80px xl:mt-60px">
                 <button class="btn h2 flex-shrink-0" type="button">Download portfolio</button>
                 <div class="flex-grow md:border-b md:border-black md:pr-24 dark:md:border-white">
-                    <lottie-player
+                    <div
                         id="aboutBarcode"
-                        src="files/barcode.json"
-                        preserveAspectRatio="none"
                         class="h-12px w-full dark:invert md:w-[187px] lg:w-[524px]"
-                        loop
-                        autoplay></lottie-player>
+                        data-animation-path="files/barcode"></div>
                 </div>
             </div>
         </section>
