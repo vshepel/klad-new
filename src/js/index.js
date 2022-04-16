@@ -170,72 +170,53 @@ window.autoResizeTextarea = autoResizeTextarea;
 
 // Lottie
 
-const ScrollLottie = (obj) => {
-    let anim = lottie.loadAnimation({
-        container: obj.target,
-        renderer: "svg",
-        loop: false,
-        autoplay: false,
-        path: obj.path,
-        rendererSettings: {
-            progressiveLoad: true
-        }
-    });
-
-    let timeObj = {currentFrame: 0}
-    let endString = (obj.speed === "slow") ? "+=2000" : (obj.speed === "medium") ? "+=1000" : (obj.speed === undefined) ? "+=1250" : "+=500";
-    ScrollTrigger.create({
-        trigger: obj.target.closest("section"),
-        scrub: true,
-        start: "-=1000",
-        end: endString,
-        onUpdate: self => {
-            if (obj.duration) {
-                gsap.to(timeObj, {
-                    duration: obj.duration,
-                    currentFrame: (Math.floor(self.progress * (anim.totalFrames - 1))),
-                    onUpdate: () => {
-                        anim.goToAndStop(timeObj.currentFrame, true)
-                    },
-                    ease: "expo"
-                })
-            } else {
-                anim.goToAndStop(self.progress * (anim.totalFrames - 1), true)
-            }
-        }
-    });
-}
-
 (function () {
-    const getLottiePath = (path, toggleTheme = true) => {
-        let theme = "";
+    let currentLottieTheme = "light";
 
-        if (
-            toggleTheme &&
-            localStorage.getItem("color-theme") === "dark" ||
-            (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-            theme = "-dark"
+    const logoKlad = document.getElementById("logo");
+    const aboutWave = document.getElementById("aboutWave");
+    const formTwist = document.getElementById("formTwist");
+    const aboutBarcode = document.getElementById("aboutBarcode");
+
+    if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        currentLottieTheme = "dark";
+    }
+
+    document.addEventListener("themeChanged", e => {
+        if (currentLottieTheme !== e.value) {
+            currentLottieTheme = e.value;
+
+            aboutWave.hidden = true;
+            formTwist.hidden = true;
+
+            lottie.destroy("aboutWave");
+            lottie.destroy("formTwist");
+
+            setTimeout(() => {
+                startLotties();
+
+                aboutWave.hidden = false;
+                formTwist.hidden = false;
+            }, 500);
         }
+    }, false);
 
-        return `${path + theme}.json`
-    }
-    const setLottiePath = (themeName) => {
-        // lottie.destroy();
-        // loadLotties();
-    }
-    const loadLotties = () => {
-        const aboutWave = document.getElementById("aboutWave");
-        const formTwist = document.getElementById("formTwist");
-        const aboutBarcode = document.getElementById("aboutBarcode");
-
+    const startLotties = (themeName = currentLottieTheme) => {
         if (aboutWave) {
-            ScrollLottie({
-                target: aboutWave,
-                path: getLottiePath(aboutWave.dataset.animationPath),
-                duration: 4,
-                speed: "medium"
-            });
+            lottie.loadAnimation({
+                container: aboutWave,
+                renderer: "svg",
+                loop: false,
+                autoplay: false,
+                path: themeName === "dark" ? aboutWave.dataset.animationPathDark : aboutWave.dataset.animationPath,
+                name: "aboutWave",
+                rendererSettings: {
+                    progressiveLoad: true
+                }
+            })
         }
 
         if (formTwist) {
@@ -244,35 +225,53 @@ const ScrollLottie = (obj) => {
                 renderer: "svg",
                 loop: true,
                 autoplay: true,
-                path: getLottiePath(formTwist.dataset.animationPath),
+                path: themeName === "dark" ? formTwist.dataset.animationPathDark : formTwist.dataset.animationPath,
                 name: "formTwist",
                 rendererSettings: {
                     progressiveLoad: true
                 }
-            });
+            })
         }
+    };
 
-        if (aboutBarcode) {
-            lottie.loadAnimation({
-                container: aboutBarcode,
-                renderer: "svg",
-                loop: true,
-                autoplay: false,
-                path: getLottiePath(aboutBarcode.dataset.animationPath, false),
-                name: "aboutBarcode",
-                rendererSettings: {
-                    preserveAspectRatio: "none",
-                    progressiveLoad: true
-                }
-            });
-        }
+    startLotties();
+
+    if (logoKlad) {
+        lottie.loadAnimation({
+            container: logoKlad,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: logoKlad.dataset.animationPath,
+            name: "logoKlad",
+            rendererSettings: {
+                preserveAspectRatio: "none",
+                progressiveLoad: true
+            }
+        });
     }
 
-    loadLotties();
+    if (aboutWave) {
+        document.getElementById("about").addEventListener("click", el => {
+            lottie.goToAndStop(0, true, "aboutWave");
+            lottie.play("aboutWave");
+        }, false);
+    }
 
-    document.addEventListener("themeChanged", evt => {
-        setLottiePath(evt.value)
-    }, false);
+    if (aboutBarcode) {
+        lottie.loadAnimation({
+            container: aboutBarcode,
+            renderer: "svg",
+            loop: true,
+            autoplay: aboutBarcode.dataset.animationAutoplay,
+            path: aboutBarcode.dataset.animationPath,
+            name: "aboutBarcode",
+            rendererSettings: {
+                preserveAspectRatio: "none",
+                progressiveLoad: true
+            }
+        });
+    }
 })();
 
 // Toggle dark mode
@@ -281,11 +280,12 @@ const ScrollLottie = (obj) => {
     const themeToggleBtn = document.querySelector("[data-toggle-theme]");
 
     themeToggleBtn.addEventListener("click", function () {
-
         const originalSetItem = localStorage.setItem;
         let themeChangedEvent;
 
         localStorage.setItem = function (key, value) {
+            originalSetItem.apply(this, arguments);
+
             if (!themeChangedEvent) {
                 themeChangedEvent = new Event("themeChanged");
 
@@ -294,8 +294,6 @@ const ScrollLottie = (obj) => {
 
                 document.dispatchEvent(themeChangedEvent);
             }
-
-            originalSetItem.apply(this, arguments);
         };
 
         // if set via local storage previously

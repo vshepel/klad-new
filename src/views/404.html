@@ -6,21 +6,28 @@
         <!--header-->
         @@include("../views/parts/header.html")
 
-        <section class="grid flex-grow grid-cols-6 grid-rows-[auto_1fr_auto] px-10px pt-60px md:px-20px lg:pt-80px">
+        <section
+            class="relative grid flex-grow grid-cols-6 grid-rows-[auto_1fr_auto] px-10px pt-60px md:px-20px lg:pt-80px">
             <h1 class="h1 col-span-full">Error 404</h1>
             <div class="p1 col-span-full my-20px lg:col-span-5 lg:my-40px">
                 Klad is an interdimensional design syndicate that provides comprehensive long-lasting solutions for
                 people.
             </div>
+            <picture class="absolute bottom-[70px] right-0 -z-[1] w-auto max-w-full md:bottom-0">
+                <img
+                    width="1124"
+                    height="632"
+                    src="img/404.png"
+                    srcset="img/404.png 1x, img/404@2x.png 2x"
+                    alt="brocken cross" />
+            </picture>
             <div class="col-span-full flex flex-wrap items-end justify-between gap-20px">
                 <a href="/" class="btn w-full md:w-auto md:border-b-0">Back to main</a>
-                <lottie-player
+                <div
                     id="aboutBarcode"
-                    src="files/barcode.json"
-                    preserveAspectRatio="none"
                     class="h-12px w-full dark:invert md:order-first md:w-[400px] lg:w-[524px]"
-                    loop
-                    autoplay></lottie-player>
+                    data-animation-autoplay="true"
+                    data-animation-path="files/barcode.json"></div>
             </div>
         </section>
 

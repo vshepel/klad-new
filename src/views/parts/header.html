@@ -13,8 +13,11 @@
             :class="isScrolled && 'md:!w-[77px] lg:!w-[97px] xl:!w-[116px] !border-r'"
             class="order-first row-span-2 flex origin-left items-center border-r border-black transition-all dark:border-white md:w-0 md:border-r-0 md:border-b">
             <a href="/" class="w-full p-10px pl-0 md:pr-16px lg:pr-20px">
-                <!--TODO: Lottie logo-->
-                <img class="w-full dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate" />
+                <span
+                    id="logo"
+                    class="w-full dark:invert"
+                    aria-label="Klad Syndicate logotype"
+                    data-animation-path="files/klad.json"></span>
             </a>
         </div>
 
