@@ -2,10 +2,10 @@
 <html lang="en">
     @@include("../views/parts/head.html", { "title": "Linktree page" })
 
-    <body class="body">
+    <body class="body p-10px">
         <div class="flex flex-col gap-14px">
-            <div class="mb-10px flex justify-center border border-black py-60px">
-                <img width="150" height="150" src="img/logo-klad.svg" alt="Klad design logotype" />
+            <div class="mb-10px flex justify-center border border-black py-60px dark:border-white">
+                <img class="dark:invert" width="150" height="150" src="img/logo-klad.svg" alt="Klad design logotype" />
             </div>
 
             <a href="/express.html" class="btn h2">Order express design</a>
@@ -41,7 +41,7 @@
             <a href="/projects.html" class="btn h2">View projects</a>
 
             <div class="mt-10px">
-                <div class="grid grid-cols-4 divide-x divide-solid border border-black">
+                <div class="grid grid-cols-4 divide-x divide-solid border border-black dark:border-white">
                     <a href="#" class="flex justify-center py-8px" aria-label="Our Instagram">
                         <svg class="h-40px w-40px fill-current" aria-hidden="true">
                             <use xlink:href="img/sprite.svg#instagram"></use>
@@ -63,7 +63,7 @@
                         </svg>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 divide-x divide-solid border-x border-black">
+                <div class="grid grid-cols-2 divide-x divide-solid border-x border-black dark:border-white">
                     <a href="mailto:info@klad.design" class="afterline flex justify-center py-16px">info@klad.design</a>
                     <a href="tel:995-591-018-573" class="afterline flex justify-center py-16px">+995 591 018 573</a>
                 </div>

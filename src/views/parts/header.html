@@ -1,3 +1,15 @@
+<div class="cursor">
+    <svg class="cursor-item cursor-pointer" style="transform: translate(-50%, -50%)" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+    <svg class="cursor-item cursor-follow" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+    <svg class="cursor-item cursor-follow" aria-hidden="true">
+        <use xlink:href="img/sprite.svg#cursor"></use>
+    </svg>
+</div>
+
 <!-- prettier-ignore-attribute -->
 <header
     id="header"
@@ -11,13 +23,11 @@
         <!--logo-->
         <div
             :class="isScrolled && 'md:!w-[77px] lg:!w-[97px] xl:!w-[116px] !border-r'"
-            class="order-first row-span-2 flex origin-left items-center border-r border-black transition-all dark:border-white md:w-0 md:border-r-0 md:border-b">
+            class="order-first row-span-2 flex w-[59px] origin-left items-center border-r border-black transition-all dark:border-white md:w-0 md:border-r-0 md:border-b">
             <a href="/" class="w-full p-10px pl-0 md:pr-16px lg:pr-20px">
-                <span
-                    id="logo"
-                    class="w-full dark:invert"
-                    aria-label="Klad Syndicate logotype"
-                    data-animation-path="files/klad.json"></span>
+                <span id="logo" class="w-full" data-animation-path="files/klad.json">
+                    <img class="w-full dark:invert" src="img/logo-klad.svg" alt="Klad Syndicate logotype" />
+                </span>
             </a>
         </div>
 
@@ -112,7 +122,7 @@
             class="hidden w-full flex-none overflow-hidden border-black py-14px dark:border-white md:col-span-2 md:block md:flex md:items-center md:border-y md:py-2px md:pr-16px lg:col-span-5">
             <svg
                 :class="isScrolled && 'hidden'"
-                class="h-14px w-14px flex-initial fill-current lg:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
+                class="h-14px w-14px flex-initial fill-current md:mr-12px lg:h-16px lg:w-16px xl:h-18px xl:w-18px"
                 aria-hidden="true">
                 <use xlink:href="img/sprite.svg#cross"></use>
             </svg>
@@ -125,22 +135,26 @@
     </div>
 
     <!--showreel-->
-    <!--TODO: Custom player-->
     <div
-        class="fixed top-0 left-0 z-10 flex h-full w-full overflow-auto p-10px backdrop-blur-sm md:p-20px"
+        class="fixed top-0 bottom-0 left-0 z-50 flex w-full overflow-auto p-10px backdrop-blur-sm md:p-20px"
         x-show="openShowreel"
         x-transition
         x-cloak>
-        <div
-            class="m-auto w-full border border-black bg-white dark:border-white dark:bg-black"
-            @click.away="openShowreel = false">
-            <iframe
-                x-ref="showreelIframe"
-                class="aspect-video w-full"
-                :src="openShowreel && 'https://www.youtube.com/embed/80OKK4_5bHU?controls=0&autoplay=1&loop=1&rel=0'"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
+        <button
+            @click="openShowreel = false"
+            class="absolute top-24px right-24px"
+            type="button"
+            aria-label="Remove file">
+            <svg class="h-24px w-24px fill-current transition group-hover:fill-red" aria-hidden="true">
+                <use xlink:href="img/sprite.svg#close"></use>
+            </svg>
+        </button>
+        <iframe
+            x-ref="showreelIframe"
+            class="w-full"
+            @click.away="openShowreel = false"
+            :src="openShowreel && 'https://player.vimeo.com/video/499758877?autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0'"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
 </header>

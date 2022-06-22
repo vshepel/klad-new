@@ -10,6 +10,7 @@ import rename from "gulp-rename"
 import postcss from "gulp-postcss";
 import tailwindcss from "tailwindcss";
 import autoprefixer from "autoprefixer";
+import cssnano from "cssnano";
 import cheerio from "gulp-cheerio"
 import browsersync from "browser-sync"
 import replace from "gulp-replace"
@@ -74,6 +75,7 @@ function serve(done) {
         server: {
             baseDir: "./dist/"
         },
+        host: '192.168.0.100',
         ghostMode: false,
         notify: false,
         // online: true,
@@ -106,11 +108,14 @@ function views() {
 }
 
 function styles() {
+    let PostCssPlugins = [
+        tailwindcss('./tailwind.config.cjs'),
+        autoprefixer(),
+        production ? cssnano() : false
+    ].filter(Boolean);
+
     return src(paths.styles.src)
-        .pipe(postcss([
-            tailwindcss('./tailwind.config.cjs'),
-            autoprefixer()
-        ]))
+        .pipe(postcss(PostCssPlugins))
         .pipe(gulpif(production, rename({
             suffix: ".min"
         })))

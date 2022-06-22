@@ -72,6 +72,9 @@ module.exports = {
             backgroundImage: {
                 "check": "url('img/svg/check.svg')",
             },
+            transitionProperty: {
+                'wrapper': 'transform, filter',
+            },
         },
     },
     plugins: [],

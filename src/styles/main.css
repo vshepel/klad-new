@@ -1,34 +1,44 @@
 @font-face {
-    font-family: 'Helvetica Now Display';
-    src: local('Helvetica Now Display Regular'), local('Helvetica-Now-Display-Regular'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.woff2') format('woff2'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.woff') format('woff'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.ttf') format('truetype');
+    font-family: "Helvetica Now Display";
+    src: local("Helvetica Now Display Regular"), local("Helvetica-Now-Display-Regular"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.woff2") format("woff2"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.woff") format("woff"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Helvetica Now Display';
-    src: local('Helvetica Now Display Medium'), local('Helvetica-Now-Display-Medium'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.woff2') format('woff2'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.woff') format('woff'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.ttf') format('truetype');
+    font-family: "Helvetica Now Display";
+    src: local("Helvetica Now Display Medium"), local("Helvetica-Now-Display-Medium"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.woff2") format("woff2"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.woff") format("woff"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Helvetica Now Display';
-    src: local('Helvetica Now Display Bold'), local('Helvetica-Now-Display-Bold'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.woff2') format('woff2'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.woff') format('woff'),
-    url('/fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.ttf') format('truetype');
+    font-family: "Helvetica Now Display";
+    src: local("Helvetica Now Display Bold"), local("Helvetica-Now-Display-Bold"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.woff2") format("woff2"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.woff") format("woff"),
+        url("../fonts/HelveticaNowDisplay/HelveticaNowDisplay-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 @tailwind base;
@@ -37,7 +47,7 @@
 
 @layer components {
     .body {
-        @apply bg-white font-body text-black transition-colors dark:bg-black dark:text-white selection:bg-select;
+        @apply bg-white font-body text-black transition-colors selection:bg-select dark:bg-black dark:text-white;
     }
 
     .btn {
@@ -45,7 +55,7 @@
     }
 
     .btn-skew {
-        @apply p1 relative inline-flex px-20px py-2px before:absolute before:top-0 before:left-0 before:h-full before:w-full before:-skew-x-12 before:border-[2px] before:border-black after:z-[1] after:transition after:content-[attr(data-text)] hover:after:text-white dark:hover:after:text-black dark:before:border-white md:px-24px lg:px-20px xl:px-[30px];
+        @apply p1 relative inline-flex px-20px py-2px before:absolute before:top-0 before:left-0 before:h-full before:w-full before:-skew-x-12 before:border-[2px] before:border-black after:z-[1] after:transition after:content-[attr(data-text)] hover:after:text-white dark:before:border-white dark:hover:after:text-black md:px-24px lg:px-20px xl:px-[30px];
     }
 
     .btn-skew span {
@@ -56,15 +66,18 @@
         @apply scale-x-100;
     }
 
-    h1, .h1 {
+    h1,
+    .h1 {
         @apply text-h1 font-bold md:text-h1_md lg:text-h1_lg xl:text-h1_xl;
     }
 
-    h2, .h2 {
+    h2,
+    .h2 {
         @apply text-h2 font-bold md:text-h2_md lg:text-h2_lg xl:text-h2_xl;
     }
 
-    h3, .h3 {
+    h3,
+    .h3 {
         @apply text-h3 font-medium md:text-h3_md lg:text-h3_lg xl:text-h3_xl;
     }
 
@@ -72,7 +85,7 @@
         @apply text-p1 md:text-p1_md lg:text-p1_lg xl:text-p1_xl;
     }
 
-   .p2 {
+    .p2 {
         @apply text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl;
     }
 
@@ -148,6 +161,22 @@ body {
     @apply min-h-full;
 }
 
+.wrapper {
+    @apply origin-center transition-wrapper delay-500 duration-500;
+}
+
+.wrapper.is-loading {
+    @apply h-screen scale-75 overflow-hidden blur-sm;
+}
+
+.wrapper.is-loading .cursor {
+    @apply opacity-0;
+}
+
+.wrapper.is-not-loading {
+    @apply scale-100 blur-0;
+}
+
 .error-message {
     @apply hidden;
 }
@@ -202,9 +231,9 @@ body {
 }
 
 .cursor {
-    @apply hidden fixed top-0 left-0 w-40px h-40px z-50 pointer-events-none;
+    @apply pointer-events-none fixed top-0 left-0 z-50 hidden h-40px w-40px;
 }
 
 .cursor-item {
-    @apply fixed top-0 left-0 w-40px h-40px fill-current;
+    @apply fixed top-0 left-0 h-40px w-40px fill-current;
 }

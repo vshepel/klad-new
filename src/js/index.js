@@ -1,11 +1,9 @@
 import gsap from "gsap";
-import {ScrollToPlugin} from "gsap/ScrollToPlugin.js";
-import {ScrollTrigger} from "gsap/ScrollTrigger.js";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin.js";
+import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 import request from "oc-request";
 import Bouncer from "formbouncerjs";
 import lottie from "lottie-web";
-import create from "@lottiefiles/lottie-interactivity";
-
 
 gsap.registerPlugin(ScrollToPlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -21,7 +19,8 @@ function isTouchScreenDevice() {
         cursor = document.querySelector(".cursor-pointer"),
         follows = document.querySelectorAll(".cursor-follow"),
         links = document.querySelectorAll("a"),
-        buttons = document.querySelectorAll("button");
+        buttons = document.querySelectorAll("button"),
+        iframes = document.querySelectorAll("iframe");
 
     if (isTouchScreenDevice()) {
         return;
@@ -31,38 +30,37 @@ function isTouchScreenDevice() {
 
     gsap.set(cursor, {
         xPercent: -50,
-        yPercent: -50
+        yPercent: -50,
     });
 
     gsap.set(follows, {
         xPercent: -50,
         yPercent: -50,
         scale: 1,
-        opacity: 0
+        opacity: 0,
     });
 
-    let xTo = gsap.quickTo(cursor, "x", {duration: 0.2, ease: "power3"}),
-        yTo = gsap.quickTo(cursor, "y", {duration: 0.2, ease: "power3"});
+    let xTo = gsap.quickTo(cursor, "x", { duration: 0.2, ease: "power3" }),
+        yTo = gsap.quickTo(cursor, "y", { duration: 0.2, ease: "power3" });
 
     function onMouseHover() {
         gsap.to(cursor, {
-            rotate: 90
+            rotate: 90,
         });
     }
 
     function onMouseHoverOut() {
         gsap.to(cursor, {
-            rotate: 0
+            rotate: 0,
         });
     }
 
-    window.addEventListener("mousemove", e => {
-
+    window.addEventListener("mousemove", (e) => {
         let mapper = gsap.utils.mapRange(0, 20, 0, 1);
-        let speed = Math.abs(e.movementX) + Math.abs(e.movementY)
+        let speed = Math.abs(e.movementX) + Math.abs(e.movementY);
         let mappedSpeed = mapper(speed);
-        let scale = gsap.utils.clamp(1, 0)
-        let opacity = gsap.utils.clamp(0, 1)
+        let scale = gsap.utils.clamp(1, 0);
+        let opacity = gsap.utils.clamp(0, 1);
 
         xTo(e.clientX);
         yTo(e.clientY);
@@ -73,7 +71,7 @@ function isTouchScreenDevice() {
             x: e.clientX,
             y: e.clientY,
             stagger: 0.1,
-            ease: "none"
+            ease: "none",
         });
 
         gsap.to(follows, {
@@ -82,16 +80,24 @@ function isTouchScreenDevice() {
             overwrite: "auto",
             stagger: 0.1,
             opacity: opacity(mappedSpeed),
-            scale: scale(mappedSpeed)
+            scale: scale(mappedSpeed),
         });
     });
-    links.forEach(el => {
+    links.forEach((el) => {
         el.addEventListener("mouseenter", onMouseHover);
         el.addEventListener("mouseleave", onMouseHoverOut);
     });
-    buttons.forEach(el => {
+    buttons.forEach((el) => {
         el.addEventListener("mouseenter", onMouseHover);
         el.addEventListener("mouseleave", onMouseHoverOut);
+    });
+    iframes.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+            cursorGroup.style.display = 'none';
+        });
+        el.addEventListener("mouseleave", () => {
+            cursorGroup.style.display = 'block';
+        });
     });
 })();
 
@@ -155,19 +161,6 @@ function autoResizeTextarea(querySelector, options) {
 
 window.autoResizeTextarea = autoResizeTextarea;
 
-// Form validate
-
-(function () {
-    let validate = new Bouncer(".form");
-
-    document.querySelectorAll(".form").forEach((el) => {
-        el.onreset = () => {
-            validate.destroy();
-            validate = new Bouncer(".form");
-        };
-    });
-})();
-
 // Lottie
 
 (function () {
@@ -185,38 +178,44 @@ window.autoResizeTextarea = autoResizeTextarea;
         currentLottieTheme = "dark";
     }
 
-    document.addEventListener("themeChanged", e => {
-        if (currentLottieTheme !== e.value) {
-            currentLottieTheme = e.value;
+    document.addEventListener(
+        "themeChanged",
+        (e) => {
+            if (currentLottieTheme !== e.value) {
+                currentLottieTheme = e.value;
 
-            aboutWave.hidden = true;
-            formTwist.hidden = true;
+                aboutWave.hidden = true;
+                formTwist.hidden = true;
 
-            lottie.destroy("aboutWave");
-            lottie.destroy("formTwist");
+                lottie.destroy("aboutWave");
+                lottie.destroy("formTwist");
 
-            setTimeout(() => {
-                startLotties();
+                setTimeout(() => {
+                    startLotties();
 
-                aboutWave.hidden = false;
-                formTwist.hidden = false;
-            }, 500);
-        }
-    }, false);
+                    aboutWave.hidden = false;
+                    formTwist.hidden = false;
+                }, 500);
+            }
+        },
+        false
+    );
 
     const startLotties = (themeName = currentLottieTheme) => {
         if (aboutWave) {
             lottie.loadAnimation({
                 container: aboutWave,
-                renderer: "svg",
+                renderer: "canvas",
                 loop: false,
                 autoplay: false,
                 path: themeName === "dark" ? aboutWave.dataset.animationPathDark : aboutWave.dataset.animationPath,
                 name: "aboutWave",
                 rendererSettings: {
-                    progressiveLoad: true
-                }
-            })
+                    scaleMode: "noScale",
+                    // preserveAspectRatio: "none",
+                    // progressiveLoad: true,
+                },
+            });
         }
 
         if (formTwist) {
@@ -228,16 +227,18 @@ window.autoResizeTextarea = autoResizeTextarea;
                 path: themeName === "dark" ? formTwist.dataset.animationPathDark : formTwist.dataset.animationPath,
                 name: "formTwist",
                 rendererSettings: {
-                    progressiveLoad: true
-                }
-            })
+                    // scaleMode: "noScale",
+                    preserveAspectRatio: "none",
+                    progressiveLoad: true,
+                },
+            });
         }
     };
 
     startLotties();
 
     if (logoKlad) {
-        lottie.loadAnimation({
+        const logoKladLottie = lottie.loadAnimation({
             container: logoKlad,
             renderer: "svg",
             loop: true,
@@ -246,16 +247,25 @@ window.autoResizeTextarea = autoResizeTextarea;
             name: "logoKlad",
             rendererSettings: {
                 preserveAspectRatio: "none",
-                progressiveLoad: true
-            }
+                progressiveLoad: true,
+            },
+        });
+
+        logoKladLottie.addEventListener("data_ready", () => {
+            logoKlad.querySelector("img").hidden = true;
+            logoKlad.querySelector("svg").classList.add("dark:invert");
         });
     }
 
     if (aboutWave) {
-        document.getElementById("about").addEventListener("click", el => {
-            lottie.goToAndStop(0, true, "aboutWave");
-            lottie.play("aboutWave");
-        }, false);
+        document.getElementById("about").addEventListener(
+            "click",
+            (el) => {
+                lottie.goToAndStop(0, true, "aboutWave");
+                lottie.play("aboutWave");
+            },
+            false
+        );
     }
 
     if (aboutBarcode) {
@@ -268,8 +278,8 @@ window.autoResizeTextarea = autoResizeTextarea;
             name: "aboutBarcode",
             rendererSettings: {
                 preserveAspectRatio: "none",
-                progressiveLoad: true
-            }
+                progressiveLoad: true,
+            },
         });
     }
 })();
@@ -280,12 +290,9 @@ window.autoResizeTextarea = autoResizeTextarea;
     const themeToggleBtn = document.querySelector("[data-toggle-theme]");
 
     themeToggleBtn.addEventListener("click", function () {
-        const originalSetItem = localStorage.setItem;
         let themeChangedEvent;
 
-        localStorage.setItem = function (key, value) {
-            originalSetItem.apply(this, arguments);
-
+        const themeChanged = (key, value) => {
             if (!themeChangedEvent) {
                 themeChangedEvent = new Event("themeChanged");
 
@@ -301,20 +308,23 @@ window.autoResizeTextarea = autoResizeTextarea;
             if (localStorage.getItem("color-theme") === "light") {
                 document.documentElement.classList.add("dark");
                 localStorage.setItem("color-theme", "dark");
+                themeChanged("color-theme", "dark");
             } else {
                 document.documentElement.classList.remove("dark");
                 localStorage.setItem("color-theme", "light");
+                themeChanged("color-theme", "light");
             }
         } else {
             if (document.documentElement.classList.contains("dark")) {
                 document.documentElement.classList.remove("dark");
                 localStorage.setItem("color-theme", "light");
+                themeChanged("color-theme", "light");
             } else {
                 document.documentElement.classList.add("dark");
                 localStorage.setItem("color-theme", "dark");
+                themeChanged("color-theme", "dark");
             }
         }
-
     });
 })();
 
@@ -325,15 +335,15 @@ window.autoResizeTextarea = autoResizeTextarea;
         const doc = document.documentElement;
         doc.style.setProperty("--vh", `${window.innerHeight}px`);
     };
-    // window.addEventListener('resize', setRealHeight);
+    window.addEventListener("resize", setRealHeight);
     setRealHeight();
 
     const setHeaderHeight = () => {
         const header = document.getElementById("header").offsetHeight;
         document.documentElement.style.setProperty("--header", `${header}px`);
     };
-    window.addEventListener("resize", setHeaderHeight);
     setHeaderHeight();
+    window.addEventListener("resize", setHeaderHeight);
 })();
 
 // Text slide animation
@@ -350,7 +360,7 @@ window.autoResizeTextarea = autoResizeTextarea;
         const isHorizontal = el.dataset.slideText === "x";
         const isLottieSync = el.dataset.slideLottie;
 
-        gsap.set(targets, {autoAlpha: 1});
+        gsap.set(targets, { autoAlpha: 1 });
 
         targets.forEach((obj, i) => {
             let tl = gsap.timeline({
@@ -360,27 +370,31 @@ window.autoResizeTextarea = autoResizeTextarea;
                 defaults: {
                     ease: "none",
                     duration: dur,
-                }
+                },
             });
             if (isHorizontal) {
-                tl.from(obj, {xPercent: -50, opacity: 0});
-                tl.to(obj, {
-                    xPercent: 50,
-                    opacity: 0,
-                    onStart: () => {
-                        if (isLottieSync) {
-                            lottie.play("aboutBarcode");
-                        }
+                tl.from(obj, { xPercent: -50, opacity: 0 });
+                tl.to(
+                    obj,
+                    {
+                        xPercent: 50,
+                        opacity: 0,
+                        onStart: () => {
+                            if (isLottieSync) {
+                                lottie.play("aboutBarcode");
+                            }
+                        },
+                        onComplete: () => {
+                            setTimeout((el) => {
+                                lottie.stop("aboutBarcode");
+                            }, 800);
+                        },
                     },
-                    onComplete: () => {
-                        setTimeout(el => {
-                            lottie.stop("aboutBarcode");
-                        }, 800)
-                    }
-                }, "+=" + hold);
+                    "+=" + hold
+                );
             } else {
-                tl.from(obj, {yPercent: -50, opacity: 0});
-                tl.to(obj, {yPercent: 50, opacity: 0}, "+=" + hold);
+                tl.from(obj, { yPercent: -50, opacity: 0 });
+                tl.to(obj, { yPercent: 50, opacity: 0 }, "+=" + hold);
             }
         });
     });
@@ -406,12 +420,12 @@ window.autoResizeTextarea = autoResizeTextarea;
         const elem = hash ? document.querySelector(hash) : false;
         if (elem) {
             if (e) e.preventDefault();
-            gsap.to(window, {duration: 1, scrollTo: elem, ease: "power2"});
+            gsap.to(window, { duration: 1, scrollTo: elem, ease: "power2" });
         }
     }
 
-    document.querySelectorAll("a[href]").forEach(a => {
-        a.addEventListener("click", e => {
+    document.querySelectorAll("a[href]").forEach((a) => {
+        a.addEventListener("click", (e) => {
             scrollToHash(getSamePageAnchor(a), e);
         });
     });
@@ -425,9 +439,9 @@ const utils = {
             headerIsSticky = header.classList.contains("is-sticky"),
             headerOffset = headerIsSticky ? header.offsetHeight : 0;
 
-        gsap.to(window, {duration: 0.5, delay: delay, scrollTo: {y: el, offsetY: headerOffset}, ease: "power2"});
-    }
-}
+        gsap.to(window, { duration: 0.5, delay: delay, scrollTo: { y: el, offsetY: headerOffset }, ease: "power2" });
+    },
+};
 
 window.utils = utils;
 
@@ -436,16 +450,16 @@ window.utils = utils;
 (function () {
     const galleries = document.querySelectorAll("[data-switch-images]");
 
-    if (!galleries)
-        return
+    if (!galleries) return;
 
     galleries.forEach((el) => {
         let elements = el.querySelectorAll("img");
         let index = 0;
         let interval = null;
 
-        if (!elements && isTouchScreenDevice())
-            return
+        const intervalTime = +el.dataset.switchImages || 250;
+
+        if (!elements && isTouchScreenDevice()) return;
 
         let glowFunc = () => {
             if (elements.length <= 0) {
@@ -458,17 +472,25 @@ window.utils = utils;
             ++index;
         };
 
-        el.addEventListener("mouseenter", () => {
-            glowFunc();
-            interval = setInterval(glowFunc, 250);
-        }, false);
+        el.addEventListener(
+            "mouseenter",
+            () => {
+                glowFunc();
+                interval = setInterval(glowFunc, intervalTime);
+            },
+            false
+        );
 
-        el.addEventListener("mouseleave", () => {
-            if (interval) {
-                clearInterval(interval);
-                interval = null;
-            }
-        }, false);
+        el.addEventListener(
+            "mouseleave",
+            () => {
+                if (interval) {
+                    clearInterval(interval);
+                    interval = null;
+                }
+            },
+            false
+        );
     });
 })();
 
@@ -477,19 +499,16 @@ window.utils = utils;
 (function () {
     const links = document.querySelectorAll("[data-image-links] a");
 
-    if (!links && isTouchScreenDevice())
-        return
+    if (!links && isTouchScreenDevice()) return;
 
     links.forEach((el) => {
-
         const image = el.querySelector("img");
 
-        if (!image)
-            return
+        if (!image) return;
 
         const setX = gsap.quickSetter(image, "x", "px"),
             setY = gsap.quickSetter(image, "y", "px"),
-            align = e => {
+            align = (e) => {
                 const top = el.getBoundingClientRect().top;
                 const left = el.getBoundingClientRect().left;
                 setX(e.clientX - left);
@@ -502,14 +521,14 @@ window.utils = utils;
                 autoAlpha: 1,
                 ease: "none",
                 paused: true,
-                onReverseComplete: stopFollow
+                onReverseComplete: stopFollow,
             }),
             fadeCursor = gsap.to(".cursor", {
                 duration: 0.1,
                 opacity: 0,
                 ease: "none",
                 paused: true,
-                onReverseComplete: () => gsap.set(".cursor", {clearProps: "opacity"})
+                onReverseComplete: () => gsap.set(".cursor", { clearProps: "opacity" }),
             });
 
         el.addEventListener("mouseenter", (e) => {
@@ -523,7 +542,6 @@ window.utils = utils;
             fade.reverse();
             fadeCursor.reverse();
         });
-
     });
 })();
 
@@ -532,35 +550,73 @@ window.utils = utils;
 (function () {
     const project3d = document.querySelectorAll("[data-project-3d]");
 
-    if (!project3d)
-        return
+    if (!project3d) return;
 
-    project3d.forEach(el => {
+    project3d.forEach((el) => {
         gsap.to(el, {
             yPercent: -20,
             rotate: 15,
             ease: "none",
             scrollTrigger: {
-                scrub: 1.5
-            }
+                scrub: 1.5,
+            },
         });
     });
 })();
 
 // October CMS - Contact form
 
-// (function () {
-//     const contactsForms = document.querySelectorAll(".form");
-//
-//     contactsForms.forEach((el) => {
-//         el.addEventListener("submit", function (e) {
-//             e.preventDefault();
-//
-//             request.sendForm(el, "emptyForm::onFormSubmit", {
-//                 success: (result) => {
-//                     el.reset();
-//                 },
-//             });
-//         });
-//     });
-// })();
+(function () {
+    const fromSelector = ".form";
+    const forms = document.querySelectorAll(fromSelector);
+
+    let validate = new Bouncer(fromSelector, {
+        disableSubmit: true,
+    });
+
+    [...forms].map((el) => {
+        el.onreset = () => {
+            validate.destroy();
+            validate = new Bouncer(fromSelector, {
+                disableSubmit: true,
+            });
+
+            const fileInputs = el.querySelectorAll("input[type=file]");
+            [...fileInputs].map((el) => {
+                let filePond = window.FilePond.find(el.closest("div"));
+
+                if (filePond != null) {
+                    filePond.removeFiles();
+                }
+            });
+        };
+
+        el.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const areValid = validate.validateAll(el);
+
+            if (areValid.length === 0) {
+                request.sendForm(el, "filepondForm::onFormSubmit", {
+                    success: (response) => {
+                        if (response.status == false) {
+                            console.log(response.message);
+                        }
+                    },
+                    error: () => {
+                        console.log("error");
+                    },
+                    complete: () => {
+                        el.closest("[x-data]")._x_dataStack[0].formSubmitted = true;
+                        el.closest("[x-data]")._x_dataStack[0].showReset = false;
+
+                        setTimeout(() => {
+                            el.reset();
+                            el.closest("[x-data]")._x_dataStack[0].formSubmitted = false;
+                        }, 4000);
+                    },
+                });
+            }
+        });
+    });
+})();
