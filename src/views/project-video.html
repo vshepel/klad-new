@@ -15,20 +15,19 @@
         <section :class="menuIsOpen && 'blur-sm'" class="px-10px transition md:px-20px">
             <div class="flex flex-col border-x border-b border-black dark:border-white">
                 <div class="relative text-white">
-                    <picture>
-                        <img
-                            class="block w-full border-b border-black dark:border-white"
-                            src="img/projects/3.jpg"
-                            alt="the 78 lab" />
-                    </picture>
-                    <div class="absolute bottom-16px left-16px z-10 flex gap-8px md:bottom-20px md:left-20px">
+                    <iframe
+                        class="aspect-video w-full border-b border-black dark:border-white"
+                        src="https://player.vimeo.com/video/499758877?muted=1&autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowfullscreen></iframe>
+                    <div class="absolute top-16px left-16px z-10 flex gap-8px md:top-20px md:left-20px">
                         <a href="#" class="transition hover:scale-x-75" aria-label="Our Behance">
-                            <svg class="h-40px w-40px fill-current md:h-60px md:w-60px" aria-hidden="true">
+                            <svg class="h-40px w-40px fill-current lg:h-60px lg:w-60px" aria-hidden="true">
                                 <use xlink:href="img/sprite.svg#behance"></use>
                             </svg>
                         </a>
                         <a href="#" class="transition hover:scale-x-75" aria-label="Our Dibbble">
-                            <svg class="h-40px w-40px fill-current md:h-60px md:w-60px" aria-hidden="true">
+                            <svg class="h-40px w-40px fill-current lg:h-60px lg:w-60px" aria-hidden="true">
                                 <use xlink:href="img/sprite.svg#dribbble"></use>
                             </svg>
                         </a>
