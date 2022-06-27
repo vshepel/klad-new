@@ -19,9 +19,24 @@
                 :class="menuIsOpen && 'blur-sm'"
                 class="flex h-[calc(var(--vh,_100vh)_-_var(--header,_300px))] min-h-[320px] px-10px pb-10px pt-20px transition-all md:h-[calc(var(--vh,_100vh)_-_var(--header,_300px))] md:min-h-[600px] md:px-20px md:pt-0 md:pb-20px">
                 <div class="relative flex-grow border border-black dark:border-white md:border-t-0">
+                    <video
+                        id="canvasVideo"
+                        class="hidden"
+                        data-path="files/logo-klad"
+                        autoplay
+                        playsinline
+                        loop
+                        muted></video>
+                    <div
+                        x-init="setTimeout(() => { $el.classList.add('!opacity-100') }, 300)"
+                        class="flex h-full w-full opacity-0 transition-opacity duration-500">
+                        <canvas
+                            id="heroCanvas"
+                            class="h-full w-full mix-blend-darken transition-all dark:mix-blend-lighten dark:invert"></canvas>
+                    </div>
                     <a
                         href="mailto:info@klad.design?subject=New%20project%20with%20Klad%20studio"
-                        class="btn absolute bottom-0 left-0 right-0 border-b-0 border-l-0 border-r-0 md:right-auto md:border-r">
+                        class="btn absolute bottom-0 left-0 right-0 border-b-0 border-l-0 border-r-0 bg-white dark:bg-black md:right-auto md:border-r">
                         Get in touch
                     </a>
                 </div>
@@ -33,7 +48,7 @@
                 class="relative grid-cols-6 gap-x-20px overflow-hidden px-10px pt-60px md:grid md:px-20px md:pt-80px lg:overflow-visible">
                 <div
                     id="aboutWave"
-                    class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:block md:bottom-40px md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"
+                    class="absolute bottom-[45px] -right-[33px] -z-10 h-[391px] w-[362px] dark:block md:bottom-[32px] md:-right-24px lg:-bottom-[170px] lg:-right-[calc(-50%_+_282px)] lg:h-[609px] lg:w-[564px] xl:-bottom-[160px] xl:-right-[calc(-50%_+_410px)] xl:h-[646px] xl:w-[600px]"
                     data-animation-path="files/wave.json"
                     data-animation-path-dark="files/wave-dark.json"></div>
                 <div class="col-span-5 md:pr-60px lg:pr-0">
@@ -342,5 +357,7 @@
             <!--footer-->
             @@include("../views/parts/footer.html")
         </div>
+
+        <script src="js/canvas.js"></script>
     </body>
 </html>
