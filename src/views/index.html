@@ -28,8 +28,12 @@
                         loop
                         muted></video>
                     <div
-                        x-init="setTimeout(() => { $el.classList.add('!opacity-100') }, 300)"
-                        class="flex h-full w-full opacity-0 transition-opacity duration-500">
+                        id="canvasLoader"
+                        class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-500 dark:invert"
+                        role="status">
+                        <img width="24" height="24" src="img/loader.svg" alt="Loader icon" />
+                    </div>
+                    <div class="flex h-full w-full opacity-0 transition-opacity duration-500">
                         <canvas
                             id="heroCanvas"
                             class="h-full w-full mix-blend-darken transition-all dark:mix-blend-lighten dark:invert"></canvas>
