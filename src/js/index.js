@@ -93,12 +93,65 @@ function isTouchScreenDevice() {
     });
     iframes.forEach((el) => {
         el.addEventListener("mouseenter", () => {
-            cursorGroup.style.display = 'none';
+            cursorGroup.style.display = "none";
         });
         el.addEventListener("mouseleave", () => {
-            cursorGroup.style.display = 'block';
+            cursorGroup.style.display = "block";
         });
     });
+
+    document.body.onmouseenter = () => {
+        cursorGroup.style.display = "block";
+    };
+
+    document.body.onmouseleave = () => {
+        cursorGroup.style.display = "none";
+    };
+})();
+
+// Fixed header
+
+(function () {
+    let prevScroll = window.scrollY || document.documentElement.scrollTop;
+    let curScroll;
+    let direction = 0;
+    let prevDirection = 0;
+
+    if (window.matchMedia("(min-width: 768px)").matches)
+        return
+
+    const header = document.getElementById("header");
+
+    let checkScroll = function () {
+        curScroll = window.scrollY || document.documentElement.scrollTop;
+        if (curScroll > prevScroll) {
+            direction = 2;
+        } else if (curScroll < prevScroll) {
+            direction = 1;
+        }
+
+        toggleHeader(direction, curScroll);
+
+        const isFly = curScroll > header.clientHeight;
+
+        header.classList.toggle("is-fly", isFly);
+
+        prevScroll = curScroll;
+    };
+
+    let toggleHeader = function (direction, curScroll) {
+        if (direction === 2 && curScroll > header.clientHeight) {
+            header.classList.add("is-hide");
+            prevDirection = direction;
+        } else if (direction === 1) {
+            header.classList.remove("is-hide");
+        }
+    };
+
+    checkScroll();
+
+    window.addEventListener("scroll", checkScroll);
+
 })();
 
 // Auto resize textarea
@@ -170,6 +223,7 @@ window.autoResizeTextarea = autoResizeTextarea;
     const aboutWave = document.getElementById("aboutWave");
     const formTwist = document.getElementById("formTwist");
     const aboutBarcode = document.getElementById("aboutBarcode");
+    const projectsBarcode = document.getElementById("projectsBarcode");
 
     if (
         localStorage.getItem("color-theme") === "dark" ||
@@ -188,14 +242,8 @@ window.autoResizeTextarea = autoResizeTextarea;
                 formTwist.hidden = true;
 
                 lottie.destroy("aboutWave");
-                lottie.destroy("formTwist");
 
-                setTimeout(() => {
-                    startLotties();
-
-                    aboutWave.hidden = false;
-                    formTwist.hidden = false;
-                }, 500);
+                startLotties();
             }
         },
         false
@@ -216,22 +264,27 @@ window.autoResizeTextarea = autoResizeTextarea;
                     // progressiveLoad: true,
                 },
             });
+
+            aboutWave.hidden = false;
         }
 
         if (formTwist) {
-            lottie.loadAnimation({
-                container: formTwist,
-                renderer: "svg",
-                loop: true,
-                autoplay: true,
-                path: themeName === "dark" ? formTwist.dataset.animationPathDark : formTwist.dataset.animationPath,
-                name: "formTwist",
-                rendererSettings: {
-                    // scaleMode: "noScale",
-                    preserveAspectRatio: "none",
-                    progressiveLoad: true,
-                },
-            });
+            formTwist.innerHTML = "";
+
+            let mp4 = document.createElement("source");
+            mp4.src = `${themeName === "dark" ? formTwist.dataset.pathDark : formTwist.dataset.path}.mp4`;
+            mp4.type = "video/mp4";
+            formTwist.appendChild(mp4);
+
+            let webm = document.createElement("source");
+            webm.src = `${themeName === "dark" ? formTwist.dataset.pathDark : formTwist.dataset.path}.webm`;
+            webm.type = "video/webm";
+            formTwist.appendChild(webm);
+
+            formTwist.load();
+            formTwist.play();
+
+            formTwist.hidden = false;
         }
     };
 
@@ -276,6 +329,21 @@ window.autoResizeTextarea = autoResizeTextarea;
             autoplay: aboutBarcode.dataset.animationAutoplay,
             path: aboutBarcode.dataset.animationPath,
             name: "aboutBarcode",
+            rendererSettings: {
+                preserveAspectRatio: "none",
+                progressiveLoad: true,
+            },
+        });
+    }
+
+    if (projectsBarcode) {
+        lottie.loadAnimation({
+            container: projectsBarcode,
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: projectsBarcode.dataset.animationPath,
+            name: "projectsBarcode",
             rendererSettings: {
                 preserveAspectRatio: "none",
                 progressiveLoad: true,
@@ -620,3 +688,4 @@ window.utils = utils;
         });
     });
 })();
+

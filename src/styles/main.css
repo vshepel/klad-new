@@ -51,7 +51,7 @@ html::-webkit-scrollbar {
     }
 
     .btn {
-        @apply flex appearance-none items-center justify-between border border-black py-12px px-12px text-h2 font-bold uppercase before:mr-8px before:shrink-0 before:border-t-12px before:border-r-12px before:border-t-current before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-8px after:shrink-0 after:border-t-12px after:border-r-12px after:border-t-transparent after:border-r-current after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white sm:px-20px sm:text-h2_md sm:before:mr-12px sm:before:border-t-18px sm:before:border-r-18px sm:after:ml-14px sm:after:border-t-18px sm:after:border-r-18px md:py-14px lg:text-h2_lg xl:text-h2_xl;
+        @apply flex appearance-none items-center justify-between border border-black py-12px px-12px text-h2 font-bold uppercase transition-bg before:mr-8px before:shrink-0 before:border-t-12px before:border-r-12px before:border-t-current before:border-r-transparent before:border-b-transparent before:border-l-transparent before:transition-transform after:ml-8px after:shrink-0 after:border-t-12px after:border-r-12px after:border-t-transparent after:border-r-current after:border-b-transparent after:border-l-transparent after:transition-transform hover:before:-rotate-90 hover:after:-rotate-90 dark:border-white sm:px-20px sm:text-h2_md sm:before:mr-12px sm:before:border-t-18px sm:before:border-r-18px sm:after:ml-14px sm:after:border-t-18px sm:after:border-r-18px md:py-14px lg:text-h2_lg xl:text-h2_xl;
     }
 
     .btn-skew {
@@ -87,6 +87,13 @@ html::-webkit-scrollbar {
 
     .p2 {
         @apply text-p2 md:text-p2_md lg:text-p2_lg xl:text-p2_xl;
+    }
+
+    .p1 h2,
+    .p1 h3,
+    .p2 h2,
+    .p2 h3 {
+        @apply mb-40px;
     }
 
     label {
@@ -144,7 +151,7 @@ html::-webkit-scrollbar {
     }
 
     input[type="checkbox"]:checked {
-        @apply bg-check bg-contain bg-center dark:backdrop-invert;
+        @apply bg-white bg-check bg-contain bg-center;
     }
 
     input[type="checkbox"] ~ label {
@@ -154,6 +161,10 @@ html::-webkit-scrollbar {
     .afterline {
         @apply relative transition after:absolute after:-bottom-0 after:left-0 after:w-full after:border-b after:border-black after:transition hover:text-grey hover:after:border-grey dark:after:border-white;
     }
+}
+
+.header.is-hide {
+    @apply -translate-y-full;
 }
 
 html,
@@ -236,4 +247,10 @@ body {
 
 .cursor-item {
     @apply fixed top-0 left-0 h-40px w-40px fill-current;
+}
+
+@supports not (backdrop-filter: none) {
+    .backdrop-blur-sm {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
 }

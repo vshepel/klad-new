@@ -74,6 +74,7 @@ module.exports = {
             },
             transitionProperty: {
                 'wrapper': 'transform, filter',
+                'bg': 'background-color',
             },
         },
     },

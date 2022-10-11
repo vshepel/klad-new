@@ -36,7 +36,7 @@ const paths = {
         watch: "./src/styles/**/*.css"
     },
     scripts: {
-        src: "./src/js/index.js",
+        src: "./src/js/**/*.js",
         dist: "./dist/js/",
         watch: "./src/js/**/*.js"
     },
@@ -137,6 +137,7 @@ function scripts() {
             ],
             entry: {
                 main: "./src/js/index.js",
+                canvas: "./src/js/canvas.js",
             },
             output: {
                 filename: "[name].js",

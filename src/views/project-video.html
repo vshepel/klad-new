@@ -7,7 +7,7 @@
         @open-menu.window="menuIsOpen = $event.detail"
         @open-showreel.window="showreelIsOpen = $event.detail"
         :class="showreelIsOpen && 'overflow-hidden'"
-        class="body">
+        class="body text-black">
         <!--header-->
         @@include("../views/parts/header.html")
 
@@ -97,7 +97,7 @@
                         </li>
                     </ul>
                     <picture
-                        class="col-span-full border-y border-black dark:border-white md:col-span-4 md:col-start-3 md:border-0 lg:col-span-3 lg:col-start-4 lg:row-span-2 lg:row-start-1">
+                        class="col-span-full aspect-square border-y border-black dark:border-white md:col-span-4 md:col-start-3 md:border-0 lg:col-span-3 lg:col-start-4 lg:row-span-2 lg:row-start-1">
                         <img class="block w-full" src="img/projects/3-2.jpg" alt="Image" />
                     </picture>
                 </div>

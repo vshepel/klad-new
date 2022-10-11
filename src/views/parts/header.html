@@ -13,7 +13,7 @@
 <!-- prettier-ignore-attribute -->
 <header
     id="header"
-    class="@@if(this.style === 'sticky'){is-sticky md:sticky md:top-0} relative z-40 bg-white px-10px transition dark:bg-black md:px-20px"
+    class="@@if(this.style === 'sticky'){is-sticky} header sticky top-0 z-40 bg-white px-10px transition dark:bg-black md:px-20px"
     x-data="{ isScrolled: false, openMenu: false, openShowreel: false }"
     x-init="isScrolled = $el.classList.contains('is-sticky') ? window.scrollY >= 114 : true; $watch('openMenu', () => $dispatch('open-menu', openMenu)); $watch('openShowreel', () => $dispatch('open-showreel', openShowreel))"
     @scroll.window="if($el.classList.contains('is-sticky')){ isScrolled = (window.scrollY >= 114) }"
